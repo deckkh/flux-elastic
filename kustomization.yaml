@@ -4,5 +4,4 @@ resources:
   - crds/
   - operators/
   - observability/
-  - charts/
   - clusters/dev/
