@@ -2,6 +2,7 @@ apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
   name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}  
 spec:
   version: {{ .Values.elastic.version }}
   nodeSets:
