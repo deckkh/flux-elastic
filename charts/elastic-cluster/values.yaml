@@ -3,3 +3,6 @@ myvar: prod
 
 elastic:
   version: 8.1.0
+
+nodeset:
+  count: 3

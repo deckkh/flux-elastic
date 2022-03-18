@@ -7,6 +7,6 @@ spec:
   version: {{ .Values.elastic.version }}
   nodeSets:
   - name: {{ .Values.myvar}}
-    count: 1
+    count: {{ .Values.nodeset.count}}
     config:
       node.store.allow_mmap: false
