@@ -8,7 +8,7 @@ spec:
     spec:
       chart: /charts/mychart
       sourceRef:
-        kind: gitRepository
+        kind: GitRepository
         name: flux-elastic
         namespace: flux-system
   interval: 1m
