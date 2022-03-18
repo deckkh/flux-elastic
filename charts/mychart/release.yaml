@@ -1,0 +1,17 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: helmRelease
+metadata: 
+  name: mychart
+  namespace: observability
+spec:
+  chart:
+    spec:
+      chart: /charts/mychart
+      sourceRef:
+        kind: gitRepository
+        name: flux-elastic
+        namespace: flux-system
+  interval: 1m
+
+        
+        
