@@ -1,1 +1,5 @@
 myvar: prod
+
+
+elastic:
+  version: 8.1.0

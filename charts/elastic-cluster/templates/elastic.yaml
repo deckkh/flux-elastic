@@ -3,7 +3,7 @@ kind: Elasticsearch
 metadata:
   name: {{ .Release.Name }}
 spec:
-  version: 8.1.0
+  version: {{ .Values.elastic.version }}
   nodeSets:
   - name: {{ .Values.myvar}}
     count: 1
