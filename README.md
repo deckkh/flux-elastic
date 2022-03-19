@@ -2,6 +2,7 @@
 
 Add these to the bootstrap repo
 
+```
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
@@ -30,3 +31,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-elastic
+
+```
