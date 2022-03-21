@@ -29,7 +29,7 @@ spec:
 {{ end }}      
 
 {{ if gt ( .Values.ingest.nodeset.count |toString|atoi) 0 }}
-  - name: datahot
+  - name: ingest
     count: {{ .Values.ingest.nodeset.count}}
     config:
       node.roles: ['ingest']
