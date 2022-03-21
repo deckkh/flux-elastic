@@ -17,9 +17,13 @@ spec:
   values:
     myvar: yeah
 
+    master:
+      nodeset: 
+        count: 1    
+
     data:
       nodeset: 
-        count: 2    
+        count: 1    
 
     datahot:
       nodeset: 
