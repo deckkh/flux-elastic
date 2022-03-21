@@ -24,7 +24,7 @@ spec:
   - name: datahot
     count: {{ .Values.datahot.nodeset.count}}
     config:
-      node.roles: ['data_hot']
+      node.roles: ['data_hot','data_content']
       node.store.allow_mmap: false            
 {{ end }}      
 
