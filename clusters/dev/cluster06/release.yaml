@@ -25,3 +25,6 @@ spec:
       nodeset: 
         count: 2
         
+    ingest:
+      nodeset: 
+        count: 2
