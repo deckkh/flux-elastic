@@ -5,4 +5,9 @@ elastic:
   version: 8.1.0
 
 nodeset:
-  count: 3
+  master: 
+    count: 3
+  data: 
+    count: 2    
+  datahot: 
+    count: 0        

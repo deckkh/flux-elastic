@@ -6,7 +6,22 @@ metadata:
 spec:
   version: {{ .Values.elastic.version }}
   nodeSets:
-  - name: {{ .Values.myvar}}
-    count: {{ .Values.nodeset.count}}
+  - name: master
+    count: {{ .Values.master.nodeset.count}}
     config:
+      node.roles: ['master']
       node.store.allow_mmap: false
+
+  - name: data
+    count: {{ .Values.data.nodeset.count}}
+    config:
+      node.roles: ['data']
+      node.store.allow_mmap: false      
+
+{{ if gt ( .Values.datahot.nodeset.count |toString|atoi) 0 }}
+  - name: datahot
+    count: {{ .Values.datahot.nodeset.count}}
+    config:
+      node.roles: ['data_hot']
+      node.store.allow_mmap: false            
+{{ end }}      
