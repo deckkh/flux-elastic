@@ -23,7 +23,7 @@ spec:
 
     data:
       nodeset: 
-        count: 1
+        count: 0
 
     datahot:
       nodeset: 
