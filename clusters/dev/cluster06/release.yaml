@@ -19,12 +19,12 @@ spec:
 
     data:
       nodeset: 
-        count: 0    
+        count: 2    
 
     datahot:
       nodeset: 
-        count: 2
+        count: 0
         
     ingest:
       nodeset: 
-        count: 2
+        count: 0
