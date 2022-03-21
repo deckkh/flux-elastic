@@ -4,10 +4,14 @@ myvar: prod
 elastic:
   version: 8.1.0
 
-nodeset:
-  master: 
+master:
+  nodeset: 
     count: 3
-  data: 
+
+data:
+  nodeset: 
     count: 2    
-  datahot: 
+
+datahot:
+  nodeset: 
     count: 0        
