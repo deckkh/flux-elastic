@@ -1,10 +1,10 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata: 
-  name: cluster5
+  name: cluster6
   namespace: observability
 spec:
-  releaseName: cluster5
+  releaseName: cluster6
   targetNamespace: observability
   chart:
     spec:
@@ -16,5 +16,12 @@ spec:
   interval: 1m
   values:
     myvar: yeah
-        
+
+    data:
+      nodeset: 
+        count: 0    
+
+    datahot:
+      nodeset: 
+        count: 2
         

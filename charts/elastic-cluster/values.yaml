@@ -15,3 +15,7 @@ data:
 datahot:
   nodeset: 
     count: 0        
+
+ingest:
+  nodeset: 
+    count: 0            
