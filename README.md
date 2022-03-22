@@ -45,3 +45,28 @@ spec:
     branch: main
   url: https://github.com/deckkh/flux-elastic
 ```
+
+create multinode kind cluster
+
+```
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+name: multi-node
+nodes:
+  - role: control-plane
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "org.myorg.node-type/compute=true"
+  - role: worker
+    kubeadmConfigPatches:
+      - |
+        kind: JoinConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "org.myorg.node-type/highio=true"
+```
+

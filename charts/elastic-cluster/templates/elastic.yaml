@@ -11,6 +11,10 @@ spec:
     config:
       node.roles: ['master']
       node.store.allow_mmap: false
+    podTemplate:
+      spec:
+        nodeSelector:
+          org.myorg.node-type/compute: "true"   
 
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
   - name: data
