@@ -8,3 +8,9 @@ spec:
   count: 1
   elasticsearchRef:
     name: {{ .Release.Name }}
+  config:
+    monitoring:
+      ui:
+        ccs:
+          enabled: false
+            
