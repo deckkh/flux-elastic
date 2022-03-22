@@ -33,3 +33,15 @@ spec:
     name: flux-elastic
 
 ```
+
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: flux-elastic
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: https://github.com/deckkh/flux-elastic
