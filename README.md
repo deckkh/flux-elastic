@@ -32,7 +32,6 @@ spec:
     kind: GitRepository
     name: flux-elastic
 
-```
 
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
@@ -45,3 +44,4 @@ spec:
   ref:
     branch: main
   url: https://github.com/deckkh/flux-elastic
+```
