@@ -14,7 +14,13 @@ spec:
     podTemplate:
       spec:
         nodeSelector:
-          org.myorg.node-type/compute: "true"   
+          org.myorg.node-type/compute: "true"
+
+        securityContext:
+          runAsNonRoot: true
+          fsGroup: 1000
+          runAsUser: 1000
+
 
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
   - name: data
@@ -22,6 +28,13 @@ spec:
     config:
       node.roles: ['data']
       node.store.allow_mmap: false      
+    podTemplate:
+      spec:
+
+        securityContext:
+          runAsNonRoot: true
+          fsGroup: 1000
+          runAsUser: 1000
 {{ end }}      
 
 {{ if gt ( .Values.datahot.nodeset.count |toString|atoi) 0 }}
@@ -30,6 +43,13 @@ spec:
     config:
       node.roles: ['data_hot','data_content']
       node.store.allow_mmap: false            
+    podTemplate:
+      spec:
+
+        securityContext:
+          runAsNonRoot: true
+          fsGroup: 1000
+          runAsUser: 1000
 {{ end }}      
 
 {{ if gt ( .Values.ingest.nodeset.count |toString|atoi) 0 }}
@@ -42,4 +62,10 @@ spec:
       spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"   
+
+        securityContext:
+          runAsNonRoot: true
+          fsGroup: 1000
+          runAsUser: 1000
+
 {{ end }}      
