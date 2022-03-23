@@ -8,10 +8,12 @@ spec:
   count: 1
   elasticsearchRef:
     name: {{ .Release.Name }}
-  securityContext:
-    runAsNonRoot: true
-    fsGroup: 1000
-    runAsUser: 1000
+  podTemplate:
+    spec:  
+      securityContext:
+        runAsNonRoot: true
+        fsGroup: 1000
+        runAsUser: 1000
   config:
     monitoring:
       ui:
