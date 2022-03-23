@@ -11,6 +11,18 @@ spec:
 
   nodeSets:
 
+  - name: dummy
+    count: 0
+    config:
+      node.roles: ['data']
+      node.store.allow_mmap: false      
+    podTemplate:
+      spec:
+
+        securityContext: &ya_securityContext
+          runAsUser: 1000
+          fsGroup: 1000
+          runAsNonRoot: true
 
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
   - name: data
