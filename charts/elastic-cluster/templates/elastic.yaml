@@ -1,4 +1,12 @@
 # trying yaml anchors
+
+x-securityContext: &ya_securityContext
+        securityContext: 
+          runAsUser: 1000
+          fsGroup: 1000
+          runAsNonRoot: true
+
+
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -17,10 +25,7 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"
 
-        securityContext: &ya_securityContext
-          runAsUser: 1000
-          fsGroup: 1000
-          runAsNonRoot: true
+        securityContext: *ya_securityContext
 
 
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
