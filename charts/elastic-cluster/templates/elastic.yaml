@@ -17,7 +17,7 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"
 
-        securityContext:
+        securityContext: &mysecurityContext
           runAsNonRoot: true
           fsGroup: 1000
           runAsUser: 1000
@@ -32,10 +32,7 @@ spec:
     podTemplate:
       spec:
 
-        securityContext:
-          runAsNonRoot: true
-          fsGroup: 1000
-          runAsUser: 1000
+        securityContext: *mysecurityContext
 {{ end }}      
 
 {{ if gt ( .Values.datahot.nodeset.count |toString|atoi) 0 }}
@@ -47,10 +44,7 @@ spec:
     podTemplate:
       spec:
 
-        securityContext:
-          runAsNonRoot: true
-          fsGroup: 1000
-          runAsUser: 1000
+        securityContext: *mysecurityContext
 {{ end }}      
 
 {{ if gt ( .Values.ingest.nodeset.count |toString|atoi) 0 }}
@@ -64,9 +58,6 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"   
 
-        securityContext:
-          runAsNonRoot: true
-          fsGroup: 1000
-          runAsUser: 1000
+        securityContext: *mysecurityContext
 
 {{ end }}      
