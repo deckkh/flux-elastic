@@ -18,9 +18,9 @@ spec:
           org.myorg.node-type/compute: "true"
 
         securityContext: &ya_securityContext
-          runAsNonRoot: true
-          fsGroup: 1000
           runAsUser: 1000
+          fsGroup: 1000
+          runAsNonRoot: true
 
 
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
@@ -58,6 +58,6 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"   
 
-        securityContext: *ya_securityContetx
+        securityContext: *ya_securityContext
 
 {{ end }}      
