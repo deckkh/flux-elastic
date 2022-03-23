@@ -11,7 +11,7 @@ spec:
 
   nodeSets:
 
-{{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
+{{ if gt ( .Values.master.nodeset.count |toString|atoi) 0 }}
   - name: master
     count: {{ .Values.master.nodeset.count}}
     config:
