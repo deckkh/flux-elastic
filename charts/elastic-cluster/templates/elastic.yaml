@@ -58,6 +58,6 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"   
 
-        securityContext: *ya_securityContext
+        securityContext: *ya_securityContetx
 
 {{ end }}      
