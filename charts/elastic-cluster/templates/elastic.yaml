@@ -11,34 +11,6 @@ spec:
 
   nodeSets:
 
-  - name: dummy
-    count: 0
-    config:
-      node.roles: ['data']
-      node.store.allow_mmap: false      
-    podTemplate:
-      spec:
-
-        securityContext: &ya_securityContext
-          runAsUser: 1000
-          fsGroup: 1000
-          runAsNonRoot: true
-
-{{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
-  - name: data
-    count: {{ .Values.data.nodeset.count}}
-    config:
-      node.roles: ['data']
-      node.store.allow_mmap: false      
-    podTemplate:
-      spec:
-
-        securityContext: &ya_securityContext
-          runAsUser: 1000
-          fsGroup: 1000
-          runAsNonRoot: true
-{{ end }}      
-
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
   - name: master
     count: {{ .Values.master.nodeset.count}}
@@ -50,8 +22,24 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"
 
-        securityContext: *ya_securityContext
+        securityContext: &ya_securityContext
+          runAsUser: 1000
+          fsGroup: 1000
+          runAsNonRoot: true
 {{ end }}
+
+{{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
+  - name: data
+    count: {{ .Values.data.nodeset.count}}
+    config:
+      node.roles: ['data']
+      node.store.allow_mmap: false      
+    podTemplate:
+      spec:
+
+        securityContext: *ya_securityContext
+{{ end }}      
+
 
 
 {{ if gt ( .Values.datahot.nodeset.count |toString|atoi) 0 }}
