@@ -4,7 +4,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
   name: {{ .Release.Name}}-kb-ingress
-  namespace: {{ .Release.Name}}
+  namespace: {{ .Release.Namespace}}
 spec:
   rules:
   - host: {{ .Release.Name}}.k8s
