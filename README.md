@@ -73,7 +73,7 @@ nodes:
 ```
 # taint nodes
 
-kubectl taint nodes multi-node-worker app=application:NoSchedule
-kubectl taint nodes multi-node-worker2 app=application:NoSchedule
+kubectl taint nodes multi-node-worker myapp=worker:NoSchedule
+kubectl taint nodes multi-node-worker2 myapp=worker:NoSchedule
 
 ```
