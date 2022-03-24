@@ -9,7 +9,14 @@ spec:
   elasticsearchRef:
     name: {{ .Release.Name }}
   podTemplate:
-    spec:  
+    spec:
+
+      tolerations:
+        - key: myapp
+          operator: Equal
+          value: worker
+          effect: NoSchedule
+            
       securityContext:
         runAsNonRoot: true
         fsGroup: 1000

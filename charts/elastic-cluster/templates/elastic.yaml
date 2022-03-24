@@ -22,6 +22,12 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"
 
+        tolerations:
+          - key: myapp
+            operator: Equal
+            value: worker
+            effect: NoSchedule          
+
         securityContext: &ya_securityContext
           runAsUser: 1000
           fsGroup: 1000
@@ -37,6 +43,12 @@ spec:
     podTemplate:
       spec:
 
+        tolerations:
+          - key: myapp
+            operator: Equal
+            value: worker
+            effect: NoSchedule          
+
         securityContext: *ya_securityContext
 {{ end }}      
 
@@ -51,6 +63,12 @@ spec:
     podTemplate:
       spec:
 
+        tolerations:
+          - key: myapp
+            operator: Equal
+            value: worker
+            effect: NoSchedule          
+
         securityContext: *ya_securityContext
 {{ end }}      
 
@@ -62,6 +80,13 @@ spec:
       node.store.allow_mmap: false            
     podTemplate:
       spec:
+
+        tolerations:
+          - key: myapp
+            operator: Equal
+            value: worker
+            effect: NoSchedule          
+
         nodeSelector:
           org.myorg.node-type/compute: "true"   
 
