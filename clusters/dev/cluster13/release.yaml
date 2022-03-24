@@ -1,10 +1,10 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata: 
-  name: cluster12
+  name: cluster13
   namespace: observability
 spec:
-  releaseName: cluster12
+  releaseName: cluster13
   targetNamespace: observability
   chart:
     spec:
