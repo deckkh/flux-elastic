@@ -17,6 +17,10 @@ spec:
   values:
     myvar: yeah
 
+    elastic:
+      version: 8.1.1
+
+
     master:
       nodeset: 
         count: 1    
