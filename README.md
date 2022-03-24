@@ -32,7 +32,6 @@ spec:
     kind: GitRepository
     name: flux-elastic
 
-
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
@@ -70,3 +69,11 @@ nodes:
             node-labels: "org.myorg.node-type/highio=true"
 ```
 
+
+```
+# taint nodes
+
+kubectl taint nodes multi-node-worker app=application:NoSchedule
+kubectl taint nodes multi-node-worker2 app=application:NoSchedule
+
+```
