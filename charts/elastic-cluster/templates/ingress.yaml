@@ -7,9 +7,9 @@ metadata:
   namespace: {{ .Release.Namespace}}
 spec:
   rules:
-  - host: {{ .Release.Name}}.k8s
-    http:
-      paths:
+#  - host: {{ .Release.Name}}.k8s
+  - http:
+      paths: /
       - backend:
           service:
             name: {{ .Release.Name}}-kb-http
