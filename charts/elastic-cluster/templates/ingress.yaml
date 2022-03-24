@@ -9,12 +9,12 @@ spec:
   rules:
 #  - host: {{ .Release.Name}}.k8s
   - http:
-      paths: /
-      - backend:
+      paths: 
+      - path: /
+        backend:
           service:
             name: {{ .Release.Name}}-kb-http
             port:
               number: 5601
-        path: /
         pathType: ImplementationSpecific
 
