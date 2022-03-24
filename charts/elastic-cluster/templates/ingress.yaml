@@ -11,10 +11,10 @@ spec:
     http:
       paths:
       - backend:
-        service:
-          name: {{ .Release.Name}}-kb-http
-          port:
-            number: 5601
+          service:
+            name: {{ .Release.Name}}-kb-http
+            port:
+              number: 5601
         path: /
         pathType: ImplementationSpecific
 
