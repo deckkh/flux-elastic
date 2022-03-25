@@ -10,8 +10,7 @@ spec:
   - host: {{ .Release.Name}}-es
     http:
       paths: 
-      - host: elasticsearch
-        path: /
+      - path: /
         backend:
           service:
             name: {{ .Release.Name}}-es-http
