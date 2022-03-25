@@ -10,7 +10,7 @@ spec:
   - host: {{ .Release.Name}}-kb
   - http:
       paths: 
-        path: /
+      - path: /
         backend:
           service:
             name: {{ .Release.Name}}-kb-http
