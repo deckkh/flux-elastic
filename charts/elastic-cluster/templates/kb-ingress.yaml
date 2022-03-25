@@ -8,7 +8,7 @@ metadata:
 spec:
   rules:
   - host: {{ .Release.Name}}-kb
-  - http:
+    http:
       paths: 
       - path: /
         backend:
