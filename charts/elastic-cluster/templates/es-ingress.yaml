@@ -3,18 +3,19 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-  name: {{ .Release.Name}}-kb-ingress
+  name: {{ .Release.Name}}-es-ingress
   namespace: {{ .Release.Namespace}}
 spec:
   rules:
-#  - host: {{ .Release.Name}}.k8s
-  - http:
+  - host: {{ .Release.Name}}-es
+    http:
       paths: 
-      - path: /
+      - host: elasticsearch
+        path: /
         backend:
           service:
-            name: {{ .Release.Name}}-kb-http
+            name: {{ .Release.Name}}-es-http
             port:
-              number: 5601
+              number: 9200
         pathType: ImplementationSpecific
 
