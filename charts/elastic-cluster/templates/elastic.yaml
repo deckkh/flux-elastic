@@ -9,6 +9,9 @@ metadata:
 spec:
   version: {{ .Values.elastic.version }}
 
+  secureSettings:
+  - secretName: mysecret
+
   nodeSets:
 
 {{ if gt ( .Values.master.nodeset.count |toString|atoi) 0 }}
@@ -32,6 +35,13 @@ spec:
           runAsUser: 1000
           fsGroup: 1000
           runAsNonRoot: true
+
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ZONE
+            value: dummyzone
+
 {{ end }}
 
 {{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
