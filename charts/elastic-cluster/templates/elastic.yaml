@@ -20,7 +20,7 @@ spec:
     config:
       node.roles: ['master']
       node.store.allow_mmap: false
-      xpack.security.authc.realms.native.native1:
+      xpack.security.authc.realms.native.local:
         order: 0
 
       xpack.security.authc.realms.oidc.myrealm:
@@ -68,7 +68,7 @@ spec:
     config:
       node.roles: ['data']
       node.store.allow_mmap: false      
-      xpack.security.authc.realms.native.native1:
+      xpack.security.authc.realms.native.local:
         order: 0
 
       xpack.security.authc.realms.oidc.myrealm:
@@ -105,7 +105,7 @@ spec:
     config:
       node.roles: ['data_hot','data_content']
       node.store.allow_mmap: false            
-      xpack.security.authc.realms.native.native1:
+      xpack.security.authc.realms.native.local:
         order: 0
 
       xpack.security.authc.realms.oidc.myrealm:
@@ -140,7 +140,7 @@ spec:
     config:
       node.roles: ['ingest']
       node.store.allow_mmap: false            
-      xpack.security.authc.realms.native.native1:
+      xpack.security.authc.realms.native.local:
         order: 0
 
       xpack.security.authc.realms.oidc.myrealm:
