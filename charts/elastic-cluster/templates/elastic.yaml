@@ -54,6 +54,12 @@ spec:
           fsGroup: 1000
           runAsNonRoot: true
 
+        initContainers:
+        - name: elastic-internal-init-keystore
+          env:
+          - name: ZONE
+            value: dummyzone
+
         containers:
         - name: elasticsearch
           env:
@@ -94,6 +100,18 @@ spec:
             value: worker
             effect: NoSchedule          
 
+        initContainers:
+        - name: elastic-internal-init-keystore
+          env:
+          - name: ZONE
+            value: dummyzone
+
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ZONE
+            value: dummyzone
+
         securityContext: *ya_securityContext
 {{ end }}      
 
@@ -131,6 +149,19 @@ spec:
             value: worker
             effect: NoSchedule          
 
+        initContainers:
+        - name: elastic-internal-init-keystore
+          env:
+          - name: ZONE
+            value: dummyzone
+
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ZONE
+            value: dummyzone
+
+
         securityContext: *ya_securityContext
 {{ end }}      
 
@@ -165,6 +196,19 @@ spec:
             operator: Equal
             value: worker
             effect: NoSchedule          
+
+        initContainers:
+        - name: elastic-internal-init-keystore
+          env:
+          - name: ZONE
+            value: dummyzone
+
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ZONE
+            value: dummyzone
+
 
         nodeSelector:
           org.myorg.node-type/compute: "true"   
