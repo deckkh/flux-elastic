@@ -19,6 +19,9 @@ spec:
     count: {{ .Values.master.nodeset.count}}
     config:
       node.roles: ['master']
+      cluster.routing.allocation.awareness.attributes: zone
+      node.attr.zone: ${ZONE}
+      
       node.store.allow_mmap: false
       xpack.security.authc.realms.native.native1:
         order: 0
@@ -74,6 +77,8 @@ spec:
     config:
       node.roles: ['data']
       node.store.allow_mmap: false      
+      cluster.routing.allocation.awareness.attributes: zone
+      node.attr.zone: ${ZONE}
       xpack.security.authc.realms.native.native1:
         order: 0
 
@@ -123,6 +128,8 @@ spec:
     config:
       node.roles: ['data_hot','data_content']
       node.store.allow_mmap: false            
+      cluster.routing.allocation.awareness.attributes: zone
+      node.attr.zone: ${ZONE}
       xpack.security.authc.realms.native.native1:
         order: 0
 
@@ -171,6 +178,8 @@ spec:
     config:
       node.roles: ['ingest']
       node.store.allow_mmap: false            
+      cluster.routing.allocation.awareness.attributes: zone
+      node.attr.zone: ${ZONE}
       xpack.security.authc.realms.native.native1:
         order: 0
 
