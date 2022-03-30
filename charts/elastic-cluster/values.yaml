@@ -19,3 +19,7 @@ datahot:
 ingest:
   nodeset: 
     count: 0            
+
+roles:
+  role2: False
+  role3: true

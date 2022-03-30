@@ -1,10 +1,10 @@
-{{ if   .Values.roles.role2 }}
+{{ if   .Values.roles.role3 }}
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:
-  name: role2
+  name: role3
   namespace: observability
 spec:
-  name: role2
+  name: role3
   cluster: {{ .Release.Name}}
-{{ end }}
+{{ end}}
