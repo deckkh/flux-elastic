@@ -7,4 +7,14 @@ metadata:
 spec:
   name: role2
   cluster: {{ .Release.Name}}
+  body: |
+    {
+      'cluster': ['all'],
+      'indices': [
+          {
+            'names': [ 'index2-*' ],
+            'privileges': ['all']
+          }
+      ]
+    }  
 {{ end }}
