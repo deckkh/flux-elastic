@@ -15,6 +15,17 @@ spec:
             "names": [ "index3-*" ],
             "privileges": ["all"]
           }
+      ],
+      "applications" : [
+        {
+          "application" : "kibana-.kibana",
+          "privileges" : [
+            "space_all"
+          ],
+          "resources" : [
+            "space:default"
+          ]
+        }
       ]
     }  
 {{ end}}
