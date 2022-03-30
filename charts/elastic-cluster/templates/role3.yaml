@@ -9,11 +9,11 @@ spec:
   cluster: {{ .Release.Name}}
   body: |
     {
-      'cluster': ['all'],
-      'indices': [
+      "cluster": ["all"],
+      "indices": [
           {
-            'names': [ 'index3-*' ],
-            'privileges': ['all']
+            "names": [ "index3-*" ],
+            "privileges": ["all"]
           }
       ]
     }  
