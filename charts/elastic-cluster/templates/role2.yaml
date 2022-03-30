@@ -1,8 +1,8 @@
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:
-  name: role1
+  name: role2
   namespace: observability
 spec:
-  name: role1
+  name: role2
   cluster: {{ .Release.Name}}
