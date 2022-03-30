@@ -20,6 +20,10 @@ spec:
     elastic:
       version: 8.1.1
 
+    roles: 
+      role3: true
+      role4: true
+
 
     master:
       nodeset: 
