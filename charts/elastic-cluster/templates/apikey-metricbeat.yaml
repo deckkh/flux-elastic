@@ -1,0 +1,26 @@
+{{ if   .Values.apikeys.metricbeat }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-metricbeat
+  namespace: observability
+spec:
+  name: metricbeat
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "name": "metricbeat",
+          "expiration": "10d",   
+          "role_descriptors": { 
+            "role-a": {
+              "cluster": ["all"],
+              "index": [
+                {
+                  "names": ["metricbeat-*"],
+                  "privileges": ["read","create"]
+                }
+              ]
+            }
+          }
+        }
+{{ end}}        

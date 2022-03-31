@@ -24,6 +24,11 @@ spec:
       role3: False 
       role4: true
 
+    apikeys:
+      metricbeat: true
+
+    kibanaspaces:
+      metricbeat: true
 
     master:
       nodeset: 

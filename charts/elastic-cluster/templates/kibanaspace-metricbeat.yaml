@@ -1,0 +1,15 @@
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-metricbeat
+  namespace: observability
+spec:
+  name: metricbeat
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "metricbeat",
+        "name": "metricbeat",
+        "description": "metricbeat space",
+        "initials": "m1"
+    }

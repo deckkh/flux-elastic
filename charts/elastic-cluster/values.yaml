@@ -24,3 +24,9 @@ roles:
   role2: False
   role3: false
   role4: False
+
+kibanaspaces:
+  metricbeat: False
+  
+apikeys:
+  metricbeat: false
