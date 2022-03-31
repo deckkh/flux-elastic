@@ -6,7 +6,7 @@ metadata:
   namespace: observability
 spec:
   name: recovery
-  cluster: {{ Release.name}}
+  cluster: {{ Release.Name}}
   body: |
             {
               "persistent" : {
