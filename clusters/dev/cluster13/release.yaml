@@ -26,6 +26,7 @@ spec:
 
     apikeys:
       metricbeat: true
+      filebeat: true
 
     kibanaspaces:
       metricbeat: true

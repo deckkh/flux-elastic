@@ -30,3 +30,4 @@ kibanaspaces:
   
 apikeys:
   metricbeat: false
+  filebeat: false
