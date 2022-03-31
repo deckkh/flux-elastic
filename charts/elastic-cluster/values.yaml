@@ -35,3 +35,6 @@ apikeys:
 clustersettings:
   recovery: false  
   monitoring: false
+
+indextemplates:
+  myindextemplate: false  

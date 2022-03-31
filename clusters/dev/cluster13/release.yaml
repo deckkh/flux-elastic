@@ -20,6 +20,9 @@ spec:
     elastic:
       version: 8.1.1
 
+    indextemplates:
+      myindextemplate: true
+
     clustersettings:
       recovery: true
       monitoring: true
