@@ -1,0 +1,22 @@
+{{ if   .Values.clustersettings.monitoring }}
+apiVersion: elastic.elastic-operator/v1
+kind: ClusterSetting
+metadata:
+  name: {{ .Release.Name}}-clustersettings-monitoring
+  namespace: observability
+spec:
+  name: monitoring
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "persistent" : {
+            "xpack" : {
+              "monitoring" : {
+                "collection" : {
+                  "enabled" : "false"
+                }
+              }
+            }
+          }
+        } 
+{{ end}}
