@@ -20,6 +20,9 @@ spec:
     elastic:
       version: 8.1.1
 
+    clustersettings:
+      recovery: true
+
     roles: 
       role3: False 
       role4: true

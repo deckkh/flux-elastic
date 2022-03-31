@@ -31,3 +31,6 @@ kibanaspaces:
 apikeys:
   metricbeat: false
   filebeat: false
+
+clustersettings:
+  recovery: false  

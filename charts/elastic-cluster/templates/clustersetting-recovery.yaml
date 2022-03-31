@@ -1,0 +1,16 @@
+{{ if   .Values.clustersettings.recovery }}
+apiVersion: elastic.elastic-operator/v1
+kind: ClusterSetting
+metadata:
+  name: {{ .Release.Name}}-clustersettings-recovery
+  namespace: observability
+spec:
+  name: recovery
+  cluster: {{ Release.name}}
+  body: |
+            {
+              "persistent" : {
+                "indices.recovery.max_bytes_per_sec" : "50mb"
+              }
+            }  
+{{ end}}
