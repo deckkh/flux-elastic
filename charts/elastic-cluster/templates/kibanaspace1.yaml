@@ -1,0 +1,15 @@
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: myspacename
+  namespace: observability
+spec:
+  name: space1
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "space1",
+        "name": "space1",
+        "description": "hello world space",
+        "initials": "s1"
+    }
