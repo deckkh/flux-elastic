@@ -51,7 +51,7 @@ spec:
     kibanaspaces:
       metricbeat: true
       winlogbeat: false
-      rally: true
+      rally: false
 
     master:
       nodeset: 
