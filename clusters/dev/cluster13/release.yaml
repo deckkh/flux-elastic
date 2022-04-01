@@ -22,6 +22,7 @@ spec:
 
     indextemplates:
       myindextemplate: true
+      winlogbeat: true
 
     clustersettings:
       recovery: true

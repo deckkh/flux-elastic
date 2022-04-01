@@ -37,4 +37,5 @@ clustersettings:
   monitoring: false
 
 indextemplates:
-  myindextemplate: false  
+  myindextemplate: false
+  winlogbeat: false  
