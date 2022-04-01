@@ -27,6 +27,7 @@ roles:
 
 kibanaspaces:
   metricbeat: False
+  winlogbeat: False
   
 apikeys:
   metricbeat: false

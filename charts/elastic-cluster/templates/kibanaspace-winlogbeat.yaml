@@ -1,3 +1,4 @@
+{{ if  .Values.kibanaspaces.winlogbeat }}
 apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:
@@ -13,3 +14,4 @@ spec:
         "description": "winlogbeat space",
         "initials": "w1"
     }
+{{ end}}    

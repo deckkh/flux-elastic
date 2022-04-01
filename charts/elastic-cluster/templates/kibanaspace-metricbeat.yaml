@@ -1,3 +1,4 @@
+{{ if  .Values.kibanaspaces.metricbeat }}
 apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:
@@ -13,3 +14,4 @@ spec:
         "description": "metricbeat space",
         "initials": "m1"
     }
+{{ end }}    

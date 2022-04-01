@@ -10,7 +10,7 @@ spec:
   body: |
           {
             "index_patterns": [
-              "winlogbeat-*"
+              "winlogbeat-8.1.2"
             ],
               "mappings": {
                 "_meta": {

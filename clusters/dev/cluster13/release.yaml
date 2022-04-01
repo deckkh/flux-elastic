@@ -37,7 +37,8 @@ spec:
       filebeat: true
 
     kibanaspaces:
-      metricbeat: false
+      metricbeat: true
+      winlogbeat: true
 
     master:
       nodeset: 
