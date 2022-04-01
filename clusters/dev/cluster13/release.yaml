@@ -20,6 +20,9 @@ spec:
     elastic:
       version: 8.1.1
 
+    ingestpipelines:
+      mypipeline: true
+
     indextemplates:
       myindextemplate: true
       winlogbeat: true

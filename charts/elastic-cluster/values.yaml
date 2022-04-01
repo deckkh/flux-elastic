@@ -20,6 +20,10 @@ ingest:
   nodeset: 
     count: 0            
 
+
+ingestpipelines:
+  mypipeline: False
+
 roles:
   role2: False
   role3: false

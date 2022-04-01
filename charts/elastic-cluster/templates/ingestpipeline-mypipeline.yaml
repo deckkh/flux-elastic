@@ -1,0 +1,23 @@
+{{ if  .Values.ingestpipelines.mypipeline }}
+apiVersion: elastic.elastic-operator/v1
+kind: IngestPipeline
+metadata:
+  name: {{ .Release.Name}}-ingestpipeline-mypipeline
+  namespace: observability
+spec:
+  name: mypipeline
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "description" : "My optional pipeline description",
+            "processors" : [
+              {
+                "set" : {
+                  "description" : "My optional processor description",
+                  "field": "my-keyword-field",
+                  "value": "foo"
+                }
+              }
+            ]
+          }
+{{ end}}            
