@@ -23,6 +23,9 @@ spec:
     ingestpipelines:
       mypipeline: false
 
+    rolemappings:
+      mapping1: true
+
     indextemplates:
       myindextemplate: true
       winlogbeat: true

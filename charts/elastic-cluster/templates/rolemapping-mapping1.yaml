@@ -1,0 +1,21 @@
+{{ if  .Values.rolemappings.mapping1 }}
+apiVersion: elastic.elastic-operator/v1
+kind: RoleMapping
+metadata:
+  name: {{ .Release.Name}}-rolemapping-mapping1
+  namespace: observability
+spec:
+  name: mapping1
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "roles": [ "user"],
+            "enabled": true, 
+            "rules": {
+              "field" : { "username" : "*" }
+            },
+            "metadata" : { 
+              "version" : 1
+            }
+          }  
+{{ end}}            

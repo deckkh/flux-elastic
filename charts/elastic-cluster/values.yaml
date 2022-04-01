@@ -20,6 +20,9 @@ ingest:
   nodeset: 
     count: 0            
 
+rolemappings:
+  mapping1: False
+
 
 ingestpipelines:
   mypipeline: False
