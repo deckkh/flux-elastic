@@ -21,7 +21,7 @@ spec:
       version: 8.1.1
 
     ingestpipelines:
-      mypipeline: false
+      mypipeline: true
 
     rolemappings:
       mapping1: true
@@ -31,11 +31,11 @@ spec:
       winlogbeat: true
 
     clustersettings:
-      recovery: false
+      recovery: true
       monitoring: true
 
     roles: 
-      role3: False 
+      role3: true
       role4: true
 
     apikeys:
