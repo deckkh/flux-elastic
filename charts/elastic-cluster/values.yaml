@@ -41,6 +41,7 @@ roles:
 kibanaspaces:
   metricbeat: False
   winlogbeat: False
+  rally: false
   
 apikeys:
   metricbeat: false

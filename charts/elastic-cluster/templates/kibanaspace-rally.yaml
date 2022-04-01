@@ -1,0 +1,17 @@
+{{ if  .Values.kibanaspaces.rally }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-rally
+  namespace: observability
+spec:
+  name: rally
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "rally",
+        "name": "rally",
+        "description": "my fancy rally space",
+        "initials": "m1"
+    }
+{{ end }}    
