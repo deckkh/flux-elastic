@@ -26,6 +26,9 @@ spec:
     ilms:
       mypolicy: true
 
+    slms:
+      mypolicy: true
+
     rolemappings:
       mapping1: true
 

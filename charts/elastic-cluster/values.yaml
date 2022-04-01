@@ -30,6 +30,9 @@ ingestpipelines:
 ilms:
   mypolicy: False
 
+slms:
+  mypolicy: False
+
 roles:
   role2: False
   role3: false
