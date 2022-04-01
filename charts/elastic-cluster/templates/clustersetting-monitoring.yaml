@@ -7,7 +7,7 @@ metadata:
 spec:
   name: monitoring
   cluster: {{ .Release.Name}}
-  bodyInstall: |
+  body: |
         {
           "persistent" : {
             "xpack" : {
