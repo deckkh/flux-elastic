@@ -8,14 +8,10 @@ spec:
   name: winlogbeat
   cluster: {{ .Release.Name}}
   body: |
-
           {
-            "data_stream": {},
             "index_patterns": [
-              "winlogbeat-8.1.2"
+              "winlogbeat-8.1.2-*"
             ],
-            "priority": 150,
-            "template": {
               "mappings": {
                 "_meta": {
                   "beat": "winlogbeat",
@@ -7571,7 +7567,6 @@ spec:
                   "refresh_interval": "5s"
                 }
               }
-            }
           }
 
 
