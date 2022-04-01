@@ -24,7 +24,7 @@ spec:
       mypipeline: true
 
     ilms:
-      mypolicy: false
+      mypolicy: true
 
     rolemappings:
       mapping1: true
