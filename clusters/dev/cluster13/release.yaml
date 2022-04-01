@@ -21,7 +21,7 @@ spec:
       version: 8.1.1
 
     ingestpipelines:
-      mypipeline: false
+      mypipeline: true
 
     indextemplates:
       myindextemplate: true
