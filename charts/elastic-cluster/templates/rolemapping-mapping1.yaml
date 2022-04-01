@@ -15,7 +15,7 @@ spec:
               "field" : { "username" : "*" }
             },
             "metadata" : { 
-              "version" : 1
+              "version" : 2
             }
           }  
 {{ end}}            
