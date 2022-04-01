@@ -7,13 +7,25 @@ metadata:
 spec:
   name: monitoring
   cluster: {{ .Release.Name}}
-  body: |
+  bodyInstall: |
         {
           "persistent" : {
             "xpack" : {
               "monitoring" : {
                 "collection" : {
                   "enabled" : "false"
+                }
+              }
+            }
+          }
+        } 
+  bodyRemove: |
+        {
+          "persistent" : {
+            "xpack" : {
+              "monitoring" : {
+                "collection" : {
+                  "enabled" : null
                 }
               }
             }

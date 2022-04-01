@@ -7,10 +7,16 @@ metadata:
 spec:
   name: recovery
   cluster: {{ .Release.Name}}
-  body: |
+  bodyInstall: |
             {
               "persistent" : {
                 "indices.recovery.max_bytes_per_sec" : "50mb"
+              }
+            }  
+  bodyRemove: |
+            {
+              "persistent" : {
+                "indices.recovery.max_bytes_per_sec" : null
               }
             }  
 {{ end}}
