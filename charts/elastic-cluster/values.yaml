@@ -27,6 +27,9 @@ rolemappings:
 ingestpipelines:
   mypipeline: False
 
+ilms:
+  mypolicy: False
+
 roles:
   role2: False
   role3: false

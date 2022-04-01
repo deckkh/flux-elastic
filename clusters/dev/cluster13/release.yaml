@@ -23,6 +23,9 @@ spec:
     ingestpipelines:
       mypipeline: true
 
+    ilms:
+      mypolicy: true
+
     rolemappings:
       mapping1: true
 
