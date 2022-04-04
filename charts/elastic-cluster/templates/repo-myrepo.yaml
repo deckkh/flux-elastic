@@ -9,9 +9,8 @@ spec:
   cluster: {{ .Release.Name}}
   body: |
           {
-            "type": "fs",
+            "type": "azure",
             "settings": {
-              "location": "/var/data/myrepo"
             }
           }  
 {{ end}}            
