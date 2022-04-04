@@ -29,6 +29,9 @@ spec:
     slms:
       mypolicy: true
 
+    repos:
+      myrepo: true
+
     rolemappings:
       mapping1: true
 

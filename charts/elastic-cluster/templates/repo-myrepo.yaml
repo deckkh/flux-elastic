@@ -1,0 +1,17 @@
+{{ if  .Values.repos.myrepo }}
+apiVersion: elastic.elastic-operator/v1
+kind: Repo
+metadata:
+  name: {{ .Release.Name}}-repo-myrepo
+  namespace: observability
+spec:
+  name: myrepo
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "type": "fs",
+            "settings": {
+              "location": "/var/data/myrepo"
+            }
+          }  
+{{ end}}            

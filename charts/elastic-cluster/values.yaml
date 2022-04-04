@@ -33,6 +33,9 @@ ilms:
 slms:
   mypolicy: False
 
+repos:
+  myrepo: False
+
 roles:
   role2: False
   role3: false
