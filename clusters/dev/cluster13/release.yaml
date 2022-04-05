@@ -41,7 +41,7 @@ spec:
 
     clustersettings:
       recovery: true
-      monitoring: false
+      monitoring: true
 
     roles: 
       role3: true
