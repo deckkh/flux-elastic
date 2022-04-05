@@ -1,0 +1,17 @@
+{{ if  .Values.kibanaspaces.api }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-api
+  namespace: observability
+spec:
+  name: api
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "api",
+        "name": "api",
+        "description": "my fancy api space",
+        "initials": "m1"
+    }
+{{ end }}    

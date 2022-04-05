@@ -26,6 +26,7 @@ rolemappings:
 
 ingestpipelines:
   mypipeline: False
+  api: False
 
 ilms:
   mypolicy: False
@@ -46,6 +47,7 @@ kibanaspaces:
   winlogbeat: False
   rally: false
   dummy: false
+  api: false
   
 apikeys:
   metricbeat: false

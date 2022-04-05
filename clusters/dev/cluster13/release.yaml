@@ -22,6 +22,7 @@ spec:
 
     ingestpipelines:
       mypipeline: true
+      api: True
 
     ilms:
       mypolicy: true
@@ -57,6 +58,7 @@ spec:
       winlogbeat: false
       rally: false
       dummy: true
+      api: true
 
     master:
       nodeset: 
