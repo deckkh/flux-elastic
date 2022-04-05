@@ -61,3 +61,4 @@ clustersettings:
 indextemplates:
   myindextemplate: false
   winlogbeat: false  
+  api: false  

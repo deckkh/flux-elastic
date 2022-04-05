@@ -1,0 +1,31 @@
+{{ if  .Values.indextemplates.api }}
+apiVersion: elastic.elastic-operator/v1
+kind: IndexTemplate
+metadata:
+  name: {{ .Release.Name}}-indextemplate-api
+  namespace: observability
+spec:
+  name: api
+  cluster: {{ .Release.Name}}
+  body: |
+            {
+              "index_patterns": ["api-*"],
+              "settings": {
+                "number_of_shards": 1
+              },
+              "mappings": {
+                "_source": {
+                  "enabled": true
+                },
+                "properties": {
+                  "host_name": {
+                    "type": "keyword"
+                  },
+                  "created_at": {
+                    "type": "date",
+                    "format": "EEE MMM dd HH:mm:ss Z yyyy"
+                  }
+                }
+              }
+            }
+{{ end}}            
