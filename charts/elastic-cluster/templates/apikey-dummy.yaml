@@ -1,0 +1,26 @@
+{{ if   .Values.apikeys.dummy }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-dummy
+  namespace: observability
+spec:
+  name: dummy
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "name": "dummy",
+          "expiration": "20d",   
+          "role_descriptors": { 
+            "role-a": {
+              "cluster": ["all"],
+              "index": [
+                {
+                  "names": ["dummy-*"],
+                  "privileges": ["read","create"]
+                }
+              ]
+            }
+          }
+        }
+{{ end}}        

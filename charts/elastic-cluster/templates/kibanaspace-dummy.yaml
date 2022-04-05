@@ -1,0 +1,17 @@
+{{ if  .Values.kibanaspaces.dummy }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-dummy
+  namespace: observability
+spec:
+  name: dummy
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "dummy",
+        "name": "dummy",
+        "description": "my fancy dummy space",
+        "initials": "m1"
+    }
+{{ end }}    

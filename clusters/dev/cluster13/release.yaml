@@ -50,11 +50,13 @@ spec:
     apikeys:
       metricbeat: true
       filebeat: true
+      dummy: true
 
     kibanaspaces:
       metricbeat: true
       winlogbeat: false
       rally: false
+      dummy: true
 
     master:
       nodeset: 

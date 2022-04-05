@@ -45,10 +45,12 @@ kibanaspaces:
   metricbeat: False
   winlogbeat: False
   rally: false
+  dummy: false
   
 apikeys:
   metricbeat: false
   filebeat: false
+  dummy: false
 
 clustersettings:
   recovery: false  
