@@ -10,7 +10,7 @@ spec:
   body: |
             {
               "persistent" : {
-                "indices.recovery.max_bytes_per_sec" : "75mb"
+                "indices.recovery.max_bytes_per_sec" : "80mb"
               }
             }  
   bodyRemove: |
