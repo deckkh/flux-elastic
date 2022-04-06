@@ -37,9 +37,9 @@ spec:
       mapping1: true
 
     indextemplates:
-      myindextemplate: true
-      winlogbeat: true
-      api: true
+      myindextemplate: false
+      winlogbeat: false
+      api: false
 
     clustersettings:
       recovery: true
