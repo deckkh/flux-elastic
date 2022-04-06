@@ -52,7 +52,7 @@ spec:
     apikeys:
       metricbeat: true
       filebeat: false
-      dummy: false
+      dummy: true
 
     kibanaspaces:
       metricbeat: true
