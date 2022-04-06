@@ -1,0 +1,23 @@
+{{ if  .Values.ingestpipelines.test3 }}
+apiVersion: elastic.elastic-operator/v1
+kind: IngestPipeline
+metadata:
+  name: {{ .Release.Name}}-ingestpipeline-test3
+  namespace: observability
+spec:
+  name: test3
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "description" : "My optional pipeline description",
+            "processors" : [
+              {
+                "set" : {
+                  "description" : "My optional processor description",
+                  "field": "my-keyword-field",
+                  "value": "footest3"
+                }
+              }
+            ]
+          }
+{{ end}}            

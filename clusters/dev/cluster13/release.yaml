@@ -23,6 +23,7 @@ spec:
     ingestpipelines:
       mypipeline: true
       api: True
+      test3: True
 
     ilms:
       mypolicy: true

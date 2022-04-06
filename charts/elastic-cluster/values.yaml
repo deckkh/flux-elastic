@@ -27,6 +27,7 @@ rolemappings:
 ingestpipelines:
   mypipeline: False
   api: False
+  test3: False
 
 ilms:
   mypolicy: False
