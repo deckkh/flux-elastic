@@ -1,0 +1,29 @@
+{{ if  .Values.componenttemplates.ecshost }}
+apiVersion: elastic.elastic-operator/v1
+kind: ComponentTemplate
+metadata:
+  name: {{ .Release.Name}}-componenttemplate-ecshost
+  namespace: observability
+spec:
+  name: ecshost
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "template": {
+            "mappings": {
+              "properties": {
+                "host": {
+                  "properties": {
+                    "name": {
+                      "type" : "keyword"
+                    },
+                    "hostname": {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+{{ end}}            

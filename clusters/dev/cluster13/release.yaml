@@ -36,6 +36,7 @@ spec:
     componenttemplates:
       mycomponent1: true
       ecs: true
+      ecshost: true
 
     indextemplates:
       api: true

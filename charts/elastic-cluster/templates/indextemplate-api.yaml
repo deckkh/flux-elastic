@@ -33,7 +33,7 @@ spec:
             }
           },
           "priority": 500,
-          "composed_of": ["mycomponent1", "ecs"], 
+          "composed_of": ["mycomponent1", "ecs" , "ecshost"], 
           "version": 3,
           "_meta": {
             "description": "my custom bla bla"

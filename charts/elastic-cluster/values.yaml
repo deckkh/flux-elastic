@@ -72,3 +72,4 @@ indextemplates:
 componenttemplates:
   mycomponent1: False  
   ecs: False
+  ecshost: False
