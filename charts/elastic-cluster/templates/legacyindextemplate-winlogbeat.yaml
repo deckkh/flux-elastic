@@ -2,7 +2,7 @@
 apiVersion: elastic.elastic-operator/v1
 kind: LegacyIndexTemplate
 metadata:
-  name: {{ .Release.Name}}-indextemplate-winlogbeat
+  name: {{ .Release.Name}}-legacyindextemplate-winlogbeat
   namespace: observability
 spec:
   name: winlogbeat

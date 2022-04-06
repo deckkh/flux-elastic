@@ -38,8 +38,8 @@ spec:
 
     legacyindextemplates:
       myindextemplate: false
-      winlogbeat: false
-      api: true
+      winlogbeat: true
+      api: false
 
     clustersettings:
       recovery: true
