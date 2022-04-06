@@ -75,6 +75,7 @@ spec:
       rally: false
       dummy: true
       api: true
+      filebeat: true
 
     master:
       nodeset: 

@@ -51,6 +51,7 @@ kibanaspaces:
   rally: false
   dummy: false
   api: false
+  filebeat: False
   
 apikeys:
   metricbeat: false

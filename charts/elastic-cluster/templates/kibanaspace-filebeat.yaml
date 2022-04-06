@@ -1,0 +1,17 @@
+{{ if  .Values.kibanaspaces.filebeat }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-filebeat
+  namespace: observability
+spec:
+  name: filebeat
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "filebeat",
+        "name": "filebeat",
+        "description": "filebeat space",
+        "initials": "f1"
+    }
+{{ end}}    
