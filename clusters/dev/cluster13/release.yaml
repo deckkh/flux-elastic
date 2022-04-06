@@ -53,6 +53,7 @@ spec:
       metricbeat: true
       filebeat: true
       dummy: false
+      superuser: true
 
     kibanaspaces:
       metricbeat: true

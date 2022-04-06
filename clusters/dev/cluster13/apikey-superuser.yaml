@@ -1,0 +1,46 @@
+{{ if   .Values.apikeys.superuser }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-superuser
+  namespace: observability
+spec:
+  name: superuser
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "superuser": {
+              "cluster": [
+                "all"
+              ],
+              "indices": [
+                {
+                  "names": [
+                    "*"
+                  ],
+                  "privileges": [
+                    "all"
+                  ],
+                  "allow_restricted_indices": false
+                },
+                {
+                  "names": [
+                    "*"
+                  ],
+                  "privileges": [
+                    "monitor",
+                    "read",
+                    "view_index_metadata",
+                    "read_cross_cluster"
+                  ],
+                  "allow_restricted_indices": true
+                }
+              ],
+              "run_as": [
+                "*"
+              ]
+            }
+          }  
+{{ end}}        
+
+
