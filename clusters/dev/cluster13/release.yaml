@@ -45,6 +45,9 @@ spec:
       winlogbeat: true
       api: false
 
+    indextemplates:
+      api: true
+
     clustersettings:
       recovery: true
       monitoring: true

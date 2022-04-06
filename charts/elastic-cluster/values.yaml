@@ -67,3 +67,6 @@ legacyindextemplates:
   myindextemplate: false
   winlogbeat: false  
   api: false  
+
+indextemplates:
+  api: false  
