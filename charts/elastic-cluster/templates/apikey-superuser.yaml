@@ -9,7 +9,6 @@ spec:
   cluster: {{ .Release.Name}}
   body: |
           {
-            "superuser": {
               "cluster": [
                 "all"
               ],
@@ -39,7 +38,6 @@ spec:
               "run_as": [
                 "*"
               ]
-            }
           }  
 {{ end}}        
 
