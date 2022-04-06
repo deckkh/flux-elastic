@@ -10,7 +10,7 @@ spec:
   body: |
         {
           "name": "dummy",
-          "expiration": "20d",   
+          "expiration": "40d",   
           "role_descriptors": { 
             "role-a": {
               "cluster": ["all"],
