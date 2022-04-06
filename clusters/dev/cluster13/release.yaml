@@ -39,7 +39,7 @@ spec:
     indextemplates:
       myindextemplate: false
       winlogbeat: false
-      api: false
+      api: true
 
     clustersettings:
       recovery: true
