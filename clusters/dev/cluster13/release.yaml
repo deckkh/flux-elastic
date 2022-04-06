@@ -45,7 +45,7 @@ spec:
       api: true
 
     rolemappings:
-      mapping1: false
+      mapping1: true
 
     legacyindextemplates:
       myindextemplate: false
@@ -54,8 +54,8 @@ spec:
 
 
     clustersettings:
-      recovery: false
-      monitoring: false
+      recovery: true
+      monitoring: true
 
     roles: 
       role3: true
