@@ -8,11 +8,13 @@ spec:
   name: mycomponent1
   cluster: {{ .Release.Name}}
   body: |
-        "template": {
-          "mappings": {
-            "properties": {
-              "@timestamp": {
-                "type": "date"
+        {
+          "template": {
+            "mappings": {
+              "properties": {
+                "@timestamp": {
+                  "type": "date"
+                }
               }
             }
           }
