@@ -53,6 +53,7 @@ spec:
       metricbeat: true
       filebeat: true
       dummy: true
+      onehour: true
 
     kibanaspaces:
       metricbeat: true

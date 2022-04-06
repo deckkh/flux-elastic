@@ -53,6 +53,7 @@ apikeys:
   metricbeat: false
   filebeat: false
   dummy: false
+  onehour: false
 
 clustersettings:
   recovery: false  

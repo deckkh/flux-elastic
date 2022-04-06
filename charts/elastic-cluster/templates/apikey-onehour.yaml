@@ -1,0 +1,26 @@
+{{ if   .Values.apikeys.onehour }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-onehour
+  namespace: observability
+spec:
+  name: onehour
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "name": "onehour",
+          "expiration": "1h",   
+          "role_descriptors": { 
+            "role-a": {
+              "cluster": ["all"],
+              "index": [
+                {
+                  "names": ["onehour-*"],
+                  "privileges": ["read","create"]
+                }
+              ]
+            }
+          }
+        }
+{{ end}}        
