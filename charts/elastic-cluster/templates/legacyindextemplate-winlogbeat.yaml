@@ -1,6 +1,6 @@
-{{ if  .Values.indextemplates.winlogbeat }}
+{{ if  .Values.legacyindextemplates.winlogbeat }}
 apiVersion: elastic.elastic-operator/v1
-kind: IndexTemplate
+kind: LegacyIndexTemplate
 metadata:
   name: {{ .Release.Name}}-indextemplate-winlogbeat
   namespace: observability

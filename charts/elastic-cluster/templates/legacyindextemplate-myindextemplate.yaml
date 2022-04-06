@@ -1,21 +1,21 @@
-{{ if  .Values.indextemplates.api }}
+{{ if  .Values.legacyindextemplates.myindextemplate }}
 apiVersion: elastic.elastic-operator/v1
-kind: IndexTemplate
+kind: LegacyIndexTemplate
 metadata:
-  name: {{ .Release.Name}}-indextemplate-api
+  name: {{ .Release.Name}}-indextemplate-myindextemplate
   namespace: observability
 spec:
-  name: api
+  name: myindextemplate
   cluster: {{ .Release.Name}}
   body: |
             {
-              "index_patterns": ["api-*"],
+              "index_patterns": ["te*", "bar*"],
               "settings": {
                 "number_of_shards": 1
               },
               "mappings": {
                 "_source": {
-                  "enabled": true
+                  "enabled": false
                 },
                 "properties": {
                   "host_name": {

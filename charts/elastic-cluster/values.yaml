@@ -60,7 +60,7 @@ clustersettings:
   recovery: false  
   monitoring: false
 
-indextemplates:
+legacyindextemplates:
   myindextemplate: false
   winlogbeat: false  
   api: false  
