@@ -1,0 +1,29 @@
+{{ if  .Values.componenttemplates.ecs3 }}
+apiVersion: elastic.elastic-operator/v1
+kind: ComponentTemplate
+metadata:
+  name: {{ .Release.Name}}-componenttemplate-ecs3
+  namespace: observability
+spec:
+  name: ecs3
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "template": {
+            "mappings": {
+              "properties": {
+                "ip": {
+                  "properties": {
+                    "category": {
+                      "type" : "keyword"
+                    },
+                    "level": {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+{{ end}}            

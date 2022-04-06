@@ -38,6 +38,7 @@ spec:
       ecs: true
       ecshost: true
       ecs2: true
+      ecs3: true
 
     indextemplates:
       api: true
