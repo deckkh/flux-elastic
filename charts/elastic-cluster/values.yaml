@@ -37,8 +37,6 @@ slms:
 repos:
   myrepo: False
 
-componenttemplates:
-  mycomponent1: False  
 
 roles:
   role2: False
@@ -70,3 +68,7 @@ legacyindextemplates:
 
 indextemplates:
   api: false  
+
+componenttemplates:
+  mycomponent1: False  
+  ecs: False

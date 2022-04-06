@@ -35,7 +35,10 @@ spec:
 
     componenttemplates:
       mycomponent1: true
+      ecs: true
 
+    indextemplates:
+      api: true
 
     rolemappings:
       mapping1: true
@@ -45,8 +48,6 @@ spec:
       winlogbeat: true
       api: false
 
-    indextemplates:
-      api: true
 
     clustersettings:
       recovery: true
