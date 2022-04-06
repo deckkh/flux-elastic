@@ -1,0 +1,29 @@
+{{ if  .Values.componenttemplates.ecs2 }}
+apiVersion: elastic.elastic-operator/v1
+kind: ComponentTemplate
+metadata:
+  name: {{ .Release.Name}}-componenttemplate-ecs2
+  namespace: observability
+spec:
+  name: ecs2
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "template": {
+            "mappings": {
+              "properties": {
+                "layer": {
+                  "properties": {
+                    "category": {
+                      "type" : "keyword"
+                    },
+                    "level": {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+{{ end}}            
