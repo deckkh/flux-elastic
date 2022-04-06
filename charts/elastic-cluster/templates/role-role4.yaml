@@ -2,10 +2,10 @@
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:
-  name: role4
+  name: {{ .Release.Name}}-role-role4
   namespace: observability
 spec:
-  name: {{ .Release.Name}}-role-role4
+  name: role4
   cluster: {{ .Release.Name}}
   body: |
     {
