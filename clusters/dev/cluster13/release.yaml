@@ -54,6 +54,7 @@ spec:
       filebeat: true
       dummy: true
       onehour: true
+      noexpire: true
 
     kibanaspaces:
       metricbeat: true

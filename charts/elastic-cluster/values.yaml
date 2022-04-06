@@ -54,6 +54,7 @@ apikeys:
   filebeat: false
   dummy: false
   onehour: false
+  noexpire: false
 
 clustersettings:
   recovery: false  

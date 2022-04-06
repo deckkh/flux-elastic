@@ -1,0 +1,25 @@
+{{ if   .Values.apikeys.noexpire }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-noexpire
+  namespace: observability
+spec:
+  name: noexpire
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "name": "noexpire",
+          "role_descriptors": { 
+            "role-a": {
+              "cluster": ["all"],
+              "index": [
+                {
+                  "names": ["noexpire-*"],
+                  "privileges": ["read","create"]
+                }
+              ]
+            }
+          }
+        }
+{{ end}}        
