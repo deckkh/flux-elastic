@@ -50,8 +50,8 @@ spec:
       role4: true
 
     apikeys:
-      metricbeat: true
-      filebeat: true
+      metricbeat: false
+      filebeat: false
       dummy: false
 
     kibanaspaces:
