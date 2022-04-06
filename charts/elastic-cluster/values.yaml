@@ -37,6 +37,9 @@ slms:
 repos:
   myrepo: False
 
+componenttemplates:
+  mycomponent1: False  
+
 roles:
   role2: False
   role3: false

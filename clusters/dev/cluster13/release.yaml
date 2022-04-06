@@ -33,6 +33,10 @@ spec:
     repos:
       myrepo: true
 
+    componenttemplates:
+      mycomponent1: true
+
+
     rolemappings:
       mapping1: true
 
