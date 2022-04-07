@@ -51,6 +51,7 @@ spec:
       myindextemplate: false
       winlogbeat: true
       api: false
+      role6: true
 
 
     clustersettings:

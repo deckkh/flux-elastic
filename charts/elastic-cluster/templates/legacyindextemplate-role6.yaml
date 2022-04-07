@@ -1,0 +1,31 @@
+{{ if  .Values.legacyindextemplates.role6 }}
+role6Version: elastic.elastic-operator/v1
+kind: LegacyIndexTemplate
+metadata:
+  name: {{ .Release.Name}}-legacyindextemplate-role6
+  namespace: observability
+spec:
+  name: role6
+  cluster: {{ .Release.Name}}
+  body: |
+            {
+              "index_patterns": ["role6-*"],
+              "settings": {
+                "number_of_shards": 1
+              },
+              "mappings": {
+                "_source": {
+                  "enabled": true
+                },
+                "properties": {
+                  "host_name": {
+                    "type": "keyword"
+                  },
+                  "created_at": {
+                    "type": "date",
+                    "format": "EEE MMM dd HH:mm:ss Z yyyy"
+                  }
+                }
+              }
+            }
+{{ end}}            

@@ -69,6 +69,7 @@ legacyindextemplates:
   myindextemplate: false
   winlogbeat: false  
   api: false  
+  role6: false  
 
 indextemplates:
   api: false  
