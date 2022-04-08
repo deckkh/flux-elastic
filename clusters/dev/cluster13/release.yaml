@@ -70,6 +70,7 @@ spec:
       dummy: true
       onehour: true
       noexpire: true
+      threehour: true
 
     kibanaspaces:
       metricbeat: true

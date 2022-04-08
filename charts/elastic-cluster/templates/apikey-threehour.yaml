@@ -1,0 +1,26 @@
+{{ if   .Values.apikeys.threehour }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-threehour
+  namespace: observability
+spec:
+  name: threehour
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "name": "threehour",
+          "expiration": "3h",   
+          "role_descriptors": { 
+            "role-a": {
+              "cluster": [],
+              "index": [
+                {
+                  "names": ["threehour-*"],
+                  "privileges": ["write","create"]
+                }
+              ]
+            }
+          }
+        }
+{{ end}}        

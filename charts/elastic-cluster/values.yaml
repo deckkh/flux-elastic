@@ -60,6 +60,7 @@ apikeys:
   dummy: false
   onehour: false
   noexpire: false
+  threehour: false
 
 clustersettings:
   recovery: false  
