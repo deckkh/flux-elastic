@@ -5,11 +5,11 @@ metadata:
   name: {{ .Release.Name}}-rolemapping-mapping1
   namespace: observability
 spec:
-  name: mapping1
+  name: {{ .Release.Name}}-rolemapping-mapping1
   cluster: {{ .Release.Name}}
   body: |
           {
-            "roles": [ "user"],
+            "roles": [ "{{ .Release.Name}}-role-role7"],
             "enabled": true, 
             "rules": {
               "field" : { "username" : "*" }

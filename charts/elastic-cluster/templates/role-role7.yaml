@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name}}-role-role7
   namespace: observability
 spec:
-  name: {{ .Release.Name}}_role_role7
+  name: {{ .Release.Name}}-role-role7
   cluster: {{ .Release.Name}}
   body: |
     {
