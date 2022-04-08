@@ -1,0 +1,20 @@
+{{ if   .Values.roles.role7 }}
+apiVersion: elastic.elastic-operator/v1
+kind: ElasticRole
+metadata:
+  name: {{ .Release.Name}}-role-role7
+  namespace: observability
+spec:
+  name: {{ .Release.Name}}_role_role7
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+      "cluster": ["all"],
+      "indices": [
+          {
+            "names": [ "role7-*" ],
+            "privileges": ["all"]
+          }
+      ]
+    }  
+{{ end}}

@@ -63,6 +63,7 @@ spec:
       role4: false
       role5: true
       role6: true
+      role7: true
 
     apikeys:
       metricbeat: true
