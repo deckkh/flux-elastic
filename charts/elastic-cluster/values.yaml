@@ -46,6 +46,7 @@ roles:
   role5: False
   role6: False
   role7: False
+  role8: False
 
 kibanaspaces:
   metricbeat: False
