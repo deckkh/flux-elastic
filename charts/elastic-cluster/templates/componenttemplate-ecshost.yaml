@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ComponentTemplate
 metadata:
   name: {{ .Release.Name}}-componenttemplate-ecshost
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: ecshost
   cluster: {{ .Release.Name}}

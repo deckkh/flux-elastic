@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:
   name: {{ .Release.Name}}-role-role5
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: {{ .Release.Name}}-role-role5
   cluster: {{ .Release.Name}}

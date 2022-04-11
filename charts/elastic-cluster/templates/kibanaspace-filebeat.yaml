@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:
   name: {{ .Release.Name}}-kibanaspace-filebeat
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: filebeat
   cluster: {{ .Release.Name}}

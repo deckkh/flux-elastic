@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: IndexTemplate
 metadata:
   name: {{ .Release.Name}}-indextemplate-api
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: api
   cluster: {{ .Release.Name}}

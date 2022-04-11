@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
   name: {{.Release.Name}}-apikey-threehour
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: threehour
   cluster: {{ .Release.Name}}

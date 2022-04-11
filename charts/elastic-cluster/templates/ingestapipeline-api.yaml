@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: IngestPipeline
 metadata:
   name: {{ .Release.Name}}-ingestpipeline-api
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: api
   cluster: {{ .Release.Name}}

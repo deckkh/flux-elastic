@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
   name: {{.Release.Name}}-apikey-noexpire
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: noexpire
   cluster: {{ .Release.Name}}

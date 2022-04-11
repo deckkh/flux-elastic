@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ILM
 metadata:
   name: {{ .Release.Name}}-ilm-mypolicy
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: mypolicy
   cluster: {{ .Release.Name}}

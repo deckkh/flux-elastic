@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ClusterSetting
 metadata:
   name: {{ .Release.Name}}-clustersettings-recovery
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: recovery
   cluster: {{ .Release.Name}}

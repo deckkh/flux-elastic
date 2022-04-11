@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: Repo
 metadata:
   name: {{ .Release.Name}}-repo-myrepo
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: myrepo
   cluster: {{ .Release.Name}}

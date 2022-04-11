@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:
   name: {{ .Release.Name}}-kibanaspace-metricbeat
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: metricbeat
   cluster: {{ .Release.Name}}

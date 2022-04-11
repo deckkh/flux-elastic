@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
   name: {{.Release.Name}}-apikey-filebeat
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: filebeat
   cluster: {{ .Release.Name}}

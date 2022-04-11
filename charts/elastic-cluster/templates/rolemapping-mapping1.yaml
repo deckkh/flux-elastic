@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: RoleMapping
 metadata:
   name: {{ .Release.Name}}-rolemapping-mapping1
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: {{ .Release.Name}}-rolemapping-mapping1
   cluster: {{ .Release.Name}}

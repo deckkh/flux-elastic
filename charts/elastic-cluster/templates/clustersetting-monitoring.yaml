@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ClusterSetting
 metadata:
   name: {{ .Release.Name}}-clustersettings-monitoring
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: monitoring
   cluster: {{ .Release.Name}}

@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: SLM
 metadata:
   name: {{ .Release.Name}}-slm-mypolicy
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: mypolicy
   cluster: {{ .Release.Name}}

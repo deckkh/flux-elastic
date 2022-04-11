@@ -3,7 +3,7 @@ apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
   name: {{.Release.Name}}-apikey-metricbeat
-  namespace: observability
+  namespace: {{ .Release.Namespace}}
 spec:
   name: metricbeat
   cluster: {{ .Release.Name}}
