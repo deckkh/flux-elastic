@@ -29,6 +29,7 @@ ingestpipelines:
   mypipeline: False
   api: False
   test3: False
+  test4: False
 
 ilms:
   mypolicy: False
