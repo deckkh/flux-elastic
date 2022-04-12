@@ -18,7 +18,7 @@ spec:
     myvar: yeah
 
     elastic:
-      version: 8.1.1
+      version: 8.1.2
 
     ingestpipelines:
       mypipeline: true
