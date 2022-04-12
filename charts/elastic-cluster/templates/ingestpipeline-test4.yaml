@@ -13,7 +13,7 @@ spec:
             "processors" : [
               {
                 "set" : {
-                  "description" : "My optional processor description",
+                  "description" : "My optional processor description , modified",
                   "field": "my-keyword-field",
                   "value": "footest4"
                 }
