@@ -17,7 +17,7 @@ spec:
               "index": [
                 {
                   "names": ["filebeat-*"],
-                  "privileges": ["read","create"]
+                  "privileges": ["read","create","write"]
                 }
               ]
             }
