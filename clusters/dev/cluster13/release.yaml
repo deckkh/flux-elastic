@@ -46,6 +46,7 @@ spec:
 
     rolemappings:
       mapping1: true
+      oidc1: true
 
     legacyindextemplates:
       myindextemplate: false

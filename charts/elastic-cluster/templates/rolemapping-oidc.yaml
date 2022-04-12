@@ -1,0 +1,54 @@
+{{ if  .Values.rolemappings.oidc1 }}
+apiVersion: elastic.elastic-operator/v1
+kind: RoleMapping
+metadata:
+  name: {{ .Release.Name}}-rolemapping-oidc1
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: {{ .Release.Name}}-rolemapping-oidc1
+  cluster: {{ .Release.Name}}
+  body: |
+            {
+              "any": [
+                {
+                  "field": {
+                    "groups": [
+                      "CN=test group (tst),OU=Tests,OU=My GPO,DC=comp,DC=local"
+                    ]
+                  }
+                },
+                {
+                  "field": {
+                    "dn": [
+                      "CN=test User (tst),OU=Tests,OU=My GPO,DC=comp,DC=local"
+                    ]
+                  }
+                },
+                {
+                  "all": [
+                    {
+                      "field": {
+                        "realm.name": "CloudAD"
+                      }
+                    },
+                    {
+                      "any": [
+                        {
+                          "field": {
+                            "groups": "5555555-557-888a1-bbbb-ccccce91006b"
+                          }
+                        },
+                        {
+                          "field": {
+                            "username": [
+                              "11111111-2222-3333d-4444-55555555555"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+{{ end}}            

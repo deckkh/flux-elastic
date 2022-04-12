@@ -22,6 +22,7 @@ ingest:
 
 rolemappings:
   mapping1: False
+  oidc1: False
 
 
 ingestpipelines:
