@@ -8,7 +8,12 @@ spec:
   name: {{ .Release.Name}}-rolemapping-oidc1
   cluster: {{ .Release.Name}}
   body: |
-            {
+        {
+          "enabled" : true,
+          "roles" : [
+            "superuser"
+          ],
+            "rules" : {
               "any": [
                 {
                   "field": {
@@ -50,5 +55,6 @@ spec:
                   ]
                 }
               ]
+            }
             }
 {{ end}}            
