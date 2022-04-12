@@ -24,7 +24,7 @@ spec:
       mypipeline: true
       api: True
       test3: True
-      test4: True
+      test4: False
 
     ilms:
       mypolicy: true
