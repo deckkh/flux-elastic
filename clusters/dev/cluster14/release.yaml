@@ -1,0 +1,101 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata: 
+  name: cluster14
+  namespace: observability
+spec:
+  releaseName: cluster14
+  targetNamespace: observability
+  chart:
+    spec:
+      chart: /charts/elastic-cluster
+      sourceRef:
+        kind: GitRepository
+        name: flux-elastic
+        namespace: flux-system
+  interval: 1m
+  values:
+    myvar: yeah
+
+    elastic:
+      version: 8.1.1
+
+    ingestpipelines:
+      mypipeline: true
+      api: True
+      test3: True
+      test4: False
+
+    ilms:
+      mypolicy: true
+
+    slms:
+      mypolicy: true
+
+    repos:
+      myrepo: true
+
+    componenttemplates:
+      mycomponent1: true
+      ecs: true
+      ecshost: true
+      ecs2: true
+      ecs3: true
+
+    indextemplates:
+      api: true
+
+    rolemappings:
+      mapping1: true
+      oidc1: true
+
+    legacyindextemplates:
+      myindextemplate: false
+      winlogbeat: true
+      api: false
+      role6: true
+
+
+    clustersettings:
+      recovery: true
+      monitoring: true
+
+    roles: 
+      role3: true
+      role4: false
+      role5: true
+      role6: true
+      role7: true
+      role8: true
+
+    apikeys:
+      metricbeat: true
+      filebeat: true
+      dummy: true
+      onehour: true
+      noexpire: true
+      threehour: true
+
+    kibanaspaces:
+      metricbeat: true
+      winlogbeat: false
+      rally: false
+      dummy: true
+      api: true
+      filebeat: true
+
+    master:
+      nodeset: 
+        count: 1    
+
+    data:
+      nodeset: 
+        count: 0
+
+    datahot:
+      nodeset: 
+        count: 1
+        
+    ingest:
+      nodeset: 
+        count: 1
