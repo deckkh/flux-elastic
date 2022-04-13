@@ -69,6 +69,7 @@ apikeys:
 clustersettings:
   recovery: false  
   monitoring: false
+  routingallocationdisk: false
 
 legacyindextemplates:
   myindextemplate: false
