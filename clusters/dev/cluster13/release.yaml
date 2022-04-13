@@ -59,7 +59,7 @@ spec:
     clustersettings:
       recovery: true
       monitoring: true
-      routingallocationdisk: true
+      routingallocationdisk: false
 
     roles: 
       role3: true
