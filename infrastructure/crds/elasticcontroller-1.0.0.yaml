@@ -1,0 +1,408 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: elasticroles.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: elasticroles
+    singular: elasticrole
+    kind: ElasticRole
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Role"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                  pattern: '^\w+-role-\w+$'
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: kibanaspaces.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: kibanaspaces
+    singular: kibanaspace
+    kind: KibanaSpace
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Kibana Space"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","cluster","body"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: clustersettings.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: clustersettings
+    singular: clustersettings
+    kind: ClusterSetting
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Cluster Setting"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                bodyRemove:
+                  type: string
+              required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: apikeys.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: apikeys
+    singular: apikey
+    kind: ApiKey
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Api Key"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                owner:
+                  type: object
+                  properties:
+                    pipeline: 
+                      type: string
+                    email: 
+                      type: string
+                    team: 
+                      type: string
+
+              required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: indextemplates.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: indextemplates
+    singular: indextemplate
+    kind: IndexTemplate
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Index Template"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: ingestpipelines.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: ingestpipelines
+    singular: ingestpipeline
+    kind: IngestPipeline
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Ingest Pipeline"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","cluster","body"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: rolemappings.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: rolemappings
+    singular: rolemapping
+    kind: RoleMapping
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Role Mapping"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","cluster","body"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: ilms.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: ilms
+    singular: ilm
+    kind: ILM
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Index Lifecycle Management"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","cluster","body"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: slms.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: slms
+    singular: slm
+    kind: SLM
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Snapshot Lifecycle Management"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","cluster","body"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: repos.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: repos
+    singular: repo
+    kind: Repo
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Snapshot Repository"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","cluster","body"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: componenttemplates.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: componenttemplates
+    singular: componenttemplate
+    kind: ComponentTemplate
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Component Template"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: legacyindextemplates.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: legacyindextemplates
+    singular: legacyindextemplate
+    kind: LegacyIndexTemplate
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Legacy Index Template"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","body","cluster"]
