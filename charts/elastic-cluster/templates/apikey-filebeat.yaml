@@ -7,6 +7,10 @@ metadata:
 spec:
   name: filebeat
   cluster: {{ .Release.Name}}
+  owner:
+    pipeline: mypipeline
+    team: myteam
+    email: "myemail@corp.com"
   body: |
         {
           "name": "filebeat",
