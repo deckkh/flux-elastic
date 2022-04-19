@@ -8,9 +8,9 @@ spec:
   name: filebeat
   cluster: {{ .Release.Name}}
   owner:
-    pipeline: mypipeline
-    team: myteam
-    email: "myemail@corp.com"
+    pipeline: mypipeline2
+    team: myteam2
+    email: "myemail2@corp.com"
   body: |
         {
           "name": "filebeat",
