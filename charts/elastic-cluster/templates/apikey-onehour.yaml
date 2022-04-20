@@ -7,8 +7,8 @@ metadata:
 spec:
   name: onehour
   owner:
-    pipeline: devops34
-    team: "log management"
+    pipeline: devops35
+    team: "log management team"
     email: "manager@corp.com"
   cluster: {{ .Release.Name}}
   body: |
