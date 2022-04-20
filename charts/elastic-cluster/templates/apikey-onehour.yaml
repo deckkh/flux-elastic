@@ -6,6 +6,10 @@ metadata:
   namespace: {{ .Release.Namespace}}
 spec:
   name: onehour
+  owner:
+    pipeline: devops34
+    team: "log management"
+    email: "manager@corp.com"
   cluster: {{ .Release.Name}}
   body: |
         {
