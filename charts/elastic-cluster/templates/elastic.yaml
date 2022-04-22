@@ -8,6 +8,7 @@ metadata:
   namespace: {{ .Release.Namespace }}  
 spec:
   version: {{ .Values.elastic.version }}
+  image: deckkh/elasticsearch:8.1.3
 
   secureSettings:
   - secretName: mysecret
