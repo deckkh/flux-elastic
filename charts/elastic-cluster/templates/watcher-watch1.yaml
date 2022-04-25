@@ -49,8 +49,8 @@ spec:
             "actions" : {
               "email_admin" : {
                 "email" : {
-                  "to" : "admin@domain.host.com",
-                  "subject" : "404 recently encountered"
+                  "to" : "${username}@domain.host.com",
+                  "subject" : "404 recently encountered for ${username}-${password}"
                 }
               }
             }
