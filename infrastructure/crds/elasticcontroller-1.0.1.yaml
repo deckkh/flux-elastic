@@ -406,3 +406,104 @@ spec:
                 body:
                   type: string
               required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: watchers.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: watchers
+    singular: watcher
+    kind: Watcher
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Watcher"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                secret:
+                  type: string
+              required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: scripts.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: scripts
+    singular: script
+    kind: Script
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Script"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: transforms.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: transforms
+    singular: transform
+    kind: Transform
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Transform"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+              required: ["name","body","cluster"]
