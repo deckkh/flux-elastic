@@ -1,0 +1,17 @@
+{{ if   .Values.scripts.script1 }}
+apiVersion: elastic.elastic-operator/v1
+kind: Script
+metadata:
+  name: {{ .Release.Name}}-script-script1
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: script1
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "script": {
+              "lang": "painless",
+              "source": "Math.log(_score * 2) + params['my_modifier']"
+            }
+          }  
+{{ end }}

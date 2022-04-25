@@ -1,0 +1,31 @@
+{{ if   .Values.transforms.transform1 }}
+apiVersion: elastic.elastic-operator/v1
+kind: Transform
+metadata:
+  name: {{ .Release.Name}}-transform-transform1
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: transform1
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "source": {
+              "index": "kibana_sample_data_ecommerce"
+            },
+            "latest": {
+              "unique_key": ["customer_id"],
+              "sort": "order_date"
+            },
+            "description": "Latest order for each customer",
+            "dest": {
+              "index": "kibana_sample_data_ecommerce_transform2"
+            },
+            "frequency": "5m",
+            "sync": {
+              "time": {
+                "field": "order_date",
+                "delay": "60s"
+              }
+            }
+          }  
+{{ end }}

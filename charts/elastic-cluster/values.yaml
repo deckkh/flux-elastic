@@ -86,3 +86,12 @@ componenttemplates:
   ecshost: False
   ecs2: False
   ecs3: False
+
+scripts:
+  script1: false  
+
+watchers:
+  watcher1: false  
+
+transforms:
+  transform1: false  

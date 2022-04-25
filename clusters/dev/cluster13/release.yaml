@@ -20,6 +20,16 @@ spec:
     elastic:
       version: 8.1.3
 
+
+    scripts:
+      script1: true  
+
+    watchers:
+      watcher1: true
+
+    transforms:
+      transform1: true
+
     ingestpipelines:
       mypipeline: true
       api: True
