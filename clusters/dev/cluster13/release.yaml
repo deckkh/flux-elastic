@@ -36,6 +36,7 @@ spec:
       api: True
       test3: True
       test4: False
+      helloworld: True
 
     ilms:
       mypolicy: true

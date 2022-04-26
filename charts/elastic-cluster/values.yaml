@@ -30,6 +30,7 @@ ingestpipelines:
   api: False
   test3: False
   test4: False
+  helloworld: False
 
 ilms:
   mypolicy: False
