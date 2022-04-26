@@ -95,6 +95,7 @@ spec:
       dummy: true
       api: true
       filebeat: true
+      helloworld: true
 
     master:
       nodeset: 

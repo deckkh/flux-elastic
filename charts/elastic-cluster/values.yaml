@@ -57,6 +57,7 @@ kibanaspaces:
   dummy: false
   api: false
   filebeat: False
+  helloworld: False
   
 apikeys:
   metricbeat: false

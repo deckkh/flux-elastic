@@ -1,0 +1,17 @@
+{{ if  .Values.kibanaspaces.helloworld }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-helloworld
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: helloworld
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "helloworld",
+        "name": "helloworld",
+        "description": "my fancy helloworld space",
+        "initials": "hw"
+    }
+{{ end }}    
