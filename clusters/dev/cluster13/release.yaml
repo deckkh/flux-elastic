@@ -26,6 +26,7 @@ spec:
 
     watchers:
       watcher1: true
+      watcher2: true
 
     transforms:
       transform1: true

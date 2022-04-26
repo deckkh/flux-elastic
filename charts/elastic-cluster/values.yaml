@@ -92,6 +92,7 @@ scripts:
 
 watchers:
   watcher1: false  
+  watcher2: false  
 
 transforms:
   transform1: false  
