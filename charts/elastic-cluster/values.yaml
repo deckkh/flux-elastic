@@ -31,6 +31,7 @@ ingestpipelines:
   test3: False
   test4: False
   helloworld: False
+  sprint: False
 
 ilms:
   mypolicy: False
@@ -59,6 +60,7 @@ kibanaspaces:
   api: false
   filebeat: False
   helloworld: False
+  sprint: False
   
 apikeys:
   metricbeat: false
@@ -67,6 +69,7 @@ apikeys:
   onehour: false
   noexpire: false
   threehour: false
+  sprint: false
 
 clustersettings:
   recovery: false  
@@ -95,6 +98,7 @@ scripts:
 watchers:
   watcher1: false  
   watcher2: false  
+  sprint: false  
 
 transforms:
   transform1: false  

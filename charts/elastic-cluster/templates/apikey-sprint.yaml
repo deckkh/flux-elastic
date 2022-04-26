@@ -1,0 +1,30 @@
+{{ if   .Values.apikeys.sprint }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-sprint
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: sprint
+  owner:
+    pipeline: devopsxx
+    team: "My Team"
+    email: "manager@corp.com"
+  cluster: {{ .Release.Name}}
+  body: |
+        {
+          "name": "sprint",
+          "expiration": "30d",   
+          "role_descriptors": { 
+            "role-a": {
+              "cluster": ["all"],
+              "index": [
+                {
+                  "names": ["sprint-*"],
+                  "privileges": ["read","create"]
+                }
+              ]
+            }
+          }
+        }
+{{ end}}        

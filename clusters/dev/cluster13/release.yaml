@@ -27,6 +27,7 @@ spec:
     watchers:
       watcher1: true
       watcher2: true
+      sprint: true
 
     transforms:
       transform1: true
@@ -37,6 +38,7 @@ spec:
       test3: True
       test4: False
       helloworld: True
+      sprint: True
 
     ilms:
       mypolicy: true
@@ -88,6 +90,7 @@ spec:
       onehour: true
       noexpire: true
       threehour: true
+      sprint: true
 
     kibanaspaces:
       metricbeat: true
@@ -97,6 +100,7 @@ spec:
       api: true
       filebeat: true
       helloworld: true
+      sprint: true
 
     master:
       nodeset: 

@@ -1,0 +1,17 @@
+{{ if  .Values.kibanaspaces.sprint }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-sprint
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: sprint
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "sprint",
+        "name": "sprint",
+        "description": "my brand new sprint space",
+        "initials": "sp"
+    }
+{{ end }}    
