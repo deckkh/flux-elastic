@@ -36,7 +36,7 @@ spec:
       mypipeline: true
       api: True
       test3: True
-      test4: False
+      test4: True
       helloworld: True
       sprint: True
 
