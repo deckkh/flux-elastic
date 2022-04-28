@@ -9,9 +9,17 @@ spec:
   cluster: {{ .Release.Name}}
   space: "sprint"
   body: |
-          {
-            "data_view": {
-              "title": "hello"
-            }
+        {
+          "data_view": {
+            "id": "hello",
+            "title": "hello",
+            "fields": {},
+            "typeMeta": {},
+            "fieldFormats": {},
+            "runtimeFieldMap": {},
+            "fieldAttrs": {},
+            "allowNoIndex": false
           }
-{{ end}}            
+        }    
+    
+    {{ end}}            
