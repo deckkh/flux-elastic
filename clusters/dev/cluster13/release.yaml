@@ -33,7 +33,7 @@ spec:
       transform1: true
 
     dataviews:
-      hello: true
+      hello: false
 
 
     ingestpipelines:
