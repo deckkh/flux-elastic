@@ -103,7 +103,9 @@ watchers:
 transforms:
   transform1: false  
 
-
 dataviews:
   hello: false
   kibana: false  
+
+connectors:
+  hello: false

@@ -1,0 +1,19 @@
+{{ if  .Values.connectors.hello }}
+apiVersion: elastic.elastic-operator/v1
+kind: Connector
+metadata:
+  name: {{ .Release.Name}}-connector-hello
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: hello
+  cluster: {{ .Release.Name}}
+  space: "sprint"
+  body: |
+        {
+          "name": "hello",
+          "connector_type_id": ".index",
+          "config": {
+            "index": "test-index"
+          }
+        }    
+    {{ end}}            
