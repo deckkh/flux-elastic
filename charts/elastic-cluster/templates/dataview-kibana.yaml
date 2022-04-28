@@ -1,8 +1,8 @@
-{{ if  .Values.dataviews.hello }}
+{{ if  .Values.dataviews.kibana }}
 apiVersion: elastic.elastic-operator/v1
 kind: DataView
 metadata:
-  name: {{ .Release.Name}}-dataview-hello
+  name: {{ .Release.Name}}-dataview-kibana
   namespace: {{ .Release.Namespace}}
 spec:
   name: hello
@@ -14,7 +14,7 @@ spec:
           "refresh_fields": true,          
           "data_view": {
             "id": "hello",
-            "title": "hello",
+            "title": "kibana*",
             "fields": {},
             "typeMeta": {},
             "fieldFormats": {},

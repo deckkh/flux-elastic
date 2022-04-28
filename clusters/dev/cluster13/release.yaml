@@ -33,7 +33,8 @@ spec:
       transform1: true
 
     dataviews:
-      hello: false
+      hello: true
+      kibaba: true
 
 
     ingestpipelines:
