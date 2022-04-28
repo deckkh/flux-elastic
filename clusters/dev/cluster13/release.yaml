@@ -34,7 +34,7 @@ spec:
 
     dataviews:
       hello: true
-      kibaba: true
+      kibana: true
 
 
     ingestpipelines:
