@@ -507,3 +507,108 @@ spec:
                 body:
                   type: string
               required: ["name","body","cluster"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: dataviews.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: dataviews
+    singular: dataview
+    kind: DataView
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic DataView"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                space:
+                  type: string
+              required: ["name","body","cluster","space"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: connectors.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: connectors
+    singular: connector
+    kind: Connector
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Connector"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                space:
+                  type: string
+              required: ["name","body","cluster","space"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: alertrules.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: alertrules
+    singular: alertrule
+    kind: AlertRule
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Alert Rule"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                space:
+                  type: string
+              required: ["name","body","cluster","space"]
