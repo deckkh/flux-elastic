@@ -32,6 +32,10 @@ spec:
     transforms:
       transform1: true
 
+    dataviews:
+      hello: true
+
+
     ingestpipelines:
       mypipeline: true
       api: True

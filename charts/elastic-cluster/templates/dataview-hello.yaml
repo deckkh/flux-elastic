@@ -1,0 +1,16 @@
+{{ if  .Values.dataviews.hello }}
+apiVersion: elastic.elastic-operator/v1
+kind: DataView
+metadata:
+  name: {{ .Release.Name}}-dataview-hello
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: hello
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "data_view": {
+              "title": "hello"
+            }
+          }
+{{ end}}            
