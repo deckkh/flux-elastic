@@ -10,7 +10,8 @@ spec:
   space: "sprint"
   body: |
         {
-          "name": "hello",
+          "id" : "hello"
+          "name": "hello display name",
           "connector_type_id": ".index",
           "config": {
             "index": "test-index"
