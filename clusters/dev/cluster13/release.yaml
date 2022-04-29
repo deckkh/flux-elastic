@@ -104,7 +104,7 @@ spec:
       winlogbeat: false
       rally: false
       dummy: true
-      api: false
+      api: true
       filebeat: true
       helloworld: true
       sprint: true
