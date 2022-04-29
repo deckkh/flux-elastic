@@ -34,7 +34,7 @@ spec:
 
     dataviews:
       hello: true
-      kibana: true
+      kibana: false
 
     connectors:
       hello: true

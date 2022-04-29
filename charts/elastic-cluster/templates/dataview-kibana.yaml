@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name}}-dataview-kibana
   namespace: {{ .Release.Namespace}}
 spec:
-  name: "kibana*"
+  name: kibana
   cluster: {{ .Release.Name}}
   space: "sprint"
   body: |
