@@ -37,7 +37,7 @@ spec:
       kibana: true
 
     connectors:
-      hello: false
+      hello: true
 
     ingestpipelines:
       mypipeline: true
