@@ -71,8 +71,8 @@ spec:
       oidc1: true
 
     legacyindextemplates:
-      myindextemplate: false
-      winlogbeat: true
+      myindextemplate: true
+      winlogbeat: false
       api: false
       role6: true
 
