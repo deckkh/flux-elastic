@@ -40,15 +40,15 @@ spec:
       hello: true
 
     ingestpipelines:
-      mypipeline: false
-      api: false
+      mypipeline: true
+      api: true
       test3: True
       test4: True
       helloworld: True
       sprint: True
 
     ilms:
-      mypolicy: false
+      mypolicy: true
 
     slms:
       mypolicy: true
