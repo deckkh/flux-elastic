@@ -84,8 +84,8 @@ spec:
 
     roles: 
       role3: true
-      role4: false
-      role5: true
+      role4: true
+      role5: false
       role6: true
       role7: true
       role8: true
