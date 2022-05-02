@@ -100,8 +100,8 @@ spec:
       sprint: true
 
     kibanaspaces:
-      metricbeat: true
-      winlogbeat: false
+      metricbeat: false
+      winlogbeat: true
       rally: true
       dummy: true
       api: true
