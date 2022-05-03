@@ -8,7 +8,7 @@ spec:
   targetNamespace: observability
   chart:
     spec:
-      chart: /charts/elastic-cluster
+      chart: ./charts/elastic-cluster
       sourceRef:
         kind: GitRepository
         name: flux-elastic
