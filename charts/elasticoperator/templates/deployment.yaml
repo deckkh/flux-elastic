@@ -20,7 +20,7 @@ spec:
       containers:
       - name: {{ .Release.Name}}
         imagePullPolicy: IfNotPresent
-        image: deckkh/elasticcontroller:v1.2.42
+        image: deckkh/elasticcontroller:v1.2.43
         env:
         # Define the environment variable
         - name: NAMESPACE
