@@ -8,4 +8,4 @@ spec:
     app: "{{ .Release.Name}}"
   ports:
   - port: {{ .Values.configmap.healthPort}}
-  targetPort: {{ .Values.configmap.healthPort }}
+    targetPort: {{ .Values.configmap.healthPort }}
