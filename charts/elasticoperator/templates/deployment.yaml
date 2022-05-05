@@ -31,15 +31,16 @@ spec:
             path: /api/readiness
             port: {{ .Values.configmap.healthPort}}
           initialDelaySeconds: 30
+          periodSeconds: 5          
 
         livenessProbe:
           httpGet:
             path: /api/liveness
             port: {{ .Values.configmap.healthPort}}
           initialDelaySeconds: 3
+          periodSeconds: 5          
 
 
-      periodSeconds: 3          
         env:
         # Define the environment variable
         - name: NAMESPACE
