@@ -25,6 +25,21 @@ spec:
         - containerPort: {{ .Values.configmap.healthPort}}
           name: healthport
           protocol: TCP
+
+        readinessProbe:
+          httpGet:
+            path: /api/readiness
+            port: {{ .Values.configmap.healthPort}}
+          initialDelaySeconds: 30
+
+        livenessProbe:
+          httpGet:
+            path: /api/liveness
+            port: {{ .Values.configmap.healthPort}}
+          initialDelaySeconds: 3
+
+
+      periodSeconds: 3          
         env:
         # Define the environment variable
         - name: NAMESPACE
