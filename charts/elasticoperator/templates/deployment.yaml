@@ -21,6 +21,10 @@ spec:
       - name: {{ .Release.Name}}
         imagePullPolicy: IfNotPresent
         image: deckkh/elasticcontroller:v1.2.43
+        ports:
+        - containerPort: {{ .Values.configmap.healthPort}}
+          name: healthPort
+          protocol: TCP
         env:
         # Define the environment variable
         - name: NAMESPACE
