@@ -8,4 +8,4 @@ configmap:
   ApiVersion: "v1"
   CacheTtl: "15"
   Namespace: "{{ .Release.Namespace}}"
-  healthPort: "25001"
+  healthPort: "15001"

@@ -16,5 +16,5 @@ spec:
   interval: 1m
   values:
     configmap: 
-      healthPort: 25002
+      healthPort: 15001
 
