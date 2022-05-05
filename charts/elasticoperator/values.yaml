@@ -1,0 +1,11 @@
+configmap:
+  apikeyRollover: "75"
+  maxRetries: "30"
+  keyVault: "https://flux-akv.azurewebsites.net/api/FluxDemo"
+  elasticUserSecretSuffix: "-es-elastic-user"
+  ReconLoopInterval: "300"
+  ApiGroup: "elastic.elastic-operator"
+  ApiVersion: "v1"
+  CacheTtl: "15"
+  Namespace: "{{ .Release.Namespace}}"
+  healthPort: "25001"

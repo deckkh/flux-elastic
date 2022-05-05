@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name}}-configmap
+  namespace : {{ .Release.Namespace}}
+data:
+  # property-like keys; each key maps to a simple value
+  apikeyRollover: {{ .Values.configmap.apikeyRollover}}
+  maxRetries: {{ .Values.configmap.maxRetries}}
+  keyVault: {{ .Values.configmap.keyVault}}
+  elasticUserSecretSuffix: {{ .Values.configmap.elasticUserSecretSuffix}}
+  ReconLoopInterval: {{ .Values.configmap.ReconLoopInterval}}
+  ApiGroup: {{ .Values.configmap.ApiGroup}}
+  ApiVersion: {{ .Values.configmap.ApiVersion}}
+  CacheTtl: {{ .Values.configmap.CacheTtl}}
+  Namespace: {{ .Release.Namespace}}
