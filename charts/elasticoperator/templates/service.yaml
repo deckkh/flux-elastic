@@ -7,5 +7,5 @@ spec:
   selector:
     app: "{{ .Release.Name}}"
   ports:
-  - port: "{{ .Values.configmap.healthPort}}"
-  targetPort: "{{ .Values.configmap.healthPort }}"
+  - port: {{ .Values.configmap.healthPort}}
+  targetPort: {{ .Values.configmap.healthPort }}
