@@ -23,7 +23,7 @@ spec:
         image: deckkh/elasticcontroller:v1.2.43
         ports:
         - containerPort: {{ .Values.configmap.healthPort}}
-          name: healthPort
+          name: healthport
           protocol: TCP
         env:
         # Define the environment variable
