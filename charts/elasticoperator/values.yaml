@@ -9,3 +9,5 @@ configmap:
   CacheTtl: "15"
   Namespace: "{{ .Release.Namespace}}"
   healthPort: "15001"
+  LongRunningCheck: "1"
+  LongRunningMax: "5"

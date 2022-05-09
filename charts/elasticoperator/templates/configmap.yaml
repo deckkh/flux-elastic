@@ -15,3 +15,5 @@ data:
   ApiVersion: "{{ .Values.configmap.ApiVersion}}"
   CacheTtl: "{{ .Values.configmap.CacheTtl}}"
   Namespace: "{{ .Release.Namespace}}"
+  LongRunningCheck: "{{ .Values.configmap.LongRunningCheck}}"
+  LongRunningMax: "{{ .Values.configmap.LongRunningMax}}"
