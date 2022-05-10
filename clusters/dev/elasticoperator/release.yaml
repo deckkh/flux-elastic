@@ -1,10 +1,10 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata: 
-  name: elasticoperator
+  name: elasticoperator-hr
   namespace: system
 spec:
-  releaseName: elasticoperator
+  releaseName: elasticoperator-hr
   targetNamespace: system
   chart:
     spec:
