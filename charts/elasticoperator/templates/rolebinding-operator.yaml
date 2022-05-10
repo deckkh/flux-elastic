@@ -2,8 +2,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ .Release.Name}}-role-binding
-  namespace: {{ .Values.Operator.TenantNamespace}}
+  name: {{ .Release.Name}}-rolebinding-operator
+  namespace: {{ .Release.Namespace}}
 subjects:
 - namespace: {{ .Release.Namespace}} 
   kind: ServiceAccount
