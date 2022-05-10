@@ -16,7 +16,7 @@ spec:
         app: {{ .Release.Name}}
         version: v1
     spec:
-      serviceAccountName: {{ .Release.Name}}-svc
+      serviceAccountName: {{ .Release.Name}}-{{ .Values.Operator.Sa }}
       containers:
       - name: {{ .Release.Name}}
         imagePullPolicy: IfNotPresent
