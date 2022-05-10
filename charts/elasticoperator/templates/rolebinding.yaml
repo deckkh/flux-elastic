@@ -3,9 +3,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ .Release.Name}}-cluster-role-binding
-  namespace: {{ .Operator.Namespace}}
+  namespace: {{ .Values.Operator.Namespace}}
 subjects:
-- namespace: {{ .Operator.Namespace}} 
+- namespace: {{ .Values.Operator.Namespace}} 
   kind: ServiceAccount
   name: {{ .Release.Name}}-svc
 roleRef:
