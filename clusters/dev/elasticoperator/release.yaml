@@ -2,10 +2,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata: 
   name: elasticoperator
-  namespace: observability
+  namespace: {{ .Values.Operator.Namespace }}
 spec:
   releaseName: elasticoperator
-  targetNamespace: observability
+  targetNamespace: {{ .Values.Operator.Namespace }}
   chart:
     spec:
       chart: ./charts/elasticoperator
