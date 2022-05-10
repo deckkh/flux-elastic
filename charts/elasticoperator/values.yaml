@@ -13,7 +13,6 @@ configmap:
   LongRunningMax: "5"
 
 Operator:
-  Namespace: "system"
   Sa: "sa"
   Role: "role"
   TenantNamespace: "observability"

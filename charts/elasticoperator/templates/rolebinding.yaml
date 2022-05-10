@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name}}-role-binding
   namespace: {{ .Values.Operator.TenantNamespace}}
 subjects:
-- namespace: {{ .Values.Operator.Namespace}} 
+- namespace: {{ .Release.Namespace}} 
   kind: ServiceAccount
   name: {{ .Release.Name}}-{{ .Values.Operator.Sa}}
 roleRef:
