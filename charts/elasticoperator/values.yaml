@@ -11,3 +11,6 @@ configmap:
   healthPort: "15001"
   LongRunningCheck: "1"
   LongRunningMax: "5"
+
+Operator:
+  Namespace: "system"
