@@ -1,9 +1,9 @@
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   name: {{ .Release.Name}}-{{ .Values.Operator.Role }}
-  namespace: {{ .Release.Namespace}}
+  namespace: {{ .Values.Operator.Namespace }}
 rules:
   - apiGroups:
         - ""

@@ -15,4 +15,5 @@ configmap:
 Operator:
   Namespace: "system"
   Sa: "sa"
-  Role: "Role"
+  Role: "role"
+  TenantNamespace: "observability"

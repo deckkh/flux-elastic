@@ -3,12 +3,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ .Release.Name}}-role-binding
-  namespace: {{ .Values.Operator.Namespace}}
+  namespace: {{ .Values.Operator.TenantNamespace}}
 subjects:
 - namespace: {{ .Values.Operator.Namespace}} 
   kind: ServiceAccount
   name: {{ .Release.Name}}-{{ .Values.Operator.Sa}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: {{ .Release.Name}}-{{ .Values.Operator.Role }}
