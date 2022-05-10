@@ -1,4 +1,4 @@
-configmap:
+ConfigMap:
   apikeyRollover: "75"
   maxRetries: "30"
   keyVault: "https://flux-akv.azurewebsites.net/api/FluxDemo"
@@ -7,7 +7,7 @@ configmap:
   ApiGroup: "elastic.elastic-operator"
   ApiVersion: "v1"
   CacheTtl: "15"
-  Namespace: "{{ .Release.Namespace}}"
+  Namespace: "observability"
   healthPort: "15001"
   LongRunningCheck: "1"
   LongRunningMax: "5"
@@ -15,4 +15,3 @@ configmap:
 Operator:
   Sa: "sa"
   Role: "role"
-  TenantNamespace: "observability"
