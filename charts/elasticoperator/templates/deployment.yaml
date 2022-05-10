@@ -45,8 +45,8 @@ spec:
         # Define the environment variable
         - name: NAMESPACE
           value: "{{ .Release.Namespace}}"
-        - name: ConfigMap
-          value: "{{ .Release.Name}}-ConfigMap"
+        - name: CONFIGMAP
+          value: "{{ .Release.Name}}-configmap"
         - name: HEALTHPORT
           value: "{{ .Values.ConfigMap.healthPort}}"
 
