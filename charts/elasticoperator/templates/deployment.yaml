@@ -22,21 +22,21 @@ spec:
         imagePullPolicy: IfNotPresent
         image: deckkh/elasticcontroller:v1.2.56
         ports:
-        - containerPort: {{ .Values.configmap.healthPort}}
+        - containerPort: {{ .Values.ConfigMap.healthPort}}
           name: healthport
           protocol: TCP
 
         readinessProbe:
           httpGet:
             path: /api/readiness
-            port: {{ .Values.configmap.healthPort}}
+            port: {{ .Values.ConfigMap.healthPort}}
           initialDelaySeconds: 60
           periodSeconds: 30          
 
         livenessProbe:
           httpGet:
             path: /api/liveness
-            port: {{ .Values.configmap.healthPort}}
+            port: {{ .Values.ConfigMap.healthPort}}
           initialDelaySeconds: 30
           periodSeconds: 30         
 
@@ -45,10 +45,10 @@ spec:
         # Define the environment variable
         - name: NAMESPACE
           value: "{{ .Release.Namespace}}"
-        - name: CONFIGMAP
-          value: "{{ .Release.Name}}-configmap"
+        - name: ConfigMap
+          value: "{{ .Release.Name}}-ConfigMap"
         - name: HEALTHPORT
-          value: "{{ .Values.configmap.healthPort}}"
+          value: "{{ .Values.ConfigMap.healthPort}}"
 
       imagePullSecrets:
       - name: regcred
