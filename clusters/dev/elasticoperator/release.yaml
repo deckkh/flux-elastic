@@ -2,10 +2,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata: 
   name: elasticoperator
-  namespace: "system"
+  namespace: system
 spec:
   releaseName: elasticoperator
-  targetNamespace: "system"
+  targetNamespace: system
   chart:
     spec:
       chart: ./charts/elasticoperator
