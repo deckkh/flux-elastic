@@ -14,4 +14,7 @@ spec:
   ingress:
     - {}
   egress:
-    - {}
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ .Values.ConfigMap.Namespace }}
