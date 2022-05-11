@@ -1,5 +1,7 @@
 myvar: prod
 
+oidc:
+  claimurl: "http://example.com/claims/groups"
 
 elastic:
   version: 8.1.0
