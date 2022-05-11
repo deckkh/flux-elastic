@@ -2,12 +2,29 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: {{ .Release.Name}}-network-policy
+  name: {{ .Release.Name}}-elastic-network-policy
   namespace: {{ .Release.Namespace}}
 spec:
-  podSelector:
+  podSelector: 
     matchLabels:
-      app: {{ .Release.Name }}
+      elasticsearch.k8s.elastic.co/cluster-name: cluster14 
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - {}
+  egress:
+    - {}
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ .Release.Name}}-kibana-network-policy
+  namespace: {{ .Release.Namespace}}
+spec:
+  podSelector: 
+    matchLabels:
+      kibana.k8s.elastic.co/name: cluster14 
   policyTypes:
     - Ingress
     - Egress
