@@ -8,7 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: agents.agent.k8s.elastic.co
 spec:
   group: agent.k8s.elastic.co
@@ -139,18 +139,19 @@ spec:
                 items:
                   properties:
                     name:
-                      description: Name of the Kubernetes object.
+                      description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                       type: string
                     namespace:
                       description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                       type: string
                     outputName:
                       type: string
+                    secretName:
+                      description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                      type: string
                     serviceName:
                       description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                       type: string
-                  required:
-                  - name
                   type: object
                 type: array
               fleetServerEnabled:
@@ -160,16 +161,17 @@ spec:
                 description: FleetServerRef is a reference to Fleet Server that this Agent should connect to to obtain it's configuration. Don't set unless `mode` is set to `fleet`.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               http:
                 description: HTTP holds the HTTP layer configuration for the Agent in Fleet mode with Fleet Server enabled.
@@ -356,16 +358,17 @@ spec:
                 description: KibanaRef is a reference to Kibana where Fleet should be set up and this Agent should be enrolled. Don't set unless `mode` is set to `fleet`.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               mode:
                 description: Mode specifies the source of configuration for the Agent. The configuration can be specified locally through `config` or `configRef` (`standalone` mode), or come from Fleet during runtime (`fleet` mode). Defaults to `standalone` mode.
@@ -432,6 +435,10 @@ spec:
               kibanaAssociationStatus:
                 description: AssociationStatus is the status of an association resource.
                 type: string
+              observedGeneration:
+                description: ObservedGeneration is the most recent generation observed for this Elastic Agent. It corresponds to the metadata generation, which is updated on mutation by the API Server. If the generation observed in status diverges from the generation in metadata, the Elastic Agent controller has not yet processed the changes contained in the Elastic Agent specification.
+                format: int64
+                type: integer
               version:
                 description: 'Version of the stack resource currently running. During version upgrades, multiple versions may run in parallel: this value specifies the lowest version currently running.'
                 type: string
@@ -458,7 +465,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: apmservers.apm.k8s.elastic.co
 spec:
   group: apm.k8s.elastic.co
@@ -516,16 +523,17 @@ spec:
                 description: ElasticsearchRef is a reference to the output Elasticsearch cluster running in the same Kubernetes cluster.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               http:
                 description: HTTP holds the HTTP layer configuration for the APM Server resource.
@@ -712,16 +720,17 @@ spec:
                 description: KibanaRef is a reference to a Kibana instance running in the same Kubernetes cluster. It allows APM agent central configuration management in Kibana.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               podTemplate:
                 description: PodTemplate provides customisation options (labels, annotations, affinity rules, resource requests, and so on) for the APM Server pods.
@@ -755,7 +764,7 @@ spec:
                   type: object
                 type: array
               serviceAccountName:
-                description: ServiceAccountName is used to check access from the current resource to a resource (eg. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
+                description: ServiceAccountName is used to check access from the current resource to a resource (for ex. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               version:
                 description: Version of the APM Server.
@@ -1120,7 +1129,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: beats.beat.k8s.elastic.co
 spec:
   group: beat.k8s.elastic.co
@@ -1254,16 +1263,17 @@ spec:
                 description: ElasticsearchRef is a reference to an Elasticsearch cluster running in the same Kubernetes cluster.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               image:
                 description: Image is the Beat Docker image to deploy. Version and Type have to match the Beat in the image.
@@ -1272,16 +1282,17 @@ spec:
                 description: KibanaRef is a reference to a Kibana instance running in the same Kubernetes cluster. It allows automatic setup of dashboards and visualizations.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               secureSettings:
                 description: SecureSettings is a list of references to Kubernetes Secrets containing sensitive configuration options for the Beat. Secrets data can be then referenced in the Beat config using the Secret's keys or as specified in `Entries` field of each SecureSetting.
@@ -1314,7 +1325,7 @@ spec:
                 description: ServiceAccountName is used to check access from the current resource to Elasticsearch resource in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               type:
-                description: Type is the type of the Beat to deploy (filebeat, metricbeat, heartbeat, auditbeat, journalbeat, packetbeat, etc.). Any string can be used, but well-known types will have the image field defaulted and have the appropriate Elasticsearch roles created automatically. It also allows for dashboard setup when combined with a `KibanaRef`.
+                description: Type is the type of the Beat to deploy (filebeat, metricbeat, heartbeat, auditbeat, journalbeat, packetbeat, and so on). Any string can be used, but well-known types will have the image field defaulted and have the appropriate Elasticsearch roles created automatically. It also allows for dashboard setup when combined with a `KibanaRef`.
                 maxLength: 20
                 pattern: '[a-zA-Z0-9-]+'
                 type: string
@@ -1368,7 +1379,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: elasticmapsservers.maps.k8s.elastic.co
 spec:
   group: maps.k8s.elastic.co
@@ -1433,16 +1444,17 @@ spec:
                 description: ElasticsearchRef is a reference to an Elasticsearch cluster running in the same Kubernetes cluster.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               http:
                 description: HTTP holds the HTTP layer configuration for Elastic Maps Server.
@@ -1630,7 +1642,7 @@ spec:
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
               serviceAccountName:
-                description: ServiceAccountName is used to check access from the current resource to a resource (eg. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
+                description: ServiceAccountName is used to check access from the current resource to a resource (for ex. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               version:
                 description: Version of Elastic Maps Server.
@@ -1688,7 +1700,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: elasticsearches.elasticsearch.k8s.elastic.co
 spec:
   group: elasticsearch.k8s.elastic.co
@@ -1951,19 +1963,20 @@ spec:
                       elasticsearchRefs:
                         description: ElasticsearchRefs is a reference to a list of monitoring Elasticsearch clusters running in the same Kubernetes cluster. Due to existing limitations, only a single Elasticsearch cluster is currently supported.
                         items:
-                          description: ObjectSelector defines a reference to a Kubernetes object.
+                          description: ObjectSelector defines a reference to a Kubernetes object which can be an Elastic resource managed by the operator or a Secret describing an external Elastic resource not managed by the operator.
                           properties:
                             name:
-                              description: Name of the Kubernetes object.
+                              description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                               type: string
                             namespace:
                               description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                               type: string
+                            secretName:
+                              description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                              type: string
                             serviceName:
                               description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                               type: string
-                          required:
-                          - name
                           type: object
                         type: array
                     type: object
@@ -1973,19 +1986,20 @@ spec:
                       elasticsearchRefs:
                         description: ElasticsearchRefs is a reference to a list of monitoring Elasticsearch clusters running in the same Kubernetes cluster. Due to existing limitations, only a single Elasticsearch cluster is currently supported.
                         items:
-                          description: ObjectSelector defines a reference to a Kubernetes object.
+                          description: ObjectSelector defines a reference to a Kubernetes object which can be an Elastic resource managed by the operator or a Secret describing an external Elastic resource not managed by the operator.
                           properties:
                             name:
-                              description: Name of the Kubernetes object.
+                              description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                               type: string
                             namespace:
                               description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                               type: string
+                            secretName:
+                              description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                              type: string
                             serviceName:
                               description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                               type: string
-                          required:
-                          - name
                           type: object
                         type: array
                     type: object
@@ -2293,7 +2307,7 @@ spec:
                       description: ElasticsearchRef is a reference to an Elasticsearch cluster running within the same k8s cluster.
                       properties:
                         name:
-                          description: Name of the Kubernetes object.
+                          description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                           type: string
                         namespace:
                           description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
@@ -2301,8 +2315,6 @@ spec:
                         serviceName:
                           description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                           type: string
-                      required:
-                      - name
                       type: object
                     name:
                       description: Name is the name of the remote cluster as it is set in the Elasticsearch settings. The name is expected to be unique for each remote clusters.
@@ -2340,7 +2352,7 @@ spec:
                   type: object
                 type: array
               serviceAccountName:
-                description: ServiceAccountName is used to check access from the current resource to a resource (eg. a remote Elasticsearch cluster) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
+                description: ServiceAccountName is used to check access from the current resource to a resource (for ex. a remote Elasticsearch cluster) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               transport:
                 description: Transport holds transport layer settings for Elasticsearch.
@@ -2606,8 +2618,6 @@ spec:
                       stalled:
                         description: Stalled represents a state where no progress can be made. It is only available for clusters managed with the Elasticsearch shutdown API.
                         type: boolean
-                    required:
-                    - nodes
                     type: object
                   upgrade:
                     description: UpgradeOperation provides an overview of the pending or in progress changes applied by the operator to update the Elasticsearch nodes in the cluster. **This API is in technical preview and may be changed or removed in a future release.**
@@ -2637,8 +2647,6 @@ spec:
                           - status
                           type: object
                         type: array
-                    required:
-                    - nodes
                     type: object
                   upscale:
                     description: UpscaleOperation provides an overview of in progress changes applied by the operator to add Elasticsearch nodes to the cluster. **This API is in technical preview and may be changed or removed in a future release.**
@@ -2664,8 +2672,6 @@ spec:
                           - status
                           type: object
                         type: array
-                    required:
-                    - nodes
                     type: object
                 required:
                 - downscale
@@ -3294,7 +3300,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: enterprisesearches.enterprisesearch.k8s.elastic.co
 spec:
   group: enterprisesearch.k8s.elastic.co
@@ -3359,16 +3365,17 @@ spec:
                 description: ElasticsearchRef is a reference to the Elasticsearch cluster running in the same Kubernetes cluster.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               http:
                 description: HTTP holds the HTTP layer configuration for Enterprise Search resource.
@@ -3556,7 +3563,7 @@ spec:
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
               serviceAccountName:
-                description: ServiceAccountName is used to check access from the current resource to a resource (eg. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
+                description: ServiceAccountName is used to check access from the current resource to a resource (for ex. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               version:
                 description: Version of Enterprise Search.
@@ -3648,16 +3655,17 @@ spec:
                 description: ElasticsearchRef is a reference to the Elasticsearch cluster running in the same Kubernetes cluster.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               http:
                 description: HTTP holds the HTTP layer configuration for Enterprise Search resource.
@@ -3845,7 +3853,7 @@ spec:
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
               serviceAccountName:
-                description: ServiceAccountName is used to check access from the current resource to a resource (eg. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
+                description: ServiceAccountName is used to check access from the current resource to a resource (for ex. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               version:
                 description: Version of Enterprise Search.
@@ -3900,7 +3908,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: 'elastic-operator'
     app.kubernetes.io/name: 'eck-operator-crds'
-    app.kubernetes.io/version: '2.1.0'
+    app.kubernetes.io/version: '2.2.0'
   name: kibanas.kibana.k8s.elastic.co
 spec:
   group: kibana.k8s.elastic.co
@@ -3958,31 +3966,33 @@ spec:
                 description: ElasticsearchRef is a reference to an Elasticsearch cluster running in the same Kubernetes cluster.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               enterpriseSearchRef:
                 description: EnterpriseSearchRef is a reference to an EnterpriseSearch running in the same Kubernetes cluster. Kibana provides the default Enterprise Search UI starting version 7.14.
                 properties:
                   name:
-                    description: Name of the Kubernetes object.
+                    description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                     type: string
                   namespace:
                     description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                     type: string
+                  secretName:
+                    description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                    type: string
                   serviceName:
                     description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                     type: string
-                required:
-                - name
                 type: object
               http:
                 description: HTTP holds the HTTP layer configuration for Kibana.
@@ -4174,19 +4184,20 @@ spec:
                       elasticsearchRefs:
                         description: ElasticsearchRefs is a reference to a list of monitoring Elasticsearch clusters running in the same Kubernetes cluster. Due to existing limitations, only a single Elasticsearch cluster is currently supported.
                         items:
-                          description: ObjectSelector defines a reference to a Kubernetes object.
+                          description: ObjectSelector defines a reference to a Kubernetes object which can be an Elastic resource managed by the operator or a Secret describing an external Elastic resource not managed by the operator.
                           properties:
                             name:
-                              description: Name of the Kubernetes object.
+                              description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                               type: string
                             namespace:
                               description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                               type: string
+                            secretName:
+                              description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                              type: string
                             serviceName:
                               description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                               type: string
-                          required:
-                          - name
                           type: object
                         type: array
                     type: object
@@ -4196,19 +4207,20 @@ spec:
                       elasticsearchRefs:
                         description: ElasticsearchRefs is a reference to a list of monitoring Elasticsearch clusters running in the same Kubernetes cluster. Due to existing limitations, only a single Elasticsearch cluster is currently supported.
                         items:
-                          description: ObjectSelector defines a reference to a Kubernetes object.
+                          description: ObjectSelector defines a reference to a Kubernetes object which can be an Elastic resource managed by the operator or a Secret describing an external Elastic resource not managed by the operator.
                           properties:
                             name:
-                              description: Name of the Kubernetes object.
+                              description: Name of an existing Kubernetes object corresponding to an Elastic resource managed by ECK.
                               type: string
                             namespace:
                               description: Namespace of the Kubernetes object. If empty, defaults to the current namespace.
                               type: string
+                            secretName:
+                              description: 'SecretName is the name of an existing Kubernetes secret that contains connection information for associating an Elastic resource not managed by the operator. The referenced secret must contain the following: - `url`: the URL to reach the Elastic resource - `username`: the username of the user to be authenticated to the Elastic resource - `password`: the password of the user to be authenticated to the Elastic resource - `ca.crt`: the CA certificate in PEM format (optional). This field cannot be used in combination with the other fields name, namespace or serviceName.'
+                              type: string
                             serviceName:
                               description: ServiceName is the name of an existing Kubernetes service which is used to make requests to the referenced object. It has to be in the same namespace as the referenced resource. If left empty, the default HTTP service of the referenced resource is used.
                               type: string
-                          required:
-                          - name
                           type: object
                         type: array
                     type: object
@@ -4245,7 +4257,7 @@ spec:
                   type: object
                 type: array
               serviceAccountName:
-                description: ServiceAccountName is used to check access from the current resource to a resource (eg. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
+                description: ServiceAccountName is used to check access from the current resource to a resource (for ex. Elasticsearch) in a different namespace. Can only be used if ECK is enforcing RBAC on references.
                 type: string
               version:
                 description: Version of Kibana.
