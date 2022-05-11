@@ -57,16 +57,16 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-{{- template "elastic.oidc" }}
+{{- template "elastic.oidc" . }}
 
     podTemplate:
       spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"
 
-{{- template "elastic.tolerations" }}
+{{- template "elastic.tolerations" . }}
 
-{{- template "elastic.securitycontext" }}
+{{- template "elastic.securitycontext" . }}
 
         initContainers:
         - name: elastic-internal-init-keystore
@@ -93,11 +93,11 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-{{- template "elastic.oidc" }}
+{{- template "elastic.oidc" .}}
     podTemplate:
       spec:
 
-{{- template "elastic.tolerations" }}
+{{- template "elastic.tolerations" .}}
 
         initContainers:
         - name: elastic-internal-init-keystore
@@ -111,7 +111,7 @@ spec:
           - name: ZONE
             value: dummyzone
 
-{{- template "elastic.securitycontext" }}
+{{- template "elastic.securitycontext" . }}
 {{ end }}      
 
 
@@ -127,11 +127,11 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-{{- template "elastic.oidc" }}
+{{- template "elastic.oidc" . }}
     podTemplate:
       spec:
 
-{{- template "elastic.tolerations" }}
+{{- template "elastic.tolerations" . }}
 
         initContainers:
         - name: elastic-internal-init-keystore
@@ -146,7 +146,7 @@ spec:
             value: dummyzone
 
 
-{{- template "elastic.securitycontext" }}
+{{- template "elastic.securitycontext" .}}
 {{ end }}      
 
 {{ if gt ( .Values.ingest.nodeset.count |toString|atoi) 0 }}
@@ -160,11 +160,11 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-{{- template "elastic.oidc" }}
+{{- template "elastic.oidc" .}}
     podTemplate:
       spec:
 
-{{- template "elastic.tolerations" }}
+{{- template "elastic.tolerations" .}}
 
         initContainers:
         - name: elastic-internal-init-keystore
@@ -182,6 +182,6 @@ spec:
         nodeSelector:
           org.myorg.node-type/compute: "true"   
 
-{{- template "elastic.securitycontext" }}
+{{- template "elastic.securitycontext" .}}
 
 {{ end }}      
