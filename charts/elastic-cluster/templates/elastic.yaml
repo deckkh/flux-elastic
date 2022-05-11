@@ -1,4 +1,20 @@
-# trying yaml anchors
+
+{{- define "elastic.oidc" }}
+      xpack.security.authc.realms.oidc.myrealm:
+        order: 1
+        rp.client_id: "the_client_id"
+        rp.response_type: code
+        rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
+        op.issuer: "https://op.example.org"
+        op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
+        op.token_endpoint: "https://op.example.org/oauth2/v1/token"
+        op.jwkset_path: "https://login.microsoftonline.com/3232323-5566-3333-123456789012/discovery/v2.0/keys" 
+        op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
+        op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
+        rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
+        claims.principal: sub
+        claims.groups: "http://example.info/claims/groups"
+{{- end }}
 
 
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -27,20 +43,7 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-      xpack.security.authc.realms.oidc.myrealm:
-        order: 1
-        rp.client_id: "the_client_id"
-        rp.response_type: code
-        rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-        op.issuer: "https://op.example.org"
-        op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-        op.token_endpoint: "https://op.example.org/oauth2/v1/token"
-        op.jwkset_path: "https://login.microsoftonline.com/3232323-5566-3333-123456789012/discovery/v2.0/keys" 
-        op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-        op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-        rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
-        claims.principal: sub
-        claims.groups: "http://example.info/claims/groups"
+{{- template "elastic.oidc" }}
 
     podTemplate:
       spec:
@@ -83,20 +86,7 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-      xpack.security.authc.realms.oidc.myrealm:
-        order: 1
-        rp.client_id: "the_client_id"
-        rp.response_type: code
-        rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-        op.issuer: "https://op.example.org"
-        op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-        op.token_endpoint: "https://op.example.org/oauth2/v1/token"
-        op.jwkset_path: "https://login.microsoftonline.com/3232323-5566-3333-123456789012/discovery/v2.0/keys" 
-        op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-        op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-        rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
-        claims.principal: sub
-        claims.groups: "http://example.info/claims/groups"
+{{- template "elastic.oidc" }}
     podTemplate:
       spec:
 
@@ -134,20 +124,7 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-      xpack.security.authc.realms.oidc.myrealm:
-        order: 1
-        rp.client_id: "the_client_id"
-        rp.response_type: code
-        rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-        op.issuer: "https://op.example.org"
-        op.jwkset_path: "https://login.microsoftonline.com/3232323-5566-3333-123456789012/discovery/v2.0/keys" 
-        op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-        op.token_endpoint: "https://op.example.org/oauth2/v1/token"
-        op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-        op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-        rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
-        claims.principal: sub
-        claims.groups: "http://example.info/claims/groups"
+{{- template "elastic.oidc" }}
     podTemplate:
       spec:
 
@@ -184,20 +161,7 @@ spec:
       xpack.security.authc.realms.native.native1:
         order: 0
 
-      xpack.security.authc.realms.oidc.myrealm:
-        order: 1
-        rp.client_id: "the_client_id"
-        rp.response_type: code
-        rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-        op.issuer: "https://op.example.org"
-        op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-        op.token_endpoint: "https://op.example.org/oauth2/v1/token"
-        op.jwkset_path: "https://login.microsoftonline.com/3232323-5566-3333-123456789012/discovery/v2.0/keys" 
-        op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-        op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-        rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
-        claims.principal: sub
-        claims.groups: "http://example.info/claims/groups"
+{{- template "elastic.oidc" }}
     podTemplate:
       spec:
 
