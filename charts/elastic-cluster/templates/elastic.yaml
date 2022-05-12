@@ -1,4 +1,39 @@
+{{- define "elastic.zoneawareness"}}
+      cluster.routing.allocation.awareness.attributes: zone
+      node.attr.zone: ${ZONE}
+{{- end }}
+
+{{- define "elastic.containers"}}
+        initContainers:
+        - name: elastic-internal-init-keystore
+          env:
+          - name: ZONE
+            value: dummyzone
+
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ZONE
+            value: dummyzone
+{{- end}}
+
+
+{{- define "elastic.volumeclaim"}}
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .storage}}
+        storageClassName: {{ .storageclass}}
+{{- end}}
+
 {{- define "elastic.oidc" }}
+      xpack.security.authc.realms.native.native1:
+        order: 0
       xpack.security.authc.realms.oidc.myrealm:
         order: 1
         rp.client_id: "the_client_id"
@@ -31,6 +66,36 @@
 {{- end }}
 
 
+{{- define "elastic.nodeset" }}
+{{- $root := index . 0 -}}
+{{- $local := index . 1 -}}
+{{ if gt ( $local.count |toString|atoi) 0 }}
+
+  - name: {{ $local.name}}
+    count: {{ $local.count}}
+    config:
+      node.roles: {{ $local.roles}}
+{{- template "elastic.zoneawareness" $local }}
+      node.store.allow_mmap: false
+{{- template "elastic.oidc" $root }}
+
+    podTemplate:
+      spec:
+        nodeSelector:
+          org.myorg.node-type/compute: "true" 
+
+
+{{- template "elastic.tolerations" $local }}
+{{- template "elastic.securitycontext" $local }}
+{{- template "elastic.containers" $local }}
+{{- template "elastic.volumeclaim" $local }}
+
+{{ end }}
+
+
+
+{{- end }}
+
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
@@ -45,143 +110,7 @@ spec:
 
   nodeSets:
 
-{{ if gt ( .Values.master.nodeset.count |toString|atoi) 0 }}
-  - name: master
-    count: {{ .Values.master.nodeset.count}}
-    config:
-      node.roles: ['master']
-      cluster.routing.allocation.awareness.attributes: zone
-      node.attr.zone: ${ZONE}
-      
-      node.store.allow_mmap: false
-      xpack.security.authc.realms.native.native1:
-        order: 0
-
-{{- template "elastic.oidc" . }}
-
-    podTemplate:
-      spec:
-        nodeSelector:
-          org.myorg.node-type/compute: "true"
-
-{{- template "elastic.tolerations" . }}
-
-{{- template "elastic.securitycontext" . }}
-
-        initContainers:
-        - name: elastic-internal-init-keystore
-          env:
-          - name: ZONE
-            value: dummyzone
-
-        containers:
-        - name: elasticsearch
-          env:
-          - name: ZONE
-            value: dummyzone
-
-{{ end }}
-
-{{ if gt ( .Values.data.nodeset.count |toString|atoi) 0 }}
-  - name: data
-    count: {{ .Values.data.nodeset.count}}
-    config:
-      node.roles: ['data']
-      node.store.allow_mmap: false      
-      cluster.routing.allocation.awareness.attributes: zone
-      node.attr.zone: ${ZONE}
-      xpack.security.authc.realms.native.native1:
-        order: 0
-
-{{- template "elastic.oidc" .}}
-    podTemplate:
-      spec:
-
-{{- template "elastic.tolerations" .}}
-
-        initContainers:
-        - name: elastic-internal-init-keystore
-          env:
-          - name: ZONE
-            value: dummyzone
-
-        containers:
-        - name: elasticsearch
-          env:
-          - name: ZONE
-            value: dummyzone
-
-{{- template "elastic.securitycontext" . }}
-{{ end }}      
-
-
-
-{{ if gt ( .Values.datahot.nodeset.count |toString|atoi) 0 }}
-  - name: datahot
-    count: {{ .Values.datahot.nodeset.count}}
-    config:
-      node.roles: ['data_hot','data_content']
-      node.store.allow_mmap: false            
-      cluster.routing.allocation.awareness.attributes: zone
-      node.attr.zone: ${ZONE}
-      xpack.security.authc.realms.native.native1:
-        order: 0
-
-{{- template "elastic.oidc" . }}
-    podTemplate:
-      spec:
-
-{{- template "elastic.tolerations" . }}
-
-        initContainers:
-        - name: elastic-internal-init-keystore
-          env:
-          - name: ZONE
-            value: dummyzone
-
-        containers:
-        - name: elasticsearch
-          env:
-          - name: ZONE
-            value: dummyzone
-
-
-{{- template "elastic.securitycontext" .}}
-{{ end }}      
-
-{{ if gt ( .Values.ingest.nodeset.count |toString|atoi) 0 }}
-  - name: ingest
-    count: {{ .Values.ingest.nodeset.count}}
-    config:
-      node.roles: ['ingest','transform']
-      node.store.allow_mmap: false            
-      cluster.routing.allocation.awareness.attributes: zone
-      node.attr.zone: ${ZONE}
-      xpack.security.authc.realms.native.native1:
-        order: 0
-
-{{- template "elastic.oidc" .}}
-    podTemplate:
-      spec:
-
-{{- template "elastic.tolerations" .}}
-
-        initContainers:
-        - name: elastic-internal-init-keystore
-          env:
-          - name: ZONE
-            value: dummyzone
-
-        containers:
-        - name: elasticsearch
-          env:
-          - name: ZONE
-            value: dummyzone
-
-
-        nodeSelector:
-          org.myorg.node-type/compute: "true"   
-
-{{- template "elastic.securitycontext" .}}
-
-{{ end }}      
+{{- template "elastic.nodeset" (list .  .Values.master.nodeset)}}
+{{- template "elastic.nodeset" (list .  .Values.data.nodeset)}}
+{{- template "elastic.nodeset" (list .  .Values.datahot.nodeset)}}
+{{- template "elastic.nodeset" (list .  .Values.ingest.nodeset)}}

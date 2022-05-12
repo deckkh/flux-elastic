@@ -7,20 +7,36 @@ elastic:
   version: 8.1.0
 
 master:
-  nodeset: 
+  nodeset:
+    name: master 
     count: 3
+    roles: "['master']"
+    storage: 1Gi
+    storageclass: "default"
 
 data:
   nodeset: 
+    name: data
     count: 2    
+    roles: "['data']"
+    storage: 1Gi
+    storageclass: "default"
 
 datahot:
   nodeset: 
+    name: datahot
     count: 0        
+    roles: "['datahot','data_content']"
+    storage: 1Gi
+    storageclass: "default"
 
 ingest:
   nodeset: 
+    name: ingest
     count: 0            
+    roles: "['ingest']"
+    storage: 1Gi
+    storageclass: "default"
 
 rolemappings:
   mapping1: False
