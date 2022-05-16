@@ -1,11 +1,11 @@
-{{ if  .Values.ingestpipelines.helloworld }}
+{{ if  .Values.sprint }}
 apiVersion: elastic.elastic-operator/v1
 kind: IngestPipeline
 metadata:
-  name: {{ .Release.Name}}-ingestpipeline-helloworld
+  name: {{ .Release.Name}}-ingestpipeline-sprint
   namespace: {{ .Release.Namespace}}
 spec:
-  name: {{ .Release.Name}}-ingestpipeline-helloworld
+  name: {{ .Release.Name}}-ingestpipeline-sprint
   cluster: {{ .Release.Name}}
   body: |
           {
@@ -15,7 +15,7 @@ spec:
                 "set" : {
                   "description" : "My optional processor description , modified",
                   "field": "my-keyword-field",
-                  "value": "foohelloworld"
+                  "value": "sprint"
                 }
               }
             ]

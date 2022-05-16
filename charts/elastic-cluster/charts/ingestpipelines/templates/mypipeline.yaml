@@ -1,11 +1,11 @@
-{{ if  .Values.ingestpipelines.api }}
+{{ if  .Values.mypipeline }}
 apiVersion: elastic.elastic-operator/v1
 kind: IngestPipeline
 metadata:
-  name: {{ .Release.Name}}-ingestpipeline-api
+  name: {{ .Release.Name}}-ingestpipeline-mypipeline
   namespace: {{ .Release.Namespace}}
 spec:
-  name: api
+  name: mypipeline
   cluster: {{ .Release.Name}}
   body: |
           {

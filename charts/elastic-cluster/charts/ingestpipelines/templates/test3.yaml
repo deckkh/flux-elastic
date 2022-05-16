@@ -1,11 +1,11 @@
-{{ if  .Values.ingestpipelines.test4 }}
+{{ if  .Values.test3 }}
 apiVersion: elastic.elastic-operator/v1
 kind: IngestPipeline
 metadata:
-  name: {{ .Release.Name}}-ingestpipeline-test4
+  name: {{ .Release.Name}}-ingestpipeline-test3
   namespace: {{ .Release.Namespace}}
 spec:
-  name: {{ .Release.Name}}-ingestpipeline-test4
+  name: test3
   cluster: {{ .Release.Name}}
   body: |
           {
@@ -13,9 +13,9 @@ spec:
             "processors" : [
               {
                 "set" : {
-                  "description" : "My optional processor description , modified",
+                  "description" : "My optional processor description",
                   "field": "my-keyword-field",
-                  "value": "footest4"
+                  "value": "footest3"
                 }
               }
             ]
