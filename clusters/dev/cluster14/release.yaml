@@ -15,11 +15,27 @@ spec:
         namespace: flux-system
   interval: 1m
   values:
-    myvar: yeah
 
-    elastic:
-      version: 8.2.0
+    cluster:
 
+      elastic:
+        version: 8.2.0
+
+      master:
+        nodeset: 
+          count: 1    
+
+      data:
+        nodeset: 
+          count: 0
+
+      datahot:
+        nodeset: 
+          count: 1
+          
+      ingest:
+        nodeset: 
+          count: 1
 
     scripts:
       script1: true  
@@ -109,18 +125,3 @@ spec:
       helloworld: true
       sprint: true
 
-    master:
-      nodeset: 
-        count: 1    
-
-    data:
-      nodeset: 
-        count: 0
-
-    datahot:
-      nodeset: 
-        count: 1
-        
-    ingest:
-      nodeset: 
-        count: 1
