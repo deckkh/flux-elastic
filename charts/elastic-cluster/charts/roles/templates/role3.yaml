@@ -1,4 +1,4 @@
-{{ if   .Values.roles.role3 }}
+{{ if   .Values.role3 }}
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:

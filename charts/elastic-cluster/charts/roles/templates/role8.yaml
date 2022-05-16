@@ -1,20 +1,20 @@
-{{ if   .Values.roles.role2 }}
+{{ if   .Values.role8 }}
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:
-  name: {{ .Release.Name}}-role-role2
+  name: {{ .Release.Name}}-role-role8
   namespace: {{ .Release.Namespace}}
 spec:
-  name: role2
+  name: {{ .Release.Name}}-role-role8
   cluster: {{ .Release.Name}}
   body: |
     {
       "cluster": ["all"],
       "indices": [
           {
-            "names": [ "index2-*" ],
+            "names": [ "role8-*" ],
             "privileges": ["all"]
           }
       ]
     }  
-{{ end }}
+{{ end}}

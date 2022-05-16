@@ -1,18 +1,18 @@
-{{ if   .Values.roles.role7 }}
+{{ if   .Values.role6 }}
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticRole
 metadata:
-  name: {{ .Release.Name}}-role-role7
+  name: {{ .Release.Name}}-role-role6
   namespace: {{ .Release.Namespace}}
 spec:
-  name: {{ .Release.Name}}-role-role7
+  name: {{ .Release.Name}}-role-role6
   cluster: {{ .Release.Name}}
   body: |
     {
       "cluster": ["all"],
       "indices": [
           {
-            "names": [ "role7-*" ],
+            "names": [ "role6-*" ],
             "privileges": ["all"]
           }
       ]
