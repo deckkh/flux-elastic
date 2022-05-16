@@ -1,13 +1,13 @@
-{{ if   .Values.watchers.watcher1 }}
+{{ if   .Values.sprint }}
 apiVersion: elastic.elastic-operator/v1
 kind: Watcher
 metadata:
-  name: {{ .Release.Name}}-watcher-watcher1
+  name: {{ .Release.Name}}-watcher-sprint
   namespace: {{ .Release.Namespace}}
 spec:
-  name: watcher1
+  name: sprint
   cluster: {{ .Release.Name}}
-  secret: {{ .Release.Name}}-watcher1
+  secret: {{ .Release.Name}}-sprint
   body: |
           {
             "trigger" : {
