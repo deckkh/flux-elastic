@@ -1,4 +1,4 @@
-{{ if  .Values.connectors.hello }}
+{{ if  .Values.hello }}
 apiVersion: elastic.elastic-operator/v1
 kind: Connector
 metadata:
