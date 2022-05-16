@@ -1,4 +1,4 @@
-{{ if  .Values.kibanaspaces.filebeat }}
+{{ if  .Values.filebeat }}
 apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:

@@ -1,0 +1,17 @@
+{{ if  .Values.winlogbeat }}
+apiVersion: elastic.elastic-operator/v1
+kind: KibanaSpace
+metadata:
+  name: {{ .Release.Name}}-kibanaspace-winlogbeat
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: winlogbeat
+  cluster: {{ .Release.Name}}
+  body: |
+    {
+        "id": "winlogbeat",
+        "name": "winlogbeat",
+        "description": "winlogbeat space",
+        "initials": "w1"
+    }
+{{ end}}    

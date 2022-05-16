@@ -1,17 +1,17 @@
-{{ if  .Values.kibanaspaces.rally }}
+{{ if  .Values.dummy }}
 apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:
-  name: {{ .Release.Name}}-kibanaspace-rally
+  name: {{ .Release.Name}}-kibanaspace-dummy
   namespace: {{ .Release.Namespace}}
 spec:
-  name: rally
+  name: dummy
   cluster: {{ .Release.Name}}
   body: |
     {
-        "id": "rally",
-        "name": "rally",
-        "description": "my fancy rally space",
+        "id": "dummy",
+        "name": "dummy",
+        "description": "my fancy dummy space",
         "initials": "m1"
     }
 {{ end }}    

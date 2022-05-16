@@ -1,4 +1,4 @@
-{{ if  .Values.kibanaspaces.helloworld }}
+{{ if  .Values.helloworld }}
 apiVersion: elastic.elastic-operator/v1
 kind: KibanaSpace
 metadata:
