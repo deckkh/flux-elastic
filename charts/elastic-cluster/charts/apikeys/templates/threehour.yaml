@@ -1,4 +1,4 @@
-{{ if   .Values.apikeys.threehour }}
+{{ if   .Values.threehour }}
 apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:

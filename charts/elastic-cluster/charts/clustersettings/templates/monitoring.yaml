@@ -1,4 +1,4 @@
-{{ if   .Values.clustersettings.monitoring }}
+{{ if   .Values.monitoring }}
 apiVersion: elastic.elastic-operator/v1
 kind: ClusterSetting
 metadata:

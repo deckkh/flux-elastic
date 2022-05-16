@@ -1,4 +1,4 @@
-{{ if   .Values.clustersettings.recovery }}
+{{ if   .Values.recovery }}
 apiVersion: elastic.elastic-operator/v1
 kind: ClusterSetting
 metadata:

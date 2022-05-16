@@ -1,23 +1,27 @@
-{{ if   .Values.apikeys.metricbeat }}
+{{ if   .Values.filebeat }}
 apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
-  name: {{.Release.Name}}-apikey-metricbeat
+  name: {{.Release.Name}}-apikey-filebeat
   namespace: {{ .Release.Namespace}}
 spec:
-  name: metricbeat
+  name: filebeat
   cluster: {{ .Release.Name}}
+  owner:
+    pipeline: mypipeline2
+    team: myteam2
+    email: "myemail2@corp.com"
   body: |
         {
-          "name": "metricbeat",
-          "expiration": "20d",   
+          "name": "filebeat",
+          "expiration": "10d",   
           "role_descriptors": { 
             "role-a": {
               "cluster": ["all"],
               "index": [
                 {
-                  "names": ["metricbeat-*","other-*"],
-                  "privileges": ["read","create"]
+                  "names": ["filebeat-*"],
+                  "privileges": ["read","create","write"]
                 }
               ]
             }

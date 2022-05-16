@@ -1,4 +1,4 @@
-{{ if   .Values.clustersettings.routingallocationdisk }}
+{{ if   .Values.routingallocationdisk }}
 apiVersion: elastic.elastic-operator/v1
 kind: ClusterSetting
 metadata:

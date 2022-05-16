@@ -1,26 +1,22 @@
-{{ if   .Values.apikeys.sprint }}
+{{ if   .Values.metricbeat }}
 apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
-  name: {{.Release.Name}}-apikey-sprint
+  name: {{.Release.Name}}-apikey-metricbeat
   namespace: {{ .Release.Namespace}}
 spec:
-  name: sprint
-  owner:
-    pipeline: devopsxx
-    team: "My Team"
-    email: "manager@corp.com"
+  name: metricbeat
   cluster: {{ .Release.Name}}
   body: |
         {
-          "name": "sprint",
-          "expiration": "30d",   
+          "name": "metricbeat",
+          "expiration": "20d",   
           "role_descriptors": { 
             "role-a": {
               "cluster": ["all"],
               "index": [
                 {
-                  "names": ["sprint-*"],
+                  "names": ["metricbeat-*","other-*"],
                   "privileges": ["read","create"]
                 }
               ]

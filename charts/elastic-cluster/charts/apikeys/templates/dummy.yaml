@@ -1,26 +1,22 @@
-{{ if   .Values.apikeys.onehour }}
+{{ if default false  .Values.dummy }}
 apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:
-  name: {{.Release.Name}}-apikey-onehour
+  name: {{.Release.Name}}-apikey-dummy
   namespace: {{ .Release.Namespace}}
 spec:
-  name: onehour
-  owner:
-    pipeline: devops37
-    team: "log management team"
-    email: "manager@corp.com"
+  name: dummy
   cluster: {{ .Release.Name}}
   body: |
         {
-          "name": "onehour",
-          "expiration": "1h",   
+          "name": "dummy",
+          "expiration": "40d",   
           "role_descriptors": { 
             "role-a": {
               "cluster": ["all"],
               "index": [
                 {
-                  "names": ["onehour-*"],
+                  "names": ["dummy-*"],
                   "privileges": ["read","create"]
                 }
               ]
