@@ -1,4 +1,4 @@
-{{ if  .Values.legacyindextemplates.winlogbeat }}
+{{ if  .Values.winlogbeat }}
 apiVersion: elastic.elastic-operator/v1
 kind: LegacyIndexTemplate
 metadata:

@@ -1,4 +1,4 @@
-{{ if  .Values.legacyindextemplates.api }}
+{{ if  .Values.api }}
 apiVersion: elastic.elastic-operator/v1
 kind: LegacyIndexTemplate
 metadata:

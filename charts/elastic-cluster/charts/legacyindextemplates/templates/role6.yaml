@@ -1,21 +1,21 @@
-{{ if  .Values.legacyindextemplates.myindextemplate }}
+{{ if  .Values.role6 }}
 apiVersion: elastic.elastic-operator/v1
 kind: LegacyIndexTemplate
 metadata:
-  name: {{ .Release.Name}}-legacyindextemplate-myindextemplate
+  name: {{ .Release.Name}}-legacyindextemplate-role6
   namespace: {{ .Release.Namespace}}
 spec:
-  name: myindextemplate
+  name: role6
   cluster: {{ .Release.Name}}
   body: |
             {
-              "index_patterns": ["te*", "bar*"],
+              "index_patterns": ["role6-*"],
               "settings": {
                 "number_of_shards": 1
               },
               "mappings": {
                 "_source": {
-                  "enabled": false
+                  "enabled": true
                 },
                 "properties": {
                   "host_name": {
