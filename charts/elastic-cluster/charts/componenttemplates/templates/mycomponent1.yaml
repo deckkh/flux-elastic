@@ -1,4 +1,4 @@
-{{ if  .Values.componenttemplates.mycomponent1 }}
+{{ if  .Values.mycomponent1 }}
 apiVersion: elastic.elastic-operator/v1
 kind: ComponentTemplate
 metadata:

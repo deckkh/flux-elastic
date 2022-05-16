@@ -1,4 +1,4 @@
-{{ if  .Values.componenttemplates.ecshost }}
+{{ if  .Values.ecshost }}
 apiVersion: elastic.elastic-operator/v1
 kind: ComponentTemplate
 metadata:

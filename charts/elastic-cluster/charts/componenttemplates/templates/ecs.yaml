@@ -1,18 +1,18 @@
-{{ if  .Values.componenttemplates.ecs2 }}
+{{ if  .Values.ecs }}
 apiVersion: elastic.elastic-operator/v1
 kind: ComponentTemplate
 metadata:
-  name: {{ .Release.Name}}-componenttemplate-ecs2
+  name: {{ .Release.Name}}-componenttemplate-ecs
   namespace: {{ .Release.Namespace}}
 spec:
-  name: ecs2
+  name: ecs
   cluster: {{ .Release.Name}}
   body: |
         {
           "template": {
             "mappings": {
               "properties": {
-                "layer": {
+                "event": {
                   "properties": {
                     "category": {
                       "type" : "keyword"
