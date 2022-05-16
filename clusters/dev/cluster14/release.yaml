@@ -91,13 +91,14 @@ spec:
       role8: true
 
     apikeys:
-      metricbeat: true
-      filebeat: true
-      dummy: true
-      onehour: true
-      noexpire: true
-      threehour: true
-      sprint: true
+      apikeys:
+        metricbeat: true
+        filebeat: true
+        dummy: true
+        onehour: true
+        noexpire: true
+        threehour: true
+        sprint: true
 
     kibanaspaces:
       metricbeat: false
