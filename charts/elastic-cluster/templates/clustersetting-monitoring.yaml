@@ -13,7 +13,7 @@ spec:
             "xpack" : {
               "monitoring" : {
                 "collection" : {
-                  "enabled" : "false"
+                  "enabled" : "true"
                 }
               }
             }
