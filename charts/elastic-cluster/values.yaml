@@ -1,7 +1,13 @@
 myvar: prod
 
 oidc:
+  enabled: true
   claimurl: "http://example.com/claims/groups"
+
+
+production:
+  enabled: false
+
 
 elastic:
   version: 8.1.0
@@ -10,46 +16,72 @@ master:
   nodeset:
     name: master 
     count: 3
-    roles: "['master']"
+    roles: 
+      - '"master"'
+      - '"remote_cluster_client"'    
     storage: 1Gi
     storageclass: "default"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
 
 data:
   nodeset: 
     name: data
     count: 2    
-    roles: "['data']"
+    roles: 
+      - '"data"'
+      - '"ml"'
+      - '"remote_cluster_client"'
     storage: 1Gi
     storageclass: "default"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
 
 datahot:
   nodeset: 
     name: datahot
     count: 0        
-    roles: "['datahot','data_content']"
+    roles: 
+      - '"data_hot"'
+      - '"data_content"'    
     storage: 1Gi
     storageclass: "default"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
 
 ingest:
   nodeset: 
     name: ingest
     count: 0            
-    roles: "['ingest']"
+    roles: 
+      - '"ingest"'
+      - '"remote_cluster_client"'
     storage: 1Gi
     storageclass: "default"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
 
 rolemappings:
-  mapping1: False
-  oidc1: False
-
+  donotremoveme: false
 
 ingestpipelines:
-  mypipeline: False
-  api: False
-  test3: False
-  test4: False
-  helloworld: False
-  sprint: False
+  donotremoveme: false
 
 ilms:
   mypolicy: False
@@ -60,70 +92,38 @@ slms:
 repos:
   myrepo: False
 
+apikeys:
+  donotremoveme: false
 
 roles:
-  role2: False
-  role3: false
-  role4: False
-  role5: False
-  role6: False
-  role7: False
-  role8: False
+  donotremoveme: false
 
 kibanaspaces:
-  metricbeat: False
-  winlogbeat: False
-  rally: false
-  dummy: false
-  api: false
-  filebeat: False
-  helloworld: False
-  sprint: False
-  
-apikeys:
-  metricbeat: false
-  filebeat: false
-  dummy: false
-  onehour: false
-  noexpire: false
-  threehour: false
-  sprint: false
+  donotremoveme: false
 
 clustersettings:
-  recovery: false  
-  monitoring: false
-  routingallocationdisk: false
+  donotremoveme: false
 
 legacyindextemplates:
-  myindextemplate: false
-  winlogbeat: false  
-  api: false  
-  role6: false  
+  donotremoveme: false
 
 indextemplates:
-  api: false  
+  donotremoveme: false
 
 componenttemplates:
-  mycomponent1: False  
-  ecs: False
-  ecshost: False
-  ecs2: False
-  ecs3: False
+  donotremoveme: false
 
 scripts:
-  script1: false  
+  donotremoveme: false
 
 watchers:
-  watcher1: false  
-  watcher2: false  
-  sprint: false  
+  donotremoveme: false
 
 transforms:
-  transform1: false  
+  donotremoveme: false
 
 dataviews:
-  hello: false
-  kibana: false  
+  donotremoveme: false
 
 connectors:
-  hello: false
+  donotremoveme: false
