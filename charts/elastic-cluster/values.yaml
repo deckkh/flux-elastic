@@ -98,9 +98,6 @@ roles:
 kibanaspaces:
   donotremoveme: false
 
-clustersettings:
-  donotremoveme: false
-
 legacyindextemplates:
   donotremoveme: false
 

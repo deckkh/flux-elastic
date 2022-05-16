@@ -1,6 +1,6 @@
 apiVersion: v2
-name: elastic-cluster-apikeys
-description: A Helm chart for Kubernetes apikey
+name: elastic-cluster-clustersettings
+description: A Helm chart for Kubernetes clustersettings
 
 # A chart can be either an 'application' or a 'library' chart.
 #
