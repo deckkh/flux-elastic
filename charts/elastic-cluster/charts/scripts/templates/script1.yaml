@@ -1,4 +1,4 @@
-{{ if   .Values.scripts.script1 }}
+{{ if   .Values.script1 }}
 apiVersion: elastic.elastic-operator/v1
 kind: Script
 metadata:

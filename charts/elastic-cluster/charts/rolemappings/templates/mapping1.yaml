@@ -1,4 +1,4 @@
-{{ if  .Values.rolemappings.mapping1 }}
+{{ if  .Values.mapping1 }}
 apiVersion: elastic.elastic-operator/v1
 kind: RoleMapping
 metadata:
