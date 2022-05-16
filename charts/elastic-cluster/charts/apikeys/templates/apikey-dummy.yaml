@@ -1,4 +1,4 @@
-{{ if   .Values.apikeys.dummy }}
+{{ if default false  .Values.apikeys.dummy }}
 apiVersion: elastic.elastic-operator/v1
 kind: ApiKey
 metadata:

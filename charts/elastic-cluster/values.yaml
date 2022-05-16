@@ -92,9 +92,6 @@ slms:
 repos:
   myrepo: False
 
-apikeys:
-  donotremoveme: false
-
 roles:
   donotremoveme: false
 
