@@ -2,7 +2,7 @@
 apiVersion: elastic.elastic-operator/v1
 kind: IndexTemplate
 metadata:
-  name: {{ .Release.Name}}-indextemplate-api
+  name: {{ .Release.Name}}-indextemplate-metricbeat
   namespace: {{ .Release.Namespace}}
 spec:
   name: metricbeat
