@@ -170,6 +170,9 @@ spec:
 {{- template "elastic.nodeset" (list .  .Values.master.nodeset)}}
 {{- template "elastic.nodeset" (list .  .Values.data.nodeset)}}
 {{- template "elastic.nodeset" (list .  .Values.datahot.nodeset)}}
+{{- template "elastic.nodeset" (list .  .Values.datawarm.nodeset)}}
+{{- template "elastic.nodeset" (list .  .Values.datacold.nodeset)}}
+{{- template "elastic.nodeset" (list .  .Values.datafrozen.nodeset)}}
 {{- template "elastic.nodeset" (list .  .Values.ingest.nodeset)}}
 
 

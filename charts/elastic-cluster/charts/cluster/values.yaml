@@ -61,6 +61,54 @@ datahot:
       memory: 1Gi
       cpu: 1
 
+datawarm:
+  nodeset: 
+    name: datawarm
+    count: 0        
+    roles: 
+      - '"data_warm"'
+      - '"data_content"'    
+    storage: 1Gi
+    storageclass: "standard"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
+
+datacold:
+  nodeset: 
+    name: datacold
+    count: 0        
+    roles: 
+      - '"data_cold"'
+      - '"data_content"'    
+    storage: 1Gi
+    storageclass: "standard"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
+
+datafrozen:
+  nodeset: 
+    name: datafrozen
+    count: 0        
+    roles: 
+      - '"data_frozen"'
+      - '"data_content"'    
+    storage: 1Gi
+    storageclass: "standard"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
+
 ingest:
   nodeset: 
     name: ingest
