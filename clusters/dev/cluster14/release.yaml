@@ -82,6 +82,11 @@ spec:
     indextemplates:
       api: true
       metricbeat: true
+      metricbeat1: true
+      metricbeat2: true
+      metricbeat3: true
+      metricbeat4: true
+      metricbeat5: true
 
     rolemappings:
       mapping1: true
