@@ -67,7 +67,6 @@ datawarm:
     count: 0        
     roles: 
       - '"data_warm"'
-      - '"data_content"'    
     storage: 1Gi
     storageclass: "standard"
     limits: 
@@ -83,7 +82,6 @@ datacold:
     count: 0        
     roles: 
       - '"data_cold"'
-      - '"data_content"'    
     storage: 1Gi
     storageclass: "standard"
     limits: 
@@ -99,7 +97,6 @@ datafrozen:
     count: 0        
     roles: 
       - '"data_frozen"'
-      - '"data_content"'    
     storage: 1Gi
     storageclass: "standard"
     limits: 
