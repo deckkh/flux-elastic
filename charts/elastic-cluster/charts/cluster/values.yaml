@@ -16,6 +16,7 @@ master:
   nodeset:
     name: master 
     count: 3
+    shared_cache: 0     
     roles: 
       - '"master"'
       - '"remote_cluster_client"'    
@@ -32,6 +33,7 @@ data:
   nodeset: 
     name: data
     count: 2    
+    shared_cache: 0     
     roles: 
       - '"data"'
       - '"ml"'
@@ -48,7 +50,8 @@ data:
 datahot:
   nodeset: 
     name: datahot
-    count: 0        
+    count: 0   
+    shared_cache: 0     
     roles: 
       - '"data_hot"'
       - '"data_content"'    
@@ -65,6 +68,7 @@ datawarm:
   nodeset: 
     name: datawarm
     count: 0        
+    shared_cache: 0     
     roles: 
       - '"data_warm"'
     storage: 1Gi
@@ -80,6 +84,7 @@ datacold:
   nodeset: 
     name: datacold
     count: 0        
+    shared_cache: 0     
     roles: 
       - '"data_cold"'
     storage: 1Gi
@@ -95,6 +100,7 @@ datafrozen:
   nodeset: 
     name: datafrozen
     count: 0        
+    shared_cache: 100000b
     roles: 
       - '"data_frozen"'
     storage: 1Gi
@@ -110,6 +116,7 @@ ingest:
   nodeset: 
     name: ingest
     count: 0            
+    shared_cache: 0     
     roles: 
       - '"ingest"'
       - '"remote_cluster_client"'

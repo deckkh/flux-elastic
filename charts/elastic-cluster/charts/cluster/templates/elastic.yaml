@@ -9,6 +9,10 @@
 {{- end }}
 
 
+{{- define "elastic.shared_cache"}}
+      xpack.searchable.snapshot.shared_cache.size: {{ .shared_cache }}
+{{- end }}
+
 {{- define "elastic.mmap"}}
       node.store.allow_mmap: {{ .Values.production.enabled }}
 {{ end }}
@@ -40,6 +44,7 @@
 {{- $local := index . 1 -}}
 {{- template "elastic.mmap" $root }}
 {{- template "elastic.zoneawareness" $local }}
+{{- template "elastic.shared_cache" $local }}
 {{- template "elastic.noderoles" $local }}
 {{- template "elastic.oidc" $root }}
 {{- end }}
