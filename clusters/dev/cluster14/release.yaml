@@ -92,6 +92,7 @@ spec:
       metricbeat7: true
       metricbeat8: true
       metricbeat9: true
+      metricbeat10: true
 
     rolemappings:
       mapping1: true
