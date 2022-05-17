@@ -11,7 +11,7 @@ spec:
           {
             "data_stream": {},
             "index_patterns": [
-              "metricbeat10-8.2.0"
+              "metricbeat10-8.*"
             ],
             "priority": 150,
             "template": {
