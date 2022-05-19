@@ -55,4 +55,4 @@ rules:
       - dataviews
       - connectors
       - alertrules
-    verbs: ["get", "list", "watch" ]
+    verbs: ["get","watch" ]
