@@ -20,7 +20,7 @@ spec:
       containers:
       - name: {{ .Release.Name}}
 #        imagePullPolicy: IfNotPresent
-        image: elasticcontroller:v1.2.58
+        image: elasticcontroller:v1.2.59
         ports:
         - containerPort: {{ .Values.ConfigMap.healthPort}}
           name: healthport
