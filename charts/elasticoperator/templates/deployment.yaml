@@ -23,11 +23,11 @@ spec:
         image: elasticcontroller:v1.2.59
         resources:
           limits:
-            memory: {{ .limits.memory}}
-            cpu: {{ .limits.cpu}}
+            memory: {{ .Values.limits.memory}}
+            cpu: {{ .Values.limits.cpu}}
           requests:
-            memory: {{ .requests.memory}}
-            cpu: {{ .requests.cpu}}          
+            memory: {{ .Values.requests.memory}}
+            cpu: {{ .Values.requests.cpu}}          
         ports:
         - containerPort: {{ .Values.ConfigMap.healthPort}}
           name: healthport
