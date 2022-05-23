@@ -10,5 +10,5 @@ subjects:
   name: {{ .Release.Name}}-{{ .Values.Operator.Sa}}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
+  kind: Role
   name: {{ .Release.Name}}-{{ .Values.Operator.Role }}
