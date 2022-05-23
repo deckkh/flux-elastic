@@ -1,22 +1,50 @@
-myvar: prod
-
-oidc:
-  enabled: true
-  claimurl: "http://example.com/claims/groups"
 
 
 production:
   enabled: false
 
 
+kibana:
+  config:
+    count: 1
+    endpoint: "https://kibana_endpoint"
+    securitycontext:
+      runasuser: 1000
+      fsgroup: 1000
+      runasnonroot: true
+    tolerations:
+      key: tier
+      value: application
+    nodeselector:
+      key: "tier"
+      value:  "application"   
+
 elastic:
-  version: 8.1.0
+  config: 
+    version: 8.1.0
+    zoneawareness: true
+    oidc:
+      enabled: true
+      name: myazure
+      description: "login with oidc"
+      claimurl: "http://example.com/claims/groups"
+      clientid: "clientid"
+      tenantid: "tenantid"
+    securitycontext:
+      runasuser: 1000
+      fsgroup: 1000
+      runasnonroot: true
+    tolerations:
+      key: tier
+      value: application
+    nodeselector:
+      key: "tier"
+      value:  "application"   
 
 master:
   nodeset:
     name: master 
     count: 3
-    shared_cache: 0     
     roles: 
       - '"master"'
       - '"remote_cluster_client"'    
@@ -33,7 +61,6 @@ data:
   nodeset: 
     name: data
     count: 2    
-    shared_cache: 0     
     roles: 
       - '"data"'
       - '"ml"'
@@ -51,7 +78,6 @@ datahot:
   nodeset: 
     name: datahot
     count: 0   
-    shared_cache: 0     
     roles: 
       - '"data_hot"'
       - '"data_content"'    
@@ -68,7 +94,6 @@ datawarm:
   nodeset: 
     name: datawarm
     count: 0        
-    shared_cache: 0     
     roles: 
       - '"data_warm"'
     storage: 1Gi
@@ -84,7 +109,6 @@ datacold:
   nodeset: 
     name: datacold
     count: 0        
-    shared_cache: 0     
     roles: 
       - '"data_cold"'
     storage: 1Gi
@@ -116,10 +140,56 @@ ingest:
   nodeset: 
     name: ingest
     count: 0            
-    shared_cache: 0     
     roles: 
       - '"ingest"'
       - '"remote_cluster_client"'
+    storage: 1Gi
+    storageclass: "standard"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
+
+coord:
+  nodeset: 
+    name: coord
+    count: 0            
+    roles: 
+      - '"remote_cluster_client"'
+    storage: 1Gi
+    storageclass: "standard"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
+
+ml:
+  nodeset: 
+    name: ml
+    count: 0            
+    roles: 
+      - '"remote_cluster_client"'
+      - '"ml"'
+    storage: 1Gi
+    storageclass: "standard"
+    limits: 
+      memory: 2Gi
+      cpu: 2
+    requests: 
+      memory: 1Gi
+      cpu: 1
+
+transform:
+  nodeset: 
+    name: transform
+    count: 0            
+    roles: 
+      - '"remote_cluster_client"'
+      - '"transform"'
     storage: 1Gi
     storageclass: "standard"
     limits: 

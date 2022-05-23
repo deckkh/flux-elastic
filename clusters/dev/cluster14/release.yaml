@@ -20,7 +20,8 @@ spec:
     cluster:
 
       elastic:
-        version: 8.2.0
+        config: 
+          version: 8.2.0
 
       master:
         nodeset: 

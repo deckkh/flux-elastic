@@ -3,19 +3,5 @@ kind: Elasticsearch
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}  
-spec:
-  version: {{ .Values.elastic.version }}
-
-{{- template "elastic.securesettings" . }}
-
-  nodeSets:
-
-{{- template "elastic.nodeset" (list .  .Values.master.nodeset)}}
-{{- template "elastic.nodeset" (list .  .Values.data.nodeset)}}
-{{- template "elastic.nodeset" (list .  .Values.datahot.nodeset)}}
-{{- template "elastic.nodeset" (list .  .Values.datawarm.nodeset)}}
-{{- template "elastic.nodeset" (list .  .Values.datacold.nodeset)}}
-{{- template "elastic.nodeset" (list .  .Values.datafrozen.nodeset)}}
-{{- template "elastic.nodeset" (list .  .Values.ingest.nodeset)}}
-
-
+{{- template "elastic.annotations" .}}  
+{{- template "elastic.spec" .}}

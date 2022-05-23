@@ -4,27 +4,4 @@ metadata:
   name: {{ .Release.Name}}
   namespace: {{ .Release.Namespace }}
 spec:
-  version: {{ .Values.elastic.version}}
-  count: 1
-  elasticsearchRef:
-    name: {{ .Release.Name }}
-  podTemplate:
-    spec:
-
-      tolerations:
-        - key: myapp
-          operator: Equal
-          value: worker
-          effect: NoSchedule
-            
-      securityContext:
-        runAsNonRoot: true
-        fsGroup: 1000
-        runAsUser: 1000
-  config:
-    monitoring:
-      ui:
-        ccs:
-          enabled: false
-        
-            
+{{- template "kibana.spec" .}}
