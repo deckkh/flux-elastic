@@ -23,20 +23,20 @@ spec:
         config: 
           version: 8.2.2
           tolerations:
-            key: org.myorg.node-type/compute
-            value: true
+            key: myapp
+            value: worker
           nodeselector:
-            key: org.myorg.node-type/compute
-            value:  true 
+            key:  org.myorg.node-type/compute
+            value:  "true"
 
       kibana:
         config: 
           tolerations:
-            key: org.myorg.node-type/compute
-            value: true
+            key: myapp
+            value: worker
           nodeselector:
             key: org.myorg.node-type/compute
-            value:  true 
+            value:  "true"
 
       master:
         nodeset: 
