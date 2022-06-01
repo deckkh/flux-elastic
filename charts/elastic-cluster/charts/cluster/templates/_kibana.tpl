@@ -24,12 +24,26 @@
           enabled: false
 {{ end }}
 
+{{- define "kibana.containers"}}
+        containers:
+        - name: kibana
+          resources:
+            limits:
+              memory: {{ .limits.memory}}
+              cpu: {{ .limits.cpu}}
+            requests:
+              memory: {{ .requests.memory}}
+              cpu: {{ .requests.cpu}}        
+          env:
+{{- end}}
+
 {{- define "kibana.podtemplate" }}
   podTemplate:
     spec:
 {{- include "generic.nodeselector" .Values.kibana.config.nodeselector | indent 6 }}
 {{- include "generic.tolerations" .Values.kibana.config.tolerations |indent 6 }}
 {{- include "generic.securitycontext" .Values.kibana.config.securitycontext |indent 6 }}
+{{- template "kibana.containers" .Values.kibana.config }}
 {{ end }}
 
 {{- define "kibana.spec" }}
