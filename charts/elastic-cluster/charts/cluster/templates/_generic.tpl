@@ -25,6 +25,6 @@ securityContext:
 {{- define "generic.nodeselector" }}
 {{ if  .key }}
 nodeSelector:
-  {{ .key }}: {{ .value}}
+  {{ .key }}: {{ .value | quote }}
 {{- end }}
 {{- end }}
