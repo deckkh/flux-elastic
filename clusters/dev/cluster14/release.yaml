@@ -23,6 +23,8 @@ spec:
         config: 
           version: 8.2.2
           zoneawareness: false
+          oidc:
+            enabled: false
           tolerations:
             key: myapp
             value: worker
