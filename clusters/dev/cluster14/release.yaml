@@ -21,7 +21,22 @@ spec:
 
       elastic:
         config: 
-          version: 8.2.0
+          version: 8.2.2
+          tolerations:
+            key: org.myorg.node-type/compute
+            value: true
+          nodeselector:
+            key: org.myorg.node-type/compute
+            value:  true 
+
+      kibana:
+        config: 
+          tolerations:
+            key: org.myorg.node-type/compute
+            value: true
+          nodeselector:
+            key: org.myorg.node-type/compute
+            value:  true 
 
       master:
         nodeset: 
