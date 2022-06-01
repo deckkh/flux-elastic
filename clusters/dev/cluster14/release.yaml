@@ -63,7 +63,7 @@ spec:
 
       datafrozen:
         nodeset: 
-          count: 2
+          count: 0
 
       ingest:
         nodeset: 
