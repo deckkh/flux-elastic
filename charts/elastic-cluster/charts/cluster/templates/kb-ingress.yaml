@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m    
   name: {{ .Release.Name}}-kb-ingress
   namespace: {{ .Release.Namespace}}
 spec:
