@@ -22,9 +22,9 @@ kibana:
       memory: 2Gi
       cpu: 2
     requests: 
-      memory: 1Gi
-      cpu: 1
-      
+      memory: 2Gi
+      cpu: 2
+
 elastic:
   config: 
     version: 8.1.0
