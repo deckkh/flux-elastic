@@ -25,16 +25,15 @@
 {{ end }}
 
 {{- define "kibana.containers"}}
-        containers:
-        - name: kibana
-          resources:
-            limits:
-              memory: {{ .limits.memory}}
-              cpu: {{ .limits.cpu}}
-            requests:
-              memory: {{ .requests.memory}}
-              cpu: {{ .requests.cpu}}        
-          env:
+containers:
+- name: kibana
+  resources:
+    limits:
+      memory: {{ .limits.memory}}
+      cpu: {{ .limits.cpu}}
+    requests:
+      memory: {{ .requests.memory}}
+      cpu: {{ .requests.cpu}}        
 {{- end}}
 
 {{- define "kibana.podtemplate" }}
@@ -43,7 +42,7 @@
 {{- include "generic.nodeselector" .Values.kibana.config.nodeselector | indent 6 }}
 {{- include "generic.tolerations" .Values.kibana.config.tolerations |indent 6 }}
 {{- include "generic.securitycontext" .Values.kibana.config.securitycontext |indent 6 }}
-{{- template "kibana.containers" .Values.kibana.config }}
+{{- include "kibana.containers" .Values.kibana.config | indent 6 }}
 {{ end }}
 
 {{- define "kibana.spec" }}
