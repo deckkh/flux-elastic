@@ -22,6 +22,7 @@ spec:
       elastic:
         config: 
           version: 8.2.2
+          zoneawareness: false
           tolerations:
             key: myapp
             value: worker
