@@ -7,7 +7,7 @@
 tolerations:
   - key: {{ .key}}
     operator: Equal
-    value: {{ .value }}
+    value: {{ .value | quote }}
     effect: NoSchedule          
 {{- end }}
 {{end }}
