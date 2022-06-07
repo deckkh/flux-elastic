@@ -22,3 +22,7 @@ limits:
 requests:
   memory: 2Gi
   cpu: 1
+
+
+rbac:
+  aggregateClusterRoles: true

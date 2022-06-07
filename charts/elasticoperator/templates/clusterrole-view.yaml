@@ -1,0 +1,37 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name}}-view
+
+  labels:
+  {{- if .Values.rbac.aggregateClusterRoles }}
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
+    rbac.authorization.k8s.io/aggregate-to-edit: "true"
+    rbac.authorization.k8s.io/aggregate-to-admin: "true"
+  {{- end }}
+
+rules:
+  - apiGroups:
+        - ""
+        - elastic.elastic-operator
+    resources:
+      - indextemplates
+      - kibanaspaces
+      - ilms
+      - slms
+      - elasticroles
+      - rolemappings
+      - clustersettings
+      - ingestpipelines
+      - repos
+      - apikeys
+      - componenttemplates
+      - legacyindextemplates
+      - watchers
+      - scripts
+      - transforms
+      - dataviews
+      - connectors
+      - alertrules
+    verbs: ["get","watch","list" ]
