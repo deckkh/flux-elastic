@@ -45,7 +45,10 @@ elastic:
       value: application
     nodeselector:
       key: "tier"
-      value:  "application"   
+      value:  "application"
+    monitoring:
+      enabled: false
+      cluster: none
 
 master:
   nodeset:

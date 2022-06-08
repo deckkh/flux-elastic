@@ -31,6 +31,11 @@ spec:
           nodeselector:
             key:  org.myorg.node-type/compute
             value:  "true"
+          monitoring:
+            enabled: true
+            cluster: cluster14
+
+
 
       kibana:
         config: 
