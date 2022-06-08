@@ -17,6 +17,7 @@ spec:
         providers:
           - type: kubernetes
             scope: cluster
+            namespace: {{ .Release.Namespace}}
             hints.enabled: false
             templates:
               - condition:
@@ -62,7 +63,7 @@ spec:
   deployment:
     podTemplate:
       spec:
-        serviceAccountName: metricbeat
+        serviceAccountName: {{ .Release.Name}}-metricbeat
         automountServiceAccountToken: true
         # required to read /etc/beat.yml
 
