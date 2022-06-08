@@ -62,8 +62,8 @@ spec:
   deployment:
     podTemplate:
       spec:
-        # serviceAccountName: metricbeat
-        # automountServiceAccountToken: true
+        serviceAccountName: metricbeat
+        automountServiceAccountToken: true
         # required to read /etc/beat.yml
 
         securityContext: 
