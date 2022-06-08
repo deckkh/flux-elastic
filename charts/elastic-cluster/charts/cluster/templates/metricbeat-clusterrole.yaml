@@ -1,9 +1,8 @@
 {{ if .Values.elastic.config.monitoring.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   name: {{ .Release.Name}}-metricbeat
-  namespace: {{ .Release.Namespace}}
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
