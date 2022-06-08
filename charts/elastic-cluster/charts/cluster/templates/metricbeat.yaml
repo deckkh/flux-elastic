@@ -34,7 +34,7 @@ spec:
                       - ml_job
                       - node_stats
                       - shard
-                    period: 30s
+                    period: {{ .Values.elastic.config.monitoring.period }}
                     hosts: "https://${data.host}:${data.ports.https}"
                     username: ${MONITORED_ES_USERNAME}
                     password: ${MONITORED_ES_PASSWORD}
@@ -50,7 +50,7 @@ spec:
                   - module: kibana
                     metricsets:
                       - stats
-                    period: 10s
+                    period: {{ .Values.elastic.config.monitoring.period }}
                     hosts: "https://${data.host}:${data.ports.https}"
                     username: ${MONITORED_ES_USERNAME}
                     password: ${MONITORED_ES_PASSWORD}
@@ -78,7 +78,7 @@ spec:
               memory: 1Gi
               cpu: 1
             requests:
-              memory: 1gi
+              memory: 1Gi
               cpu: 1
           env:
           - name: MONITORED_ES_USERNAME
