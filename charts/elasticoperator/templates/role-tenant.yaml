@@ -36,11 +36,11 @@ rules:
       #- replicationcontrollers
       #- serviceaccounts
       #- services
-      # - secrets
-      # - indextemplates
-      # - kibanaspaces
-      # - ilms
-      # - slms
+      - secrets
+      - indextemplates
+      - kibanaspaces
+      - ilms
+      - slms
       - elasticroles
       - rolemappings
       - clustersettings
