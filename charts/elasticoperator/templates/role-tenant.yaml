@@ -13,7 +13,7 @@ rules:
         #- extensions
         #- policy
         #- rbac.authorization.k8s.io
-        - elastic.elastic-operator
+        - {{ .Values.ConfigMap.ApiGroup}}
     resources:
       #- pods
       #- componentstatuses
