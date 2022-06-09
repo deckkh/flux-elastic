@@ -4,7 +4,7 @@ ConfigMap:
   keyVault: "https://flux-akv.azurewebsites.net/api/FluxDemo"
   elasticUserSecretSuffix: "-es-elastic-user"
   ReconLoopInterval: "300"
-  ApiGroup: "elastic.elastic-operator1"
+  ApiGroup: "elastic.elastic-operator"
   ApiVersion: "v1"
   CacheTtl: "15"
   Namespace: "observability"
