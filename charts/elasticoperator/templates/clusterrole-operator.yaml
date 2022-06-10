@@ -37,6 +37,7 @@ rules:
       #- services
       - configmaps
       - secrets
+      - namespaces
       - indextemplates
       - kibanaspaces
       - ilms
