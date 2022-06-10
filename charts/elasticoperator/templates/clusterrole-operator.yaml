@@ -1,9 +1,8 @@
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
-  name: {{ .Release.Name}}-tenant-{{ .Values.Operator.Role }}
-  namespace: {{ .Values.ConfigMap.Namespace}}
+  name: {{ .Release.Name}}-operator-{{ .Values.Operator.Role }}
 rules:
   - apiGroups:
         - ""
@@ -36,6 +35,7 @@ rules:
       #- replicationcontrollers
       #- serviceaccounts
       #- services
+      - configmaps
       - secrets
       - indextemplates
       - kibanaspaces

@@ -14,7 +14,7 @@ metadata:
 rules:
   - apiGroups:
         - ""
-        - elastic.elastic-operator
+        - {{ .Values.ConfigMap.ApiGroup}}
     resources:
       - indextemplates
       - kibanaspaces
