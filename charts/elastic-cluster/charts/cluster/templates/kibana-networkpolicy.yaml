@@ -12,7 +12,13 @@ spec:
     - Ingress
     - Egress
   egress:
-    - {}
+  - ports:
+    - port: 9200
+      protocol: TCP
+    to:
+    - podSelector:
+        matchLabels:
+          elasticsearch.k8s.elastic.co/cluster-name:  {{ .Release.Name}}     
   ingress:
     - from:
         - namespaceSelector:
