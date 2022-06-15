@@ -10,9 +10,6 @@ spec:
       elasticsearch.k8s.elastic.co/cluster-name:  {{ .Release.Name}} 
   policyTypes:
     - Ingress
-    - Egress
-  egress:
-    - {}
   ingress:
     - from:
         - namespaceSelector:
