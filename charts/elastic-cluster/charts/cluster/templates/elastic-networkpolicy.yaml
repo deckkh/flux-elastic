@@ -35,6 +35,16 @@ spec:
       - protocol: TCP
         port: 9200
     - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ .Values.eck.namespace }}
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ .Values.eck.name}}
+      ports:
+      - protocol: TCP
+        port: 9200
+    - from:
       - podSelector:
           matchLabels:
             elasticsearch.k8s.elastic.co/cluster-name:  {{ .Release.Name}} 

@@ -8,6 +8,10 @@ elasticcontroller:
   namespace: system
   name: iitech-elasticoperator
 
+eck:
+  namespace: system
+  name: elastic-operator
+
 kibana:
   config:
     count: 1
