@@ -1,0 +1,26 @@
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ .Release.Name}}-elastic-networkpolicy
+  namespace: {{ .Release.Namespace}}
+spec:
+  podSelector:
+    matchLabels:
+      elasticsearch.k8s.elastic.co/cluster-name:  {{ .Release.Name}} 
+  policyTypes:
+    - Ingress
+    - Egress
+  egress:
+    - {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: {{ .Values.elasticcontroller.namespace }}
+        - podSelector:
+            matchLabels:
+              app: {{ .Values.elasticcontroller.name}}
+      ports:
+      - protocol: TCP
+        port: 9200

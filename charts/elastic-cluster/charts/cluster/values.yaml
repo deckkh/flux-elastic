@@ -4,6 +4,10 @@ production:
   enabled: false
 
 
+elasticcontroller:
+  namespace: system
+  name: iitech-elasticoperator
+
 kibana:
   config:
     count: 1
