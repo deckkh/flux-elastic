@@ -33,6 +33,7 @@ elastic:
   config: 
     version: 8.1.0
     zoneawareness: true
+    affinity: false
     oidc:
       enabled: true
       name: myazure

@@ -134,12 +134,24 @@
 {{- end}}
 
 
+{{- define "elastic.affinity" }}
+{{ if  .Values.elastic.config.affinity }}
+affinity:
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchLabels:
+          elasticsearch.k8s.elastic.co/cluster-name: {{ .Release.Name}}
+      topologyKey: kubernetes.io/hostname
+{{ end }}
+{{ end }}
 
 {{- define "elastic.podtemplate" }}
 {{- $root := index . 0 }}
 {{- $local := index . 1 }}
     podTemplate:
       spec:
+{{- include "elastic.affinity" $root | indent 8 }}
 {{- include "generic.nodeselector" $root.Values.elastic.config.nodeselector | indent 8 }}
 {{- include "generic.tolerations" $root.Values.elastic.config.tolerations | indent 8}}
 {{- include "generic.securitycontext" $root.Values.elastic.config.securitycontext | indent 8 }}
