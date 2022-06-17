@@ -76,6 +76,8 @@ spec:
 
     scripts:
       script1: true  
+      get_indexmanagers_not_reporting_data_teams_transforms: true
+
 
     watchers:
       watcher1: true

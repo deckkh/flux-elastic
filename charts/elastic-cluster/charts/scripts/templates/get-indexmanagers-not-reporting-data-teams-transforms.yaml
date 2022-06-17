@@ -1,0 +1,17 @@
+{{ if   .Values.get_indexmanagers_not_reporting_data_teams_transforms }}
+apiVersion: elastic.elastic-operator/v1
+kind: Script
+metadata:
+  name: {{ .Release.Name}}-script-get-indexmanagers-not-reporting-data-teams-transforms
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: get-indexmanagers-not-reporting-data-teams-transforms
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "script" : {
+              "lang" : "painless",
+              "source" : " def section = new HashMap(); def facts = new ArrayList(); for(entry in ctx.payload.entrySet()){ def host = entry.getKey(); def IndexManagerTypeNamesMap = entry.getValue(); def fact = new HashMap(); fact.name = host; String IndexManagers = ''; for(kvp in IndexManagerTypeNamesMap.entrySet()){ def IndexManagerType = kvp.getKey(); def IndexManagerNames = kvp.getValue(); IndexManagers += '<strong>' + IndexManagerType + '</strong>' + ': ' + String.join(', ', IndexManagerNames) + '<br>'; } fact.value = IndexManagers; facts.add(fact); } section.facts = facts; return [ 'text': '<strong> IndexManagers not reporting data in the last ' + ctx.metadata.last_period + '</strong>', 'sections': [ section ] ]; "
+            }
+          }
+{{ end }}
