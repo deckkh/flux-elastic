@@ -638,16 +638,16 @@ spec:
             spec:
               type: object
               properties:
-                KeyVaultName:
+                keyvaultname:
                   type: string
-                KeyVaultSecret:
+                keyvaultsecret:
                   type: string
-                K8sSecret:
+                k8ssecret:
                   type: string
-                K8sKey:
+                k8skey:
                   type: string
-                K8sType:
+                k8stype:
                   type: string
-                K8sLabel:
+                k8slabel:
                   type: string
               required: ["keyvaultsecret","k8ssecret","k8skey","k8stype"]
