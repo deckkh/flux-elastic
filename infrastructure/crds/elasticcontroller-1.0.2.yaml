@@ -612,3 +612,42 @@ spec:
                 space:
                   type: string
               required: ["name","body","cluster","space"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: syncsecret.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: syncsecrets
+    singular: syncsecret
+    kind: SyncSecret
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic Sync Secret"
+          properties:
+            spec:
+              type: object
+              properties:
+                keyvaultname:
+                  type: string
+                keyvaultsecret:
+                  type: string
+                k8ssecret:
+                  type: string
+                k8skey:
+                  type: string
+                k8stype:
+                  type: string
+                k8slabel:
+                  type: string
+              required: ["keyvaultsecret","k8ssecret","k8skey","k8stype"]
