@@ -1,0 +1,11 @@
+apiVersion: elastic.elastic-operator/v1
+kind: SyncSecret
+metadata:
+  name: {{.Release.Name}}
+  namespace: {{ .Release.Namespace}}
+spec:
+  keyvaultsecret: mysecret
+  k8ssecret: test
+  k8stype: opaque
+  data: opaque
+  k8slabel: mylabel
