@@ -9,3 +9,4 @@ spec:
   k8stype: opaque
   k8skey: data
   k8slabel: mylabel
+  cluster: dummy
