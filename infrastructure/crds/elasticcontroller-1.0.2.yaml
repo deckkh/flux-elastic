@@ -638,6 +638,8 @@ spec:
             spec:
               type: object
               properties:
+                cluster:
+                  type: string
                 keyvaultname:
                   type: string
                 keyvaultsecret:
