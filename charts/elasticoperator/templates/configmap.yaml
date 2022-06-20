@@ -17,3 +17,4 @@ data:
   Namespace: "{{ .Values.ConfigMap.Namespace}}"
   LongRunningCheck: "{{ .Values.ConfigMap.LongRunningCheck}}"
   LongRunningMax: "{{ .Values.ConfigMap.LongRunningMax}}"
+  SyncSecrets: "{{ .Values.ConfigMap.SyncSecrets}}"
