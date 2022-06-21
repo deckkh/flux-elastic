@@ -9,5 +9,5 @@ spec:
   k8ssecret: test
   k8stype: opaque
   k8skey: data
-  k8slabel: mylabel
+  k8slabel: "license.k8s.elastic.co/scope: operator"
   cluster: dummy
