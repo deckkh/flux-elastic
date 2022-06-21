@@ -55,7 +55,7 @@ rules:
       - dataviews
       - connectors
       - alertrules
-      - syncobjects
+      - syncsecrets
     verbs: ["get","watch","list" ]
   - apiGroups:
         - ""
