@@ -4,10 +4,9 @@ metadata:
   name: {{.Release.Name}}
   namespace: {{ .Release.Namespace}}
 spec:
-  keyvaultsecret: mysecret
+  keyvaultsecret: threehour
   k8snamespace: system
-  k8ssecret: test
+  k8ssecret: elastic-license
   k8stype: opaque
-  k8skey: data
+  k8skey: license
   k8slabel: "license.k8s.elastic.co/scope: operator"
-  cluster: dummy
