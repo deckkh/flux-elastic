@@ -36,7 +36,6 @@ rules:
       #- serviceaccounts
       #- services
       - configmaps
-      - secrets
       - namespaces
       - indextemplates
       - kibanaspaces
@@ -57,3 +56,8 @@ rules:
       - connectors
       - alertrules
     verbs: ["get","watch","list" ]
+  - apiGroups:
+        - ""
+    resources:
+      - secrets
+    verbs: ["get", "watch", "list", "create", "delete", "patch", "update"]    
