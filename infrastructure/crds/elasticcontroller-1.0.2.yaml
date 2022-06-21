@@ -642,6 +642,8 @@ spec:
                   type: string
                 keyvaultsecret:
                   type: string
+                k8snamespace:
+                  type: string
                 k8ssecret:
                   type: string
                 k8skey:

@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Release.Namespace}}
 spec:
   keyvaultsecret: mysecret
+  k8snamespace: system
   k8ssecret: test
   k8stype: opaque
   k8skey: data
