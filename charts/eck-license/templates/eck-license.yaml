@@ -6,7 +6,7 @@ metadata:
 spec:
   keyvaultsecret: threehour
   k8snamespace: system
-  k8ssecret: elastic-license
+  k8ssecret: eck-license
   k8stype: opaque
   k8skey: license
   k8slabel: "license.k8s.elastic.co/scope: operator"
