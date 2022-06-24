@@ -20,7 +20,7 @@ spec:
       containers:
       - name: {{ .Release.Name}}
 #        imagePullPolicy: IfNotPresent
-        image: elasticcontroller:v2.0.14
+        image: elasticcontroller:v3.0.1
         resources:
           limits:
             memory: {{ .Values.limits.memory}}
