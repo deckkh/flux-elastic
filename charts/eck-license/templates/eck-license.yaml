@@ -4,8 +4,8 @@ metadata:
   name: {{.Release.Name}}
   namespace: {{ .Release.Namespace}}
 spec:
-  keyvaultsecret: eck-license
-  k8snamespace: system
+  keyvaultsecret: ElastiControllerDummySecret
+  k8snamespace: observability
   k8ssecret: eck-license
   k8stype: opaque
   k8skey: license
