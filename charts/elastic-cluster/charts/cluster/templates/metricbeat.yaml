@@ -14,6 +14,8 @@ spec:
     output.elasticsearch:
       hosts: ["https://{{ .Values.elastic.config.monitoring.cluster}}-es-http:9200"]
       api_key: ${API_KEY}
+      ssl.verification_mode: "certificate"
+      ssl.certificate_authorities: ["/usr/share/metricbeat/certs/esmon-ca/tls.crt"]
 
     metricbeat:
       autodiscover:
@@ -105,6 +107,8 @@ spec:
             name: es-ca
           - mountPath: /usr/share/metricbeat/certs/kb-ca
             name: kb-ca
+          - mountPath: /usr/share/metricbeat/certs/esmon-ca
+            name: esmon-ca
 
         volumes:
         - name: data-volume
@@ -113,6 +117,10 @@ spec:
         - name: es-ca
           secret:
             secretName: {{ .Release.Name}}-es-http-ca-internal
+
+        - name: esmon-ca
+          secret:
+            secretName: {{ .Values.elastic.config.monitoring.cluster}}-es-http-ca-internal
 
         - name: kb-ca
           secret:
