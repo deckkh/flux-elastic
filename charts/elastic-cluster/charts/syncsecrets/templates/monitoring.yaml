@@ -2,8 +2,8 @@
 apiVersion: elastic.elastic-operator/v1
 kind: SyncSecret
 metadata:
-  name: {{.Release.Name}}
-  namespace: {{ .Release.Namespace}}-monitoring
+  name: {{.Release.Name}}-monitoring
+  namespace: {{ .Release.Namespace}}
 spec:
   keyvaultsecret: {{.Release.Name}}-apikey-monitoring
   k8snamespace: observability
