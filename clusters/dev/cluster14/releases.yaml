@@ -175,3 +175,5 @@ spec:
       helloworld: true
       sprint: true
 
+    syncsecrets:
+      monitoring: true

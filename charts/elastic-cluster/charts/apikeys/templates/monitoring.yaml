@@ -1,0 +1,26 @@
+{{ if   .Values.monitoring }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-monitoring
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: monitoring
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "name": "monitoring", 
+            "expiration": "90d",   
+            "role_descriptors": {
+              "metricbeat_monitoring": { 
+                "cluster": ["monitor"],
+                "index": [
+                  {
+                    "names": [".monitoring-beats-*"],
+                    "privileges": ["create_index", "create"]
+                  }
+                ]
+              }
+            }
+          }
+{{ end}}        

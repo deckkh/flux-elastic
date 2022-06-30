@@ -1,0 +1,13 @@
+{{ if   .Values.monitoring }}
+apiVersion: elastic.elastic-operator/v1
+kind: SyncSecret
+metadata:
+  name: {{.Release.Name}}
+  namespace: {{ .Release.Namespace}}-monitoring
+spec:
+  keyvaultsecret: {{.Release.Name}}-apikey-monitoring
+  k8snamespace: observability
+  k8ssecret: {{.Release.Name}}-apikey-monitoring
+  k8stype: opaque
+  k8skey: apikey
+{{ end }}
