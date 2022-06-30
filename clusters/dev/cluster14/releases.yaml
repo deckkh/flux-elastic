@@ -164,6 +164,7 @@ spec:
       noexpire: true
       threehour: true
       sprint: true
+      monitoring: true
 
     kibanaspaces:
       metricbeat: false
