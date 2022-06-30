@@ -8,6 +8,6 @@ spec:
   keyvaultsecret: {{.Release.Name}}-apikey-monitoring
   k8snamespace: observability
   k8ssecret: {{.Release.Name}}-apikey-monitoring
-  k8stype: opaque
+  k8stype: Opaque
   k8skey: apikey
 {{ end }}
