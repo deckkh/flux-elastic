@@ -9,9 +9,12 @@ metadata:
 spec:
   type: metricbeat
   version: {{ .Values.elastic.config.version }}
-  elasticsearchRef:
-    name: {{ .Values.elastic.config.monitoring.cluster }}
   config:
+
+    output.elasticsearch:
+      hosts: ["https://{{ .Values.elastic.config.monitoring.cluster}}-es-http:9200"]
+      api_key: ${API_KEY}
+
     metricbeat:
       autodiscover:
         providers:
