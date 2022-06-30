@@ -22,7 +22,10 @@ spec:
           elasticsearch.k8s.elastic.co/cluster-name:  {{ .Release.Name}} 
   - ports:
     - port: 53
-      protocol: UDP     
+      protocol: UDP
+  - ports:
+    - port: 443
+      protocol: TCP
   ingress:
     - from:
         - namespaceSelector:
@@ -47,7 +50,21 @@ spec:
     - from:
       - podSelector:
           matchLabels:
+            beat.k8s.elastic.co/name: {{ .Release.Name}}-metricbeat
+      ports:
+      - port: 9200
+        protocol: TCP  
+    - from:
+      - podSelector:
+          matchLabels:
             elasticsearch.k8s.elastic.co/cluster-name:  {{ .Release.Name}} 
       ports:
       - port: 9300
         protocol: TCP  
+    - from:
+      - podSelector:
+          matchLabels:
+            kibana.k8s.elastic.co/name: {{ .Release.Name}}
+      ports:
+      - port: 9200
+        protocol: TCP          
