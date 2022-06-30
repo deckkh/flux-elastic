@@ -89,6 +89,11 @@ spec:
               secretKeyRef:
                 key: elastic
                 name: {{ .Release.Name}}-es-elastic-user
+          - name: API_KEY
+            valueFrom:
+              secretKeyRef:
+                key: apikey
+                name: {{ .Values.elastic.config.monitoring.cluster}}-apikey-monitoring
 
           volumeMounts:
           - mountPath: /usr/share/metricbeat/data
