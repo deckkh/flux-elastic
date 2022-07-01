@@ -18,3 +18,4 @@ data:
   LongRunningCheck: "{{ .Values.ConfigMap.LongRunningCheck}}"
   LongRunningMax: "{{ .Values.ConfigMap.LongRunningMax}}"
   SyncSecrets: "{{ .Values.ConfigMap.SyncSecrets}}"
+  ElasticUsers: "{{ .Values.ConfigMap.ElasticUsers}}"

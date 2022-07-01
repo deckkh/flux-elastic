@@ -12,6 +12,7 @@ ConfigMap:
   LongRunningCheck: "1"
   LongRunningMax: "5"
   SyncSecrets: "True"
+  ElasticUsers: "True"
 
 Operator:
   Sa: "sa"
