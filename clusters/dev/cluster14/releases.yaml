@@ -150,6 +150,7 @@ spec:
 
     users:
       user2: true
+      monitoring: true
 
     roles: 
       role3: true

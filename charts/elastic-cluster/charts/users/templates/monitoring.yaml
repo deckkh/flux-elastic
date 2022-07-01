@@ -1,22 +1,21 @@
-{{ if   .Values.user2 }}
+{{ if   .Values.monitoring }}
 apiVersion: elastic.elastic-operator/v1
 kind: ElasticUser
 metadata:
-  name: {{ .Release.Name}}-users-user2
+  name: {{ .Release.Name}}-users-monitoring
   namespace: {{ .Release.Namespace}}
 spec:
-  name: user2
+  name: monitoring
   cluster: {{ .Release.Name}}
-  secret: {{ .Release.Name}}-users-user2
+  secret: {{ .Release.Name}}-users-monitoring
   k8skey: password
   k8stype: Opaque
-  k8slabel: "mylabel: user2"
   body: |
       {
         "password" : "${password}",
-        "roles" : [ "superuser" ],
-        "full_name" : "User2",
-        "email" : "user2@example.com",
+        "roles" : [ "remove_monitoring_agent", "remote_monitoring_collector" ],
+        "full_name" : "monitoring",
+        "email" : "monitoring@example.com",
         "metadata" : {
           "intelligence" : 9
         }
