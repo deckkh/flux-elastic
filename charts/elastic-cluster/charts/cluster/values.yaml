@@ -58,7 +58,7 @@ elastic:
     monitoring:
       enabled: false
       cluster: none
-      period: 30s
+      period: 10s
 
 master:
   nodeset:

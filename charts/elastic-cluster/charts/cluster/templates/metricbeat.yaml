@@ -88,12 +88,12 @@ spec:
               cpu: 1
           env:
           - name: MONITORED_ES_USERNAME
-            value: elastic
+            value: monitoring
           - name: MONITORED_ES_PASSWORD
             valueFrom:
               secretKeyRef:
-                key: elastic
-                name: {{ .Release.Name}}-es-elastic-user
+                key: password
+                name: {{ .Release.Name}}-users-monitoring
           - name: API_KEY
             valueFrom:
               secretKeyRef:
