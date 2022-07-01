@@ -7,9 +7,10 @@ metadata:
 spec:
   name: user2
   cluster: {{ .Release.Name}}
-  k8ssecret: {{ .Release.Name}}-user2
+  secret: {{ .Release.Name}}-user2
   k8skey: user2
   k8stype: Opaque
+  k8slabel: "mylabel: user2"
   body: |
       {
         "password" : "notthatsecret",
