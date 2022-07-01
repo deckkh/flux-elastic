@@ -1,0 +1,23 @@
+{{ if   .Values.user2 }}
+apiVersion: elastic.elastic-operator/v1
+kind: ElasticUser
+metadata:
+  name: {{ .Release.Name}}-users-user2
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: user2
+  cluster: {{ .Release.Name}}
+  k8ssecret: {{ .Release.Name}}-user2
+  k8skey: user2
+  k8sType: Opaque
+  body: |
+      {
+        "password" : "notthatsecret",
+        "roles" : [ "admin", "other_role1" ],
+        "full_name" : "User2",
+        "email" : "user2@example.com",
+        "metadata" : {
+          "intelligence" : 9
+        }
+      }
+{{ end }}
