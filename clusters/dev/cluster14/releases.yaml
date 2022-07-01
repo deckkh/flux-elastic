@@ -148,6 +148,9 @@ spec:
       monitoring: false
       routingallocationdisk: false
 
+    users:
+      user2: true
+
     roles: 
       role3: true
       role4: true
