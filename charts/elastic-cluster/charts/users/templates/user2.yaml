@@ -9,7 +9,7 @@ spec:
   cluster: {{ .Release.Name}}
   k8ssecret: {{ .Release.Name}}-user2
   k8skey: user2
-  k8sType: Opaque
+  k8stype: Opaque
   body: |
       {
         "password" : "notthatsecret",
