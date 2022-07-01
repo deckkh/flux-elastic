@@ -653,3 +653,50 @@ spec:
                 k8slabel:
                   type: string
               required: ["keyvaultsecret","k8ssecret","k8skey","k8stype"]
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: elasticusers.elastic.elastic-operator
+spec:
+  group: elastic.elastic-operator
+  scope: Namespaced
+  names:
+    plural: elasticusers
+    singular: elasticuser
+    kind: ElasticUser
+    categories:
+    - elastic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          description: "Elastic User"
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                cluster:
+                  type: string
+                body:
+                  type: string
+                keyvaultname:
+                  type: string
+                keyvaultsecret:
+                  type: string
+                k8snamespace:
+                  type: string
+                k8ssecret:
+                  type: string
+                k8skey:
+                  type: string
+                k8stype:
+                  type: string
+                k8slabel:
+                  type: string
+              required: ["name","body","cluster","k8ssecret","k8skey","k8stype"]
