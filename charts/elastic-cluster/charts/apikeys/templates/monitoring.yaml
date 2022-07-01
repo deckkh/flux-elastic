@@ -16,8 +16,8 @@ spec:
                 "cluster": ["monitor","read_ilm"],
                 "index": [
                   {
-                    "names": [".monitoring-beats-*"],
-                    "privileges": ["create_index", "create"]
+                    "names": [".monitoring-*"],
+                    "privileges": ["create_index", "create","create_doc"]
                   }
                 ]
               }
