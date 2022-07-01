@@ -13,7 +13,7 @@ spec:
             "expiration": "90d",   
             "role_descriptors": {
               "metricbeat_monitoring": { 
-                "cluster": ["monitor"],
+                "cluster": ["monitor","read_ilm"],
                 "index": [
                   {
                     "names": [".monitoring-beats-*"],
