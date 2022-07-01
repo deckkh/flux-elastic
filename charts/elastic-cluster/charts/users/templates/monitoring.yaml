@@ -13,7 +13,7 @@ spec:
   body: |
       {
         "password" : "${password}",
-        "roles" : [ "remove_monitoring_agent", "remote_monitoring_collector" ],
+        "roles" : [ "retove_monitoring_agent", "remote_monitoring_collector" ],
         "full_name" : "monitoring",
         "email" : "monitoring@example.com",
         "metadata" : {
