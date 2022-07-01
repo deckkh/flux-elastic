@@ -691,7 +691,7 @@ spec:
                   type: string
                 k8snamespace:
                   type: string
-                k8ssecret:
+                secret:
                   type: string
                 k8skey:
                   type: string
@@ -699,4 +699,4 @@ spec:
                   type: string
                 k8slabel:
                   type: string
-              required: ["name","body","cluster","k8ssecret","k8skey","k8stype"]
+              required: ["name","body","cluster","secret","k8skey","k8stype"]
