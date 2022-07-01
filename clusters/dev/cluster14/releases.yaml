@@ -145,7 +145,7 @@ spec:
 
     clustersettings:
       recovery: false
-      monitoring: true
+      monitoring: false
       routingallocationdisk: false
 
     roles: 
