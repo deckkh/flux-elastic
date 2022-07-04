@@ -1,0 +1,9 @@
+apiVersion: v2
+name: elastic-monitoring
+description: filebeat deployment for logs collection
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.0.0"
