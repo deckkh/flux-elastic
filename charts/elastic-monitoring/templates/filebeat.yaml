@@ -85,16 +85,5 @@ spec:
             path: /var/lib/docker/containers
         - name: mypd
           persistentVolumeClaim:
-            claimName: filebeat-data
-
-      volumeClaimTemplates:
-      - metadata:
-          name: filebeat-data 
-        spec:
-          accessModes:
-          - ReadWriteOnce
-          resources:
-            requests:
-              storage: 1gi
-          storageClassName: standard
+            claimName: {{ .Release.Name}}-pvc
 
