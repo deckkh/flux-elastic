@@ -68,6 +68,10 @@ spec:
   deployment:
     podTemplate:
       spec:
+        metadata:
+          annotations:
+            linkerd.io/inject: disable        
+            
         serviceAccountName: {{ .Release.Name}}-metricbeat
         automountServiceAccountToken: true
         # required to read /etc/beat.yml
