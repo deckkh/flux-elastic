@@ -71,10 +71,18 @@ spec:
         metadata:
           annotations:
             linkerd.io/inject: disable        
-            
+
         serviceAccountName: {{ .Release.Name}}-metricbeat
         automountServiceAccountToken: true
         # required to read /etc/beat.yml
+
+        tolerations:
+          - key: es-other
+            operator: "Exists"
+            effect: NoSchedule
+          - key: es-data
+            operator: "Exists"
+            effect: NoSchedule
 
         securityContext: 
           runAsUser: 1000
