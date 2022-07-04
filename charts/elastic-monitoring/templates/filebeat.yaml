@@ -66,8 +66,8 @@ spec:
             mountPath: /var/log/pods
           - name: varlibdockercontainers
             mountPath: /var/lib/docker/containers
-          - name: mypd
-            mountPath: /usr/share/filebeat/meta/data
+          - name: filebeat-data
+            mountPath: /usr/share/filebeat/data
           env:
             - name: NODE_NAME
               valueFrom:
@@ -83,7 +83,7 @@ spec:
         - name: varlibdockercontainers
           hostPath:
             path: /var/lib/docker/containers
-        - name: mypd
+        - name: filebeat-data
           persistentVolumeClaim:
             claimName: {{ .Release.Name}}-pvc
 
