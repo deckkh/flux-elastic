@@ -34,3 +34,5 @@ spec:
     to:
       - ipBlock:
           cidr: 172.18.0.1/32
+      - ipBlock:
+          cidr: 10.144.112.4/32
