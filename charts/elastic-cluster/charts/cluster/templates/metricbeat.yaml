@@ -67,11 +67,10 @@ spec:
                     xpack.enabled: true    
   deployment:
     podTemplate:
+      metadata:
+        annotations:
+          linkerd.io/inject: disable        
       spec:
-        metadata:
-          annotations:
-            linkerd.io/inject: disable        
-
         serviceAccountName: {{ .Release.Name}}-metricbeat
         automountServiceAccountToken: true
         # required to read /etc/beat.yml
