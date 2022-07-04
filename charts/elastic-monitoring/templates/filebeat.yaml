@@ -43,6 +43,10 @@ spec:
           - key: es-data
             operator: "Exists"
             effect: NoSchedule
+          - key: myapp
+            operator: "Equal"
+            value: "worker"
+            effect: NoSchedule
 
         securityContext: 
           runAsUser: 1000
