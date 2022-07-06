@@ -13,11 +13,11 @@ spec:
             "expiration": "90d",   
             "role_descriptors": {
               "filebeat_elasticlogs": { 
-                "cluster": ["monitor","read_ilm","manage_index_templates"],
+                "cluster": ["monitor","read_ilm","manage_index_templates","read_pipeline"],
                 "index": [
                   {
                     "names": ["filebeat-*"],
-                    "privileges": ["create_index", "create","create_doc"]
+                    "privileges": ["create_index", "create","create_doc","write","view_index_metadata"]
                   }
                 ]
               }
