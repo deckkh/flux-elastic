@@ -96,7 +96,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: apikey
-                  name: {{ .Values.elastic.config.monitoring.cluster}}-apikey-monitoring
+                  name: {{ .Values.elastic.config.monitoring.cluster}}-apikey-elasticlogs
 
         volumes:
         - name: varlogcontainers
