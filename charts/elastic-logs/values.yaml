@@ -1,0 +1,17 @@
+elastic:
+  config: 
+    version: 8.3.1
+    securitycontext:
+      runasuser: 1000
+      fsgroup: 1000
+      runasnonroot: true
+    tolerations:
+      key: tier
+      value: application
+    nodeselector:
+      key: "tier"
+      value:  "application"
+    monitoring:
+      enabled: false
+      cluster: none
+      period: 10s

@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name}}-filebeat
 spec:
   type: filebeat
-  version: 8.3.1
+  version: {{ .Values.elastic.config.version }}
   config:
 
     output.elasticsearch:
