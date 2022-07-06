@@ -6,22 +6,33 @@ metadata:
 spec:
   type: filebeat
   version: 8.3.1
-  elasticsearchRef:
-    name: cluster14
-  kibanaRef:
-    name: cluster14
   config:
+
+    output.elasticsearch:
+      hosts: ["https://{{ .Values.elastic.config.monitoring.cluster}}-es-http:9200"]
+      api_key: ${API_KEY}
+      ssl.verification_mode: "certificate"
+      ssl.certificate_authorities: ["/usr/share/metricbeat/certs/esmon-ca/tls.crt"]
+
     filebeat:
       autodiscover:
         providers:
-        - type: kubernetes
-          node: ${NODE_NAME}
-          hints:
-            enabled: true
-            default_config:
-              type: container
-              paths:
-              - /var/log/containers/*${data.kubernetes.container.id}.log
+          - type: kubernetes
+            templates:
+              - condition:
+                  equals:
+                    kubernetes.container.name: elastic
+                config:
+                  - type: container
+                    paths:
+                      - /var/log/containers/*-${data.kubernetes.container.id}.log    
+              - condition:
+                  equals:
+                    kubernetes.container.name: kibana
+                config:
+                  - type: container
+                    paths:
+                      - /var/log/containers/*-${data.kubernetes.container.id}.log    
     processors:
     - add_cloud_metadata: {}
     - add_host_metadata: {}
@@ -58,11 +69,11 @@ spec:
         - name: filebeat
           resources:
             limits:
-              memory: 1Gi
-              cpu: 1
+              cpu: 300m
+              memory: 750Mi
             requests:
-              memory: 1Gi
-              cpu: 1        
+              cpu: 200m
+              memory: 750Mi          
           volumeMounts:
           - name: varlogcontainers
             mountPath: /var/log/containers
@@ -72,11 +83,20 @@ spec:
             mountPath: /var/lib/docker/containers
           - name: filebeat-data
             mountPath: /usr/share/filebeat/data
+          - mountPath: /usr/share/metricbeat/certs/esmon-ca
+            name: esmon-ca
           env:
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
+
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: apikey
+                  name: {{ .Values.elastic.config.monitoring.cluster}}-apikey-monitoring
+
         volumes:
         - name: varlogcontainers
           hostPath:
@@ -87,7 +107,10 @@ spec:
         - name: varlibdockercontainers
           hostPath:
             path: /var/lib/docker/containers
-        - name: filebeat-data
-          persistentVolumeClaim:
-            claimName: {{ .Release.Name}}-pvc
-
+        - hostPath:
+            path: /var/lib/{{ .Release.Name}}-data
+            type: DirectoryOrCreate
+          name: filebeat-data
+        - name: esmon-ca
+          secret:
+            secretName: {{ .Values.elastic.config.monitoring.cluster}}-es-http-ca-internal
