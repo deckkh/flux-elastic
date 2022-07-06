@@ -1,3 +1,4 @@
+{{ if .Values.elastic.config.monitoring.enabled }}
 # filebeat resources
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
@@ -114,3 +115,4 @@ spec:
         - name: esmon-ca
           secret:
             secretName: {{ .Values.elastic.config.monitoring.cluster}}-es-http-ca-internal
+{{ end}}

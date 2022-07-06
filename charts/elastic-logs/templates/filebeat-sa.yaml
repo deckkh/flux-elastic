@@ -1,6 +1,8 @@
+{{ if .Values.elastic.config.monitoring.enabled }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: {{ .Release.Name}}-filebeat
   namespace: {{ .Release.Namespace}}
 
+{{ end }}

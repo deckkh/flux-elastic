@@ -15,12 +15,12 @@ spec:
         name: flux-elastic
         namespace: flux-system
   interval: 1m
-values:
+  values:
 
-  elastic:
-    config: 
-      version: 8.3.1
-      monitoring:
-        enabled: true
-        cluster: cluster14
-        period: 10s
+    elastic:
+      config: 
+        version: 8.3.1
+        monitoring:
+          enabled: true
+          cluster: cluster14
+          period: 10s
