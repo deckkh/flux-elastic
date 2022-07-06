@@ -111,7 +111,10 @@ spec:
         - hostPath:
             path: /var/lib/{{ .Release.Name}}-data
             type: DirectoryOrCreate
-          name: filebeat-data
+          name: filebeat-dataxx
+        - name: filebeat-data
+          emptyDir: {}
+          
         - name: esmon-ca
           secret:
             secretName: {{ .Values.elastic.config.monitoring.cluster}}-es-http-ca-internal
