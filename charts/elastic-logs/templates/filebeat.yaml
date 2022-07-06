@@ -22,7 +22,7 @@ spec:
             templates:
               - condition:
                   equals:
-                    kubernetes.container.name: elastic
+                    kubernetes.container.name: elasticsearch
                 config:
                   - type: container
                     paths:
