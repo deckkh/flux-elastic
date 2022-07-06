@@ -1,0 +1,26 @@
+{{ if   .Values.elasticlogs }}
+apiVersion: elastic.elastic-operator/v1
+kind: ApiKey
+metadata:
+  name: {{.Release.Name}}-apikey-elasticlogs
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: elasticlogs
+  cluster: {{ .Release.Name}}
+  body: |
+          {
+            "name": "elasticlogs", 
+            "expiration": "90d",   
+            "role_descriptors": {
+              "filebeat_elasticlogs": { 
+                "cluster": ["monitor","read_ilm","manage_index_templates"],
+                "index": [
+                  {
+                    "names": ["filebeat-*"],
+                    "privileges": ["create_index", "create","create_doc"]
+                  }
+                ]
+              }
+            }
+          }
+{{ end}}        

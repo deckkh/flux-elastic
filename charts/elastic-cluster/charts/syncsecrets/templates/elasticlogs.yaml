@@ -1,0 +1,13 @@
+{{ if   .Values.elasticlogs }}
+apiVersion: elastic.elastic-operator/v1
+kind: SyncSecret
+metadata:
+  name: {{.Release.Name}}-elasticlogs
+  namespace: {{ .Release.Namespace}}
+spec:
+  keyvaultsecret: {{.Release.Name}}-apikey-elasticlogs
+  k8snamespace: observability
+  k8ssecret: {{.Release.Name}}-apikey-elasticlogs
+  k8stype: Opaque
+  k8skey: apikey
+{{ end }}

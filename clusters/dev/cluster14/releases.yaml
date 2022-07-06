@@ -169,6 +169,7 @@ spec:
       threehour: true
       sprint: true
       monitoring: true
+      clusterlogs: true
 
     kibanaspaces:
       metricbeat: false
@@ -182,3 +183,4 @@ spec:
 
     syncsecrets:
       monitoring: true
+      elasticlogs: true
