@@ -18,9 +18,9 @@
 {{- define "filebeat.apikey" }}
 - name: API_KEY
   valueFrom:
-  secretKeyRef:
-    key: apikey
-    name: {{ .Values.filebeat.config.output.cluster}}-{{ .Values.filebeat.config.output.apikey}}
+    secretKeyRef:
+      key: apikey
+      name: {{ .Values.filebeat.config.output.cluster}}-{{ .Values.filebeat.config.output.apikey}}
 {{ end}}
 
 {{- define "filebeat.output" }}
