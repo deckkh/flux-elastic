@@ -63,7 +63,7 @@ templates:
         - type: container
           paths:
             - /var/log/containers/*-${data.kubernetes.container.id}.log    
-{{ end }}            
+{{ else }}            
 templates:
     - condition:
         not:
@@ -76,5 +76,6 @@ templates:
         - type: container
           paths:
             - /var/log/containers/*-${data.kubernetes.container.id}.log    
+{{ end }}            
 {{ end}}
 
