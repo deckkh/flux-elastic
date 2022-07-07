@@ -17,7 +17,7 @@ spec:
   interval: 1m
   values:
 
-    elastic:
+    filebeat:
       config: 
         version: 8.3.1
         output:

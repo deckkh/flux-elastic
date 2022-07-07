@@ -1,4 +1,4 @@
-elastic:
+filebeat:
   config: 
     version: 8.3.1
 
