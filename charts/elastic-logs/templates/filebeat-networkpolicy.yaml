@@ -1,0 +1,38 @@
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ .Release.Name}}-filebeat-networkpolicy
+  namespace: {{ .Release.Namespace}}
+spec:
+  podSelector:
+    matchLabels:
+      beat.k8s.elastic.co/name: {{ .Release.Name}}-filebeat
+  policyTypes:
+    - Egress
+  egress:
+  - ports:
+    - port: 9200
+      protocol: TCP
+    to:
+    - podSelector:
+        matchLabels:
+          common.k8s.elastic.co/type: elasticsearch
+  - ports:
+    - port: 5601
+      protocol: TCP
+    to:
+    - podSelector:
+        matchLabels:
+          kibana.k8s.elastic.co/name: {{ .Release.Name}}        
+  - ports:
+    - port: 53
+      protocol: UDP
+  - ports:
+    - port: 443
+      protocol: TCP
+    to:
+      - ipBlock:
+          cidr: 172.18.0.1/32
+      - ipBlock:
+          cidr: 10.144.112.4/32

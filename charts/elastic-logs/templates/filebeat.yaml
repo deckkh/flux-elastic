@@ -1,4 +1,3 @@
-{{ if .Values.elastic.config.monitoring.enabled }}
 # filebeat resources
 apiVersion: beat.k8s.elastic.co/v1beta1
 kind: Beat
@@ -6,34 +5,20 @@ metadata:
   name: {{ .Release.Name}}-filebeat
 spec:
   type: filebeat
-  version: {{ .Values.elastic.config.version }}
+  version: {{ .Values.filebeat.config.version }}
+  image:  {{ .Values.filebeat.config.image.registry}}/{{ .Values.filebeat.config.image.repository}}:{{ .Values.filebeat.config.version }}
   config:
 
-    output.elasticsearch:
-      hosts: ["https://{{ .Values.elastic.config.monitoring.cluster}}-es-http:9200"]
-      api_key: ${API_KEY}
-      ssl.verification_mode: "certificate"
-      ssl.certificate_authorities: ["/usr/share/metricbeat/certs/esmon-ca/tls.crt"]
+{{- include "filebeat.output" . | indent 4}}
+
 
     filebeat:
       autodiscover:
         providers:
           - type: kubernetes
-            templates:
-              - condition:
-                  equals:
-                    kubernetes.container.name: elasticsearch
-                config:
-                  - type: container
-                    paths:
-                      - /var/log/containers/*-${data.kubernetes.container.id}.log    
-              - condition:
-                  equals:
-                    kubernetes.container.name: kibana
-                config:
-                  - type: container
-                    paths:
-                      - /var/log/containers/*-${data.kubernetes.container.id}.log    
+{{- include "filebeat.templates" . | indent 12}}
+
+
     processors:
     - add_cloud_metadata: {}
     - add_host_metadata: {}
@@ -45,20 +30,10 @@ spec:
         automountServiceAccountToken: true
         terminationGracePeriodSeconds: 30
         dnsPolicy: ClusterFirstWithHostNet
-        hostNetwork: true # Allows to provide richer host metadata
 
 
         tolerations:
-          - key: es-other
-            operator: "Exists"
-            effect: NoSchedule
-          - key: es-data
-            operator: "Exists"
-            effect: NoSchedule
-          - key: myapp
-            operator: "Equal"
-            value: "worker"
-            effect: NoSchedule
+{{- include "filebeat.tolerations" . | indent 10}}
 
         securityContext: 
           runAsUser: 1000
@@ -84,19 +59,17 @@ spec:
             mountPath: /var/lib/docker/containers
           - name: filebeat-data
             mountPath: /usr/share/filebeat/data
-          - mountPath: /usr/share/metricbeat/certs/esmon-ca
-            name: esmon-ca
+
+{{- include "filebeat.volumemounts" . | indent 10}}
+
+
           env:
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
 
-            - name: API_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: apikey
-                  name: {{ .Values.elastic.config.monitoring.cluster}}-apikey-elasticlogs
+{{- include "filebeat.apikey" . | indent 12}}
 
         volumes:
         - name: varlogcontainers
@@ -115,7 +88,4 @@ spec:
         - name: filebeat-data
           emptyDir: {}
           
-        - name: esmon-ca
-          secret:
-            secretName: {{ .Values.elastic.config.monitoring.cluster}}-es-http-ca-internal
-{{ end}}
+{{- include "filebeat.volumes" . | indent 8}}

@@ -1,6 +1,13 @@
 elastic:
   config: 
     version: 8.3.1
+
+    collect: elasticlogs
+    image:
+      registry: docker.elastic.co
+      repository: beats/filebeat
+      imagepullpolicy: IfNotPresent    
+
     securitycontext:
       runasuser: 1000
       fsgroup: 1000
@@ -11,7 +18,7 @@ elastic:
     nodeselector:
       key: "tier"
       value:  "application"
-    monitoring:
-      enabled: false
+    output:
       cluster: none
-      period: 10s
+      apikey: apikey-elasticlogs
+      httpca: es-http-ca-internal      
