@@ -15,14 +15,30 @@
 {{ end }}
 
 
+{{- define "kibana.logging" }}
+    logging:
+      appenders:
+        json-layout:
+          type: console
+          layout:
+            type: json
+      root:
+        appenders: [json-layout]
+{{ end }}
+
 {{- define "kibana.config" }}
   config:
 {{- template "kibana.oidc" . }}
+{{- template "kibana.logging" . }}
     monitoring:
       ui:
         ccs:
           enabled: false
 {{ end }}
+
+
+
+
 
 {{- define "kibana.containers"}}
 containers:
