@@ -52,7 +52,7 @@ templates:
     - condition:
         equals:
           kubernetes.container.name: elasticsearch
-        config:
+      config:
         - type: container
           paths:
             - /var/log/containers/*-${data.kubernetes.container.id}.log    
@@ -69,9 +69,9 @@ templates:
     - condition:
         equals:
           kubernetes.container.name: kibana
-        config:
+      config:
         - type: container
-          paths:
+            paths:
             - /var/log/containers/*-${data.kubernetes.container.id}.log    
 
           processors:
