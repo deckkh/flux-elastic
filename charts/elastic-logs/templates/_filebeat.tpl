@@ -73,6 +73,16 @@ templates:
         - type: container
           paths:
             - /var/log/containers/*-${data.kubernetes.container.id}.log    
+
+          processors:
+          - decode_json_fields:
+              fields: ["message"]
+              process_array: false
+              max_depth: 1
+              target: "orgmsg"
+              overwrite_keys: false
+              add_error_key: true
+
 {{ else }}            
 templates:
     - condition:
