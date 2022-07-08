@@ -19,7 +19,7 @@ spec:
 
     filebeat:
       config:
-        collect: container 
+        collect: elasticlogs 
         version: 8.3.1
         output:
           cluster: cluster14
