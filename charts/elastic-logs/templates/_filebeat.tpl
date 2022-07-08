@@ -71,7 +71,7 @@ templates:
           kubernetes.container.name: kibana
       config:
         - type: container
-            paths:
+          paths:
             - /var/log/containers/*-${data.kubernetes.container.id}.log    
 
           processors:

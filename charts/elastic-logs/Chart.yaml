@@ -4,6 +4,6 @@ description: filebeat deployment for logs collection
 
 type: application
 
-version: 0.1.19
+version: 0.1.20
 
 appVersion: "1.0.0"
