@@ -87,7 +87,7 @@ templates:
           - decode_json_fields:
               when:
                 regexp:  
-                   message: "^\{.*\}$"
+                   message: "^\\{.*\\}$"
               fields: ["message"]
               process_array: false
               max_depth: 1
