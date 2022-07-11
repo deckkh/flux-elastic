@@ -51,10 +51,10 @@ output.elasticsearch:
 templates:
     - condition:
         or:
-          equals:
-            kubernetes.container.name: elasticsearch
-          equals:
-            kubernetes.container.name: kibana
+          - equals:
+              kubernetes.container.name: elasticsearch
+          - equals:
+              kubernetes.container.name: kibana
       config:
         - type: container
           paths:
