@@ -50,8 +50,11 @@ output.elasticsearch:
 {{- if eq .Values.filebeat.config.collect "elasticlogs" }}
 templates:
     - condition:
-        equals:
-          kubernetes.container.name: elasticsearch
+        or:
+          equals:
+            kubernetes.container.name: elasticsearch
+          equals:
+            kubernetes.container.name: kibana
       config:
         - type: container
           paths:
@@ -62,27 +65,9 @@ templates:
               fields: ["message"]
               process_array: false
               max_depth: 1
-              target: "orgmsg"
+              target: "asjson"
               overwrite_keys: false
               add_error_key: true
-
-    - condition:
-        equals:
-          kubernetes.container.name: kibana
-      config:
-        - type: container
-          paths:
-            - /var/log/containers/*-${data.kubernetes.container.id}.log    
-
-          processors:
-          - decode_json_fields:
-              fields: ["message"]
-              process_array: false
-              max_depth: 1
-              target: "orgmsg"
-              overwrite_keys: false
-              add_error_key: true
-
 {{ else }}            
 templates:
     - condition:
