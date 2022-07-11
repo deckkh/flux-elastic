@@ -80,7 +80,20 @@ templates:
       config:
         - type: container
           paths:
-            - /var/log/containers/*-${data.kubernetes.container.id}.log    
+            - /var/log/containers/*-${data.kubernetes.container.id}.log
+
+          processors:
+
+          - decode_json_fields:
+              when:
+                regexp:  
+                   message: "^\{.*\}$"
+              fields: ["message"]
+              process_array: false
+              max_depth: 1
+              target: "asjson"
+              overwrite_keys: false
+              add_error_key: true                
 {{ end }}            
 {{ end}}
 
