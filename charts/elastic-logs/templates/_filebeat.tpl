@@ -25,7 +25,13 @@
 
 {{- define "filebeat.output" }}
 output.elasticsearch:
-    hosts: ["https://{{ .Values.filebeat.config.output.cluster}}-es-http:9200"]
+
+    hosts: 
+
+{{- range .Values.filebeat.config.output.svc }}
+      - "https://{{ $.Values.filebeat.config.output.cluster}}-{{ .}}:{{ $.Values.filebeat.config.output.port}}"
+{{ end }}
+
     api_key: ${API_KEY}
     ssl.verification_mode: "certificate"
     ssl.certificate_authorities: ["/usr/share/metricbeat/certs/output-ca/tls.crt"]

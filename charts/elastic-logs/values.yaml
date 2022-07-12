@@ -21,4 +21,7 @@ filebeat:
     output:
       cluster: none
       apikey: apikey-elasticlogs
-      httpca: es-http-ca-internal      
+      httpca: es-http-ca-internal
+      svc: 
+        - es-http
+      port: 9200      
