@@ -699,4 +699,6 @@ spec:
                   type: string
                 k8slabel:
                   type: string
+                destination:
+                  type: string
               required: ["name","body","cluster","secret","k8skey","k8stype"]
