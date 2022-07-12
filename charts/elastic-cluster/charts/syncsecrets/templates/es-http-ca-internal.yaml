@@ -1,0 +1,14 @@
+{{ if   .Values.es_http_ca_internal }}
+apiVersion: elastic.elastic-operator/v1
+kind: SyncSecret
+metadata:
+  name: {{.Release.Name}}-es-http-ca-internal
+  namespace: {{ .Release.Namespace}}
+spec:
+  keyvaultsecret: {{.Release.Name}}-es-http-ca-internal
+  k8snamespace: observability
+  k8ssecret: {{.Release.Name}}-es-http-ca-internal
+  k8stype: Opaque
+  k8skey:  tls.crt
+  destination: akv
+{{ end }}

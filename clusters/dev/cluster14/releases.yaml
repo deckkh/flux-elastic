@@ -184,3 +184,4 @@ spec:
     syncsecrets:
       monitoring: true
       elasticlogs: true
+      es_http_ca_internal: true
