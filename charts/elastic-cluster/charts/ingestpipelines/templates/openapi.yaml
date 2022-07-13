@@ -1,0 +1,73 @@
+{{ if  .Values.openapi }}
+apiVersion: elastic.elastic-operator/v1
+kind: IngestPipeline
+metadata:
+  name: {{ .Release.Name}}-ingestpipeline-openapi
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: openapi
+  cluster: {{ .Release.Name}}
+  body: |
+         {{`  {
+                "description": "Ingest pipeline for OpenApi Service logs",
+                "processors": [
+                    {
+                        "set": {
+                            "field": "@timestamp",
+                            "value": "{{date}}",
+                            "ignore_empty_value": true
+                        }
+                    },
+                    {
+                        "set": {
+                            "field": "_source.event.ingested",
+                            "value": "{{_ingest.timestamp}}"
+                        }
+                    },
+                    {
+                        "script": {
+                            "id": "set-ingestlag",
+                            "tag": "set-ingestlag"
+                        }
+                    },
+                    {
+                        "script": {
+                            "id": "set-indexname",
+                            "tag": "set-indexname"
+                        }
+                    },
+                    {
+                        "script": {
+                            "id": "std-cleanup",
+                            "tag": "std-cleanup"
+                        }
+                    }
+                ],
+                "on_failure": [
+                    {
+                        "set": {
+                            "field": "@pipeline_error.processor",
+                            "value": "{{ _ingest.on_failure_processor_type }}"
+                        }
+                    },
+                    {
+                        "set": {
+                            "field": "@pipeline_error.message",
+                            "value": "{{ _ingest.on_failure_message }}"
+                        }
+                    },
+                    {
+                        "set": {
+                            "field": "@pipeline_error.processor_tag",
+                            "value": "{{ _ingest.on_failure_processor_tag }}"
+                        }
+                    },
+                    {
+                        "script": {
+                            "id": "set-error-indexname"
+                        }
+                    }
+                ]
+            }
+         `}}
+{{ end}}            

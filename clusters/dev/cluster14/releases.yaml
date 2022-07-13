@@ -101,6 +101,7 @@ spec:
       test4: True
       helloworld: True
       sprint: True
+      openapi: true
 
     ilms:
       mypolicy: true
