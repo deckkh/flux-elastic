@@ -19,3 +19,5 @@ data:
   LongRunningMax: "{{ .Values.ConfigMap.LongRunningMax}}"
   SyncSecrets: "{{ .Values.ConfigMap.SyncSecrets}}"
   ElasticUsers: "{{ .Values.ConfigMap.ElasticUsers}}"
+  KibanaDnsSuffix: "{{ .Values.ConfigMap.KibanaDnsSuffix}}"
+  ElasticDnsSuffix: "{{ .Values.ConfigMap.ElasticDnsSuffix}}"

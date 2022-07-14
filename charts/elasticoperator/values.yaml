@@ -13,6 +13,8 @@ ConfigMap:
   LongRunningMax: "5"
   SyncSecrets: "True"
   ElasticUsers: "True"
+  KibanaDnsSuffix: "-kb-http"
+  ElasticDnsSuffix: "-es-http"
 
 Operator:
   Sa: "sa"

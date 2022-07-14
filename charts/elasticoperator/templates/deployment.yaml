@@ -45,7 +45,14 @@ spec:
             path: /api/liveness
             port: {{ .Values.ConfigMap.healthPort}}
           initialDelaySeconds: 30
-          periodSeconds: 30         
+          periodSeconds: 30
+
+        startupProbe:
+          httpGet:
+            path: /api/liveness
+            port: {{ .Values.ConfigMap.healthPort}}
+          failureThreshold: 30
+          periodSeconds: 10                   
 
         env:
         # Define the environment variable
