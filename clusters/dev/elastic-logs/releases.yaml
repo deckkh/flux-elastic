@@ -20,9 +20,8 @@ spec:
   patches:
     - patch: |-
         - op: replace
-          path: /spec/values/topology/-
-          value:
-            enabled: true
+          path: /spec/values/topology/enabled
+          value: true
 
       target:
         kind: HelmRelease
