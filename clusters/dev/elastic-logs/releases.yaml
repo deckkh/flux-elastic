@@ -26,6 +26,8 @@ spec:
           namespace: observability
         spec:
           values:
+            topology: 
+              enabled: false
             filebeat:
               config: 
                 output:
