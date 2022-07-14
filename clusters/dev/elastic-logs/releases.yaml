@@ -18,7 +18,7 @@ spec:
       - kind: ConfigMap
         name: env
   patches:
-    - patch: |-
+    - patch: |
         - op: replacexx
           path: /spec/values/topology/enabled
           value: true
