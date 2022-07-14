@@ -16,5 +16,5 @@ spec:
   interval: 5m0s
   values:
     topology:
-      enabled: true
+      enabled: false
 
