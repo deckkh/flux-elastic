@@ -19,25 +19,10 @@ spec:
         name: env
   patches:
     - patch: |-
-              apiVersion: helm.toolkit.fluxcd.io/v2beta1
-              kind: HelmRelease
-              metadata:
-                name: elastic-logs
-                namespace: observability
-              spec:
-                chart:
-                  spec:
-                    chart: ./charts/charts/elastic-logs
-                    sourceRef:
-                      kind: GitRepository
-                      name: flux-elastic
-                      namespace: flux-system
-                interval: 5m0s
-                releaseName: elastic-logs
-                targetNamespace: observability
-                values:
-                  topology:
-                    enabled: true
+        - op: replace
+          path: /spec/values/topology/-
+          value:
+            enabled: true
 
       target:
         kind: HelmRelease
