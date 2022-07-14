@@ -20,7 +20,7 @@ spec:
   patches:
     - patch: |
         - op: replace
-          path: /metadata/name
+          path: /spec/releaseName
           value: k8s-logs
 
       target:
