@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: elastic-logs
+  name: k8s-logs
   namespace: observability
 spec:
   interval: 10m0s
@@ -17,3 +17,17 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: env
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: k8s-logs
+          namespace: observability
+        spec:
+          values:
+
+      target:
+        kind: HelmRelease
+        name: k8s-logs
+        namespace: observability
