@@ -4,8 +4,13 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     nginx.ingress.kubernetes.io/proxy-body-size: 50m    
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "{{.Release.Name}}-affinity"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"  
   name: {{ .Release.Name}}-kb-ingress
   namespace: {{ .Release.Namespace}}
+
 spec:
   rules:
   - host: {{ .Release.Name}}-kb
