@@ -17,3 +17,21 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: env
+  patches:
+    - patch: |-
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        metadata:
+          name: elastic-logs
+          namespace: observability
+        spec:
+          values:
+            filebeat:
+              config: 
+                output:
+                  cluster: cluster14
+
+      target:
+        kind: HelmRelease
+        name: elastic-logs
+        namespace: observability
