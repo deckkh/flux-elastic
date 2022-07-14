@@ -19,7 +19,7 @@ spec:
         name: env
   patches:
     - patch: |
-        - op: replacexx
+        - op: replace
           path: /spec/values/topology/enabled
           value: true
 
