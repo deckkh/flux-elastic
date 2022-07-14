@@ -22,10 +22,13 @@ spec:
         apiVersion: helm.toolkit.fluxcd.io/v2beta1
         kind: HelmRelease
         metadata:
-          name: k8s-logs
+          name: elastic-logs
           namespace: observability
         spec:
           values:
+            filebeat:
+              config: 
+                collect: containerlogs
 
       target:
         kind: HelmRelease
