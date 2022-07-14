@@ -25,5 +25,3 @@ spec:
 
       target:
         kind: HelmRelease
-        name: elastic-logs
-        namespace: observability
