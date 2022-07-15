@@ -19,9 +19,16 @@ spec:
         name: env
   patches:
     - patch: |
-        - op: replace
-          path: /spec/releaseName
-          value: k8s-logs
+        apiVersion: helm.toolkit.fluxcd.io/v2beta1
+        kind: HelmRelease
+        spec:
+          releaseName: k8s-logs
+          targetNamespace: observability        
+          values:
+            filebeat:
+              config:
+                output:
+                  cluster: test
 
       target:
         kind: HelmRelease
