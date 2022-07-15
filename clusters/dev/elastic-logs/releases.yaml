@@ -35,7 +35,7 @@ spec:
 
                 collect: elasticlogs
                 output:
-                  cluster: none
+                  cluster: cluster14
                   apikey: apikey-elasticlogs
                   httpca: es-http-ca-internal
                   svc: 
