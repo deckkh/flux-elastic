@@ -38,3 +38,8 @@ spec:
                   cluster: cluster14
       target:
         kind: HelmRelease
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: elastic-logs
+      namespace: observability

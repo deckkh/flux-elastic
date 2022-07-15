@@ -35,6 +35,12 @@ spec:
                 collect: containerlogs
                 output:
                   cluster: cluster14
+                  httpca:
 
       target:
         kind: HelmRelease
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: k8s-logs
+      namespace: observability
