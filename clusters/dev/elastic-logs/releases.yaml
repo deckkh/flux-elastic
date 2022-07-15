@@ -36,10 +36,5 @@ spec:
                 collect: elasticlogs
                 output:
                   cluster: cluster14
-                  apikey: apikey-elasticlogs
-                  httpca: es-http-ca-internal
-                  svc: 
-                    - es-http
-                  port: 9200             
       target:
         kind: HelmRelease
