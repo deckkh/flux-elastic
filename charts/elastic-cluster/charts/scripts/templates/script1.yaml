@@ -20,6 +20,11 @@ spec:
                 ctx.op = 'none' 
               }
               """
+                """
+                   int count = 1;
+                   return count;
+                """
+
             }
           }  
 {{ end }}
