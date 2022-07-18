@@ -14,16 +14,12 @@ spec:
               "source": """
               if (ctx._source.tags.contains(params['tag'])) 
               { 
-                ctx.op = 'delete' 
+                ctx.op = "delete"
               } else 
               { 
-                ctx.op = 'none' 
+                ctx.op = "none" 
               }
               """
-                """
-                   int count = 1;
-                   return count;
-                """
 
             }
           }  
