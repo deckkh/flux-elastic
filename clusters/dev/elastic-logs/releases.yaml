@@ -36,6 +36,7 @@ spec:
                 collect: elasticlogs
                 output:
                   cluster: cluster14
+                  
       target:
         kind: HelmRelease
   healthChecks:
