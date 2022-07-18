@@ -35,4 +35,5 @@ rules:
       - connectors
       - alertrules
       - syncsecrets
+      - elasticusers
     verbs: ["get","watch","list" ]
