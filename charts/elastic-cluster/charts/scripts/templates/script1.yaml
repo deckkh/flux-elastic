@@ -12,10 +12,13 @@ spec:
             "script": {
               "lang": "painless",
               "source": """
-              Math.log(_score * 2) + params['my_modifier']
-              Math.log(_score * 2) + params["my_modifier"]
-              Math.log(_score * 2) + params['my_modifier']
-              Math.log(_score * 2) + params["my_modifier"]
+              if (ctx._source.tags.contains(params['tag'])) 
+              { 
+                ctx.op = 'delete' 
+              } else 
+              { 
+                ctx.op = 'none' 
+              }
               """
             }
           }  
