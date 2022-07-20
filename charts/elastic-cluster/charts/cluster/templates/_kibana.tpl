@@ -26,8 +26,18 @@
         appenders: [json-layout]
 {{ end }}
 
+{{- define "kibana.elasticsearch" }}
+    elasticsearch:
+      hosts:
+      - https://{{.Release.Name}}-es-http.observability.svc:9200
+      ssl:
+        certificateAuthorities: /usr/share/kibana/config/elasticsearch-certs/ca.crt
+        verificationMode: certificate
+{{ end }}
+
 {{- define "kibana.config" }}
   config:
+{{- template "kibana.elasticsearch" . }}
 {{- template "kibana.oidc" . }}
 {{- template "kibana.logging" . }}
     monitoring:
@@ -64,8 +74,6 @@ containers:
 {{- define "kibana.spec" }}
   version: {{ .Values.elastic.config.version}}
   count: {{ .Values.kibana.config.count}}
-  elasticsearchRef:
-    name: {{ .Release.Name }}
 {{- template "kibana.config" . }}
 {{- template "kibana.podtemplate" . }}
 {{- end }}
