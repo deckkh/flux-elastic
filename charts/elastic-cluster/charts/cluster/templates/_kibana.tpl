@@ -31,7 +31,7 @@
       hosts:
       - https://{{.Release.Name}}-es-http.observability.svc:9200
       ssl:
-        certificateAuthorities: /usr/share/kibana/config/elasticsearch-certs/ca.crt
+        certificateAuthorities: /etc/certs/ca.crt        
         verificationMode: certificate
 {{ end }}
 
@@ -59,12 +59,25 @@ containers:
       cpu: {{ .limits.cpu}}
     requests:
       memory: {{ .requests.memory}}
-      cpu: {{ .requests.cpu}}        
+      cpu: {{ .requests.cpu}}  
+
+
+  volumeMounts:
+    - name: elasticsearch-certs
+      mountPath: /etc/certs
+      readOnly: true            
 {{- end}}
 
 {{- define "kibana.podtemplate" }}
   podTemplate:
     spec:
+
+
+      volumes:
+        - name: elasticsearch-certs
+          secret:
+            secretName: cluster14-es-http-certs-public
+
 {{- include "generic.nodeselector" .Values.kibana.config.nodeselector | indent 6 }}
 {{- include "generic.tolerations" .Values.kibana.config.tolerations |indent 6 }}
 {{- include "generic.securitycontext" .Values.kibana.config.securitycontext |indent 6 }}
