@@ -57,6 +57,8 @@ rules:
       - alertrules
       - syncsecrets
       - elasticusers
+      - elasticsecrets
+      - serviceaccounttokens
     verbs: ["get","watch","list" ]
   - apiGroups:
         - ""
