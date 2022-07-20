@@ -27,13 +27,13 @@
 {{ end }}
 
 {{- define "kibana.elasticsearch" }}
-    elasticsearch:
-      hosts:
-      - https://{{.Release.Name}}-es-http.observability.svc:9200
-      serviceAccountToken : ${SERVICE_ACCOUNT_TOKEN}
-      ssl:
-        certificateAuthorities: /etc/certs/ca.crt        
-        verificationMode: certificate
+#    elasticsearch:
+#      hosts:
+#      - https://{{.Release.Name}}-es-http.observability.svc:9200
+#      serviceAccountToken : ${SERVICE_ACCOUNT_TOKEN}
+#      ssl:
+#        certificateAuthorities: /etc/certs/ca.crt        
+#        verificationMode: certificate
 {{ end }}
 
 {{- define "kibana.config" }}
@@ -104,6 +104,9 @@ env:
 {{- define "kibana.spec" }}
   version: {{ .Values.elastic.config.version}}
   count: {{ .Values.kibana.config.count}}
+
+  elasticsearchRef:
+    name: "{{ .Release.Name }}"  
 {{- template "kibana.config" . }}
 {{- template "kibana.podtemplate" . }}
 {{- end }}
