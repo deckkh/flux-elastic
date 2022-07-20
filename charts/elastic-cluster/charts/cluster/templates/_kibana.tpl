@@ -30,6 +30,7 @@
     elasticsearch:
       hosts:
       - https://{{.Release.Name}}-es-http.observability.svc:9200
+      serviceAccountToken : ${SERVICE_ACCOUNT_TOKEN}
       ssl:
         certificateAuthorities: /etc/certs/ca.crt        
         verificationMode: certificate
@@ -68,6 +69,20 @@ containers:
       readOnly: true            
 {{- end}}
 
+{{- define "kibana.serviceaccounttoken" }}
+- name: SERVICE_ACCOUNT_TOKEN
+  valueFrom:
+    secretKeyRef:
+      key: token
+      name: {{ .Release.Name}}-kibana-user
+{{ end}}
+
+{{- define "kibana.env" }}
+env:
+
+{{- include "kibana.serviceaccounttoken" .}}
+{{ end}}
+
 {{- define "kibana.podtemplate" }}
   podTemplate:
     spec:
@@ -82,6 +97,8 @@ containers:
 {{- include "generic.tolerations" .Values.kibana.config.tolerations |indent 6 }}
 {{- include "generic.securitycontext" .Values.kibana.config.securitycontext |indent 6 }}
 {{- include "kibana.containers" .Values.kibana.config | indent 6 }}
+{{- include "kibana.env" . | indent 8 }}
+
 {{ end }}
 
 {{- define "kibana.spec" }}
