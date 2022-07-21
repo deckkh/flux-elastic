@@ -732,8 +732,6 @@ spec:
                   type: string
                 cluster:
                   type: string
-                body:
-                  type: string
                 k8snamespace:
                   type: string
                 secret:
