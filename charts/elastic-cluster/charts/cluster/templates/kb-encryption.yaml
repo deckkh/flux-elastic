@@ -4,7 +4,6 @@ metadata:
   name: {{.Release.Name}}-kb-encryption
   namespace: {{ .Release.Namespace}}
 spec:
-  keyvaultsecret: {{.Release.Name}}-elasticsecret-kb-encryption
   k8snamespace: observability
   secret: {{.Release.Name}}-kb-encryption
   k8stype: Opaque
