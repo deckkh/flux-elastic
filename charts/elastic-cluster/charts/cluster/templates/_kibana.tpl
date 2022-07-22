@@ -26,19 +26,9 @@
         appenders: [json-layout]
 {{ end }}
 
-{{- define "kibana.elasticsearch" }}
-#    elasticsearch:
-#      hosts:
-#      - https://{{.Release.Name}}-es-http.observability.svc:9200
-#      serviceAccountToken : ${SERVICE_ACCOUNT_TOKEN}
-#      ssl:
-#        certificateAuthorities: /etc/certs/ca.crt        
-#        verificationMode: certificate
-{{ end }}
 
 {{- define "kibana.config" }}
   config:
-{{- template "kibana.elasticsearch" . }}
 {{- template "kibana.oidc" . }}
 {{- template "kibana.logging" . }}
     monitoring:
@@ -61,44 +51,23 @@ containers:
     requests:
       memory: {{ .requests.memory}}
       cpu: {{ .requests.cpu}}  
-
-
-  volumeMounts:
-    - name: elasticsearch-certs
-      mountPath: /etc/certs
-      readOnly: true            
 {{- end}}
 
-{{- define "kibana.serviceaccounttoken" }}
-- name: SERVICE_ACCOUNT_TOKEN
-  valueFrom:
-    secretKeyRef:
-      key: token
-      name: {{ .Release.Name}}-kibana-user
-{{ end}}
+{{- define "kibana.securesettings"}}
+secureSettings:
+- secretName:  {{ .Release.Name}}-kb-reporting-encryption
+- secretName:  {{ .Release.Name}}-kb-security-encryption
+- secretName:  {{ .Release.Name}}-kb-savedobjects-encryption
+{{- end}}
 
-{{- define "kibana.env" }}
-env:
-
-{{- include "kibana.serviceaccounttoken" .}}
-{{ end}}
 
 {{- define "kibana.podtemplate" }}
   podTemplate:
     spec:
-
-
-      volumes:
-        - name: elasticsearch-certs
-          secret:
-            secretName: cluster14-es-http-certs-public
-
 {{- include "generic.nodeselector" .Values.kibana.config.nodeselector | indent 6 }}
 {{- include "generic.tolerations" .Values.kibana.config.tolerations |indent 6 }}
 {{- include "generic.securitycontext" .Values.kibana.config.securitycontext |indent 6 }}
 {{- include "kibana.containers" .Values.kibana.config | indent 6 }}
-{{- include "kibana.env" . | indent 8 }}
-
 {{ end }}
 
 {{- define "kibana.spec" }}
@@ -108,10 +77,7 @@ env:
   elasticsearchRef:
     name: "{{ .Release.Name }}"
 
-  secureSettings:
-  - secretName:  {{ .Release.Name}}-kb-reporting-encryption
-  - secretName:  {{ .Release.Name}}-kb-security-encryption
-  - secretName:  {{ .Release.Name}}-kb-savedobjects-encryption
+{{- include "kibana.securesettings" .Values.kibana.config | indent 2 }}
 
 {{- template "kibana.config" . }}
 {{- template "kibana.podtemplate" . }}
