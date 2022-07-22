@@ -77,7 +77,7 @@ secureSettings:
   elasticsearchRef:
     name: "{{ .Release.Name }}"
 
-{{- include "kibana.securesettings" .Values.kibana.config | indent 2 }}
+{{- include "kibana.securesettings" . | indent 2 }}
 
 {{- template "kibana.config" . }}
 {{- template "kibana.podtemplate" . }}
