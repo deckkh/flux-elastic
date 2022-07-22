@@ -1,0 +1,13 @@
+apiVersion: elastic.elastic-operator/v1
+kind: ElasticSecret
+metadata:
+  name: {{.Release.Name}}-kb-savedobjects-encryption
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: kb-savedobjects-encryption
+  k8snamespace: observability
+  secret: {{.Release.Name}}-kb-savedobjects-encryption
+  k8stype: Opaque
+  k8skey: xpack.encryptedSavedObjects.encryptionKey
+  k8slength: 32
+  keyvaultsecret: {{.Release.Name}}-kb-savedobjects-encryption

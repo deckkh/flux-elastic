@@ -1,0 +1,13 @@
+apiVersion: elastic.elastic-operator/v1
+kind: ElasticSecret
+metadata:
+  name: {{.Release.Name}}-kb-reporting-encryption
+  namespace: {{ .Release.Namespace}}
+spec:
+  name: kb-reporting-encryption
+  k8snamespace: observability
+  secret: {{.Release.Name}}-kb-reporting-encryption
+  k8stype: Opaque
+  k8skey: xpack.reporting.encryptionKey
+  k8slength: 32
+  keyvaultsecret: {{.Release.Name}}-kb-reporting-encryption
