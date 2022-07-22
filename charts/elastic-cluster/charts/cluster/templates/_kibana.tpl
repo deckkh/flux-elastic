@@ -106,7 +106,13 @@ env:
   count: {{ .Values.kibana.config.count}}
 
   elasticsearchRef:
-    name: "{{ .Release.Name }}"  
+    name: "{{ .Release.Name }}"
+
+  secureSettings:
+  - secretName:  {{ .Release.Name}}-kb-reporting-encryption
+  - secretName:  {{ .Release.Name}}-kb-security-encryption
+  - secretName:  {{ .Release.Name}}-kb-savedobjects-encryption
+
 {{- template "kibana.config" . }}
 {{- template "kibana.podtemplate" . }}
 {{- end }}
