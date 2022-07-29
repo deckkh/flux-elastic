@@ -1,0 +1,22 @@
+{{ if .Values.fleet.config.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m    
+  name: {{ .Release.Name}}-agent-ingress
+  namespace: {{ .Release.Namespace}}
+spec:
+  rules:
+  - host: {{ .Release.Name}}-agent
+    http:
+      paths: 
+      - path: /
+        backend:
+          service:
+            name: {{ .Release.Name}}-agent-http
+            port:
+              number: 8220
+        pathType: ImplementationSpecific
+{{ end}}
