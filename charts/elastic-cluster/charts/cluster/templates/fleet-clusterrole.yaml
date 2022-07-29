@@ -1,0 +1,23 @@
+{{ if .Values.fleet.config.enabled }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name}}-elastic-agent
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources:
+  - pods
+  - nodes
+  - namespaces
+  verbs:
+  - get
+  - watch
+  - list
+- apiGroups: ["coordination.k8s.io"]
+  resources:
+  - leases
+  verbs:
+  - get
+  - create
+  - update
+{{ end }}  

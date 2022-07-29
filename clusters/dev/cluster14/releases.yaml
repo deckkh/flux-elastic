@@ -19,6 +19,12 @@ spec:
 
     cluster:
 
+
+      fleet:
+        config:
+          enabled: true
+
+
       elastic:
         config: 
           version: 8.3.3

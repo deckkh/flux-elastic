@@ -12,6 +12,13 @@ eck:
   namespace: system
   name: elastic-operator
 
+
+fleet:
+  config:
+    enabled: false
+    mode: fleet
+    count: 1
+
 kibana:
   config:
     count: 1

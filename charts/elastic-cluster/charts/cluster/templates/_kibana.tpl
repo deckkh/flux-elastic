@@ -26,9 +26,16 @@
         appenders: [json-layout]
 {{ end }}
 
+{{- define "kibana.fleet" }}
+{{ if  .Values.fleet.config.enabled }}
+    xpack.fleet.agents.elasticsearch.hosts: ["https://{{ .Release.Name}}-es-http.{{ Release.Namespace}}.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["https://{{ .Release.Name}}-agent-http.{{ .Release.Namespace}}.svc:8220"]
+{{ end}}    
+{{ end }}
 
 {{- define "kibana.config" }}
   config:
+{{- template "kibana.fleet" . }}
 {{- template "kibana.oidc" . }}
 {{- template "kibana.logging" . }}
     monitoring:
