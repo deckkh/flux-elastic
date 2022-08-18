@@ -15,6 +15,7 @@ ConfigMap:
   ElasticUsers: "True"
   KibanaDnsSuffix: "-kb-http"
   ElasticDnsSuffix: "-es-http"
+  PvcMonitor: "True"
 
 Operator:
   Sa: "sa"
