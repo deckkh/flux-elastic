@@ -64,4 +64,10 @@ rules:
         - ""
     resources:
       - secrets
-    verbs: ["get", "watch", "list", "create", "delete", "patch", "update"]    
+      - pods
+    verbs: ["get", "list", "delete"]    
+  - apiGroups:
+        - ""
+    resources:
+      - pvcs
+    verbs: ["get",  "list" ]        
