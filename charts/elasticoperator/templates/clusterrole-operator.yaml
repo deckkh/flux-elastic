@@ -5,38 +5,8 @@ metadata:
   name: {{ .Release.Name}}-operator-{{ .Values.Operator.Role }}
 rules:
   - apiGroups:
-        - ""
-        #- apps
-        #- autoscaling
-        #- batch
-        #- extensions
-        #- policy
-        #- rbac.authorization.k8s.io
         - {{ .Values.ConfigMap.ApiGroup}}
     resources:
-      #- pods
-      #- componentstatuses
-      #- configmaps
-      #- daemonsets
-      #- deployments
-      #- events
-      #- endpoints
-      #- horizontalpodautoscalers
-      #- ingress
-      #- jobs
-      #- limitranges
-      #- namespaces
-      #- nodes
-      #- pods
-      #- persistentvolumes
-      #- persistentvolumeclaims
-      #- resourcequotas
-      #- replicasets
-      #- replicationcontrollers
-      #- serviceaccounts
-      #- services
-      - configmaps
-      - namespaces
       - indextemplates
       - kibanaspaces
       - ilms
@@ -69,5 +39,7 @@ rules:
   - apiGroups:
         - ""
     resources:
-      - pvcs
+      - persistentvolumeclaims
+      - configmaps
+      - namespaces
     verbs: ["get",  "list" ]        
