@@ -22,3 +22,4 @@ data:
   KibanaDnsSuffix: "{{ .Values.ConfigMap.KibanaDnsSuffix}}"
   ElasticDnsSuffix: "{{ .Values.ConfigMap.ElasticDnsSuffix}}"
   PvcMonitor: "{{ .Values.ConfigMap.PvcMonitor}}"
+  DumpAkvKeys: "{{ .Values.ConfigMap.DumpAkvKeys}}"

@@ -16,6 +16,7 @@ ConfigMap:
   KibanaDnsSuffix: "-kb-http"
   ElasticDnsSuffix: "-es-http"
   PvcMonitor: "True"
+  DumpAkvKeys: "False"
 
 Operator:
   Sa: "sa"
