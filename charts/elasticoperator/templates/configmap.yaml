@@ -6,6 +6,7 @@ metadata:
   namespace : {{ .Release.Namespace}}
 data:
   # property-like keys; each key maps to a simple value
+  version: 1
   apikeyRollover: "{{ .Values.ConfigMap.apikeyRollover}}"
   maxRetries: "{{ .Values.ConfigMap.maxRetries}}"
   keyVault: "{{ .Values.ConfigMap.keyVault}}"
