@@ -4,5 +4,5 @@ metadata:
   name: patchhelm
   labels:
     environment: ${apikeyRollover}
-    region: dk
+    region: ${region}
     version: {{ .Values.filebeat.config.version}}
