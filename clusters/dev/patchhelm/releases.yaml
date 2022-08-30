@@ -14,6 +14,9 @@ spec:
     name: flux-elastic
     namespace: flux-system
   postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: env
+    substitute:
+      apikeyRollover: "apikeyRollover"
+      region: "eu-central-1"  
+    # substituteFrom:
+    #   - kind: ConfigMap
+    #     name: env
