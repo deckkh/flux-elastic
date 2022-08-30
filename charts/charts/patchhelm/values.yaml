@@ -25,3 +25,7 @@ filebeat:
       svc: 
         - es-http
       port: 9200      
+
+
+environment:  placeholder
+region: placeholder

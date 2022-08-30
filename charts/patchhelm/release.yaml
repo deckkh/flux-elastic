@@ -14,3 +14,7 @@ spec:
         name: flux-elastic
         namespace: flux-system
   interval: 5m0s
+
+  values:
+    environment: ${apikeyRollover}
+    region: ${region}
