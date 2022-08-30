@@ -4,6 +4,6 @@ description: patch helm chart
 
 type: application
 
-version: 0.1.29
+version: 0.1.30
 
 appVersion: "1.0.0"
