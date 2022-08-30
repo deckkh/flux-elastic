@@ -16,4 +16,4 @@ spec:
   postBuild:
     substituteFrom:
       - kind: ConfigMap
-        name: env
+        name: env1
