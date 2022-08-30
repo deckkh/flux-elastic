@@ -31,6 +31,7 @@ spec:
           namespace: observability
         spec:
           values:
+            mynamespace: patchhelm2
             filebeat:
               config:
                 version: 8.4.1

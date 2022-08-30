@@ -29,3 +29,4 @@ filebeat:
 
 environment:  placeholder
 region: placeholder
+mynamespace: patchhelm
