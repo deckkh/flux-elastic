@@ -1,0 +1,9 @@
+apiVersion: v2
+name: patchhelm
+description: patch helm chart
+
+type: application
+
+version: 0.1.25
+
+appVersion: "1.0.0"
