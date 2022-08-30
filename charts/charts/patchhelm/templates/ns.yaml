@@ -3,6 +3,6 @@ kind: Namespace
 metadata:
   name: patchhelm
   labels:
-    environment: ${apikeyRollover}
+#    environment: test
     region: dk
     version: {{ .Values.filebeat.config.version}}
