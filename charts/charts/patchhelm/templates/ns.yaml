@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .Values.myspacename }}
+  name: {{ .Values.mynamespace }}
   labels:
     environment: {{ .Values.environment }}
     region: {{ .Values.region}}
